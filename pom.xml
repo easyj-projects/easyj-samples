@@ -10,7 +10,7 @@
 		<relativePath/>
 	</parent>
 
-	<artifactId>easyj-samples</artifactId>
+	<artifactId>easyj-samples-parent</artifactId>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 	<name>Parent</name>
@@ -29,10 +29,13 @@
 
 		<!-- 其他依赖版本 -->
 		<easyj.version>0.1.0-SNAPSHOT</easyj.version>
+		<spring-boot.version>2.3.12.RELEASE</spring-boot.version>
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Easyj -->
 			<dependency>
 				<groupId>org.easyj</groupId>
 				<artifactId>easyj-bom</artifactId>
@@ -40,10 +43,44 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<!-- Spring Boot -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
+	<!-- 样例项目，肯定会使用到API窗体化工具 -->
+	<dependencies>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+	</dependencies>
+
 	<modules>
+		<module>easyj-web-samples</module>
 	</modules>
 
 	<inceptionYear>2021</inceptionYear>
@@ -117,4 +154,19 @@
 			</build>
 		</profile>
 	</profiles>
+
+	<!-- 样例项目，不deploy -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
