@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wangliang181230
  */
 @SpringBootApplication
-public class SamplesCache304Application {
+public class Cache304SamplesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SamplesCache304Application.class, args);
+		SpringApplication.run(Cache304SamplesApplication.class, args);
 	}
 }

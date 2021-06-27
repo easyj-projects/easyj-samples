@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easyj</groupId>
-		<artifactId>easyj-web-samples</artifactId>
+		<artifactId>easyj-office-samples</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-web-cache304-sample</artifactId>
-	<name>web-cache304-sample</name>
+	<artifactId>easyj-office-excel-sample</artifactId>
+	<name>web-excel-sample</name>
 
 	<dependencies>
 		<!-- web -->
@@ -24,10 +24,14 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!-- easyj-cache304 -->
+		<!-- easyj-office-excel -->
 		<dependency>
 			<groupId>org.easyj</groupId>
-			<artifactId>easyj-web-cache304</artifactId>
+			<artifactId>easyj-office-excel</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.easyj</groupId>
+			<artifactId>easyj-web-core</artifactId>
 		</dependency>
 		<!-- 或者，引用All -->
 		<!--<dependency>

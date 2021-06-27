@@ -33,6 +33,12 @@
 		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
+	<!-- Modules -->
+	<modules>
+		<module>easyj-web-samples</module>
+		<module>easyj-office-samples</module>
+	</modules>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- Easyj -->
@@ -78,10 +84,6 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 		</dependency>
 	</dependencies>
-
-	<modules>
-		<module>easyj-web-samples</module>
-	</modules>
 
 	<inceptionYear>2021</inceptionYear>
 
