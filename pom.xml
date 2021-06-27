@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.easyj</groupId>
+		<artifactId>easyj-build</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+		<relativePath/>
+	</parent>
+
+	<artifactId>easyj-samples</artifactId>
+	<version>${revision}</version>
+	<packaging>pom</packaging>
+	<name>Parent</name>
+	<url>https://gitee.com/easyj-projects/easyj-samples</url>
+
+	<properties>
+		<!-- 编译配置 -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- 当前样例项目的版本 -->
+		<revision>0.1.0-SNAPSHOT</revision>
+
+		<!-- 其他依赖版本 -->
+		<easyj.version>0.1.0-SNAPSHOT</easyj.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.easyj</groupId>
+				<artifactId>easyj-bom</artifactId>
+				<version>${easyj.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+	</modules>
+
+	<inceptionYear>2021</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<organization>
+		<name>Easyj开源项目组</name>
+		<url>https://gitee.com/easyj-projects</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>wangliang181230</id>
+			<name>王良</name>
+			<url>https://gitee.com/wangliang181230</url>
+			<email>841369634@qq.com</email>
+			<organization>浙江蕙康科技有限公司</organization>
+			<organizationUrl>https://www.jyhk.com</organizationUrl>
+			<roles>
+				<role>Java架构师</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://gitee.com/easyj-projects/easyj-samples</url>
+		<connection>scm:git@gitee.com:easyj-projects/easyj-samples.git</connection>
+		<developerConnection>scm:git@gitee.com:easyj-projects/easyj-samples.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>gitee</system>
+		<url>https://gitee.com/easyj-projects/easyj-samples/issues</url>
+	</issueManagement>
+
+	<!-- 资源仓库管理 -->
+	<repositories>
+		<repository>
+			<id>kt-nexus</id>
+			<name>kt-nexus</name>
+			<url>http://www.kingtsoft.com:33084/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<profiles>
+		<!-- profile：Release -->
+		<profile>
+			<id>release</id>
+			<build>
+				<plugins>
+					<!-- 使用插件：Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
