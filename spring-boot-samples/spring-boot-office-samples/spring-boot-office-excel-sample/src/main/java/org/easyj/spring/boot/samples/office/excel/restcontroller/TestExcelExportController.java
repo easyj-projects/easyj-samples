@@ -1,13 +1,13 @@
 package org.easyj.spring.boot.samples.office.excel.restcontroller;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import io.swagger.annotations.ApiImplicitParam;
 import org.easyj.spring.boot.samples.office.excel.mockquery.MyEntity;
+import org.easyj.spring.boot.samples.office.excel.mockquery.MyEntityStorage;
 import org.easyj.spring.boot.samples.office.excel.mockquery.QueryParam;
 import org.easyj.web.office.excel.ExcelExport;
+import org.easyj.web.util.HttpUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,32 +20,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestExcelExportController {
 
 	@ExcelExport(fileNamePre = "测试Excel导出功能", dataType = MyEntity.class)
-	@ApiImplicitParam(name = "doExcelExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
+	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export")
 	public List<MyEntity> testExcelExport(QueryParam param) {
-		return doQueryEntity(param);
-	}
-
-	/**
-	 * 模拟查询操作
-	 *
-	 * @param param 查询参数
-	 * @return list 查询到的列表数据
-	 */
-	private List<MyEntity> doQueryEntity(QueryParam param) {
-		List<MyEntity> list = new ArrayList<>();
-
-		if (param.getDataCount() != null) {
-			if (param.getDataCount() > 0) {
-				list.add(new MyEntity("aaa", 1, new Date(2020 - 1900, 1 - 1, 1), "desc111"));
-			}
-			if (param.getDataCount() > 1) {
-				list.add(new MyEntity("bbb", 2, new Date(2019 - 1900, 2 - 1, 2), "desc222"));
-			}
-			if (param.getDataCount() > 2) {
-				list.add(new MyEntity("ccc", 3, new Date(2018 - 1900, 3 - 1, 3), "desc333"));
-			}
+		// 重要：当此次请求为excel导出请求时，将分布参数清除
+		if (HttpUtils.isDoExportRequest()) {
+			param.setPageSize(0); // 设置为0，表示不分页
 		}
-		return list;
+
+		return MyEntityStorage.doQuery(param);
 	}
 }
