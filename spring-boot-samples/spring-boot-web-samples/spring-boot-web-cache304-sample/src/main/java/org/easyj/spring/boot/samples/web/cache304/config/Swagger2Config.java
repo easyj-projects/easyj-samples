@@ -37,7 +37,7 @@ public class Swagger2Config {
 	}
 
 	private ApiInfo apiInfo() {
-		Contact contact = new Contact("EasyJ开源项目组", "https://gitee.com/easyj-projects", "841369634@qq.com");
+		Contact contact = new Contact("EasyJ开源社区", "https://gitee.com/easyj-projects", "841369634@qq.com");
 		return new ApiInfoBuilder()
 				.title("测试接口")
 				.description("")

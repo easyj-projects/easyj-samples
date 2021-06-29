@@ -9,11 +9,11 @@
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-office-samples</artifactId>
+	<artifactId>easyj-spring-boot-poi-samples</artifactId>
 	<packaging>pom</packaging>
-	<name>Spring Boot Office Samples</name>
+	<name>Spring Boot POI Samples</name>
 
 	<modules>
-		<module>spring-boot-office-excel-sample</module>
+		<module>spring-boot-poi-excel-sample</module>
 	</modules>
 </project>

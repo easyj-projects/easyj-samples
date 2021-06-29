@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easyj.boot</groupId>
-		<artifactId>easyj-spring-boot-office-samples</artifactId>
+		<artifactId>easyj-spring-boot-poi-samples</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-office-excel-sample</artifactId>
-	<name>spring-boot-office-excel-sample</name>
+	<artifactId>easyj-spring-boot-poi-excel-sample</artifactId>
+	<name>spring-boot-poi-excel-sample</name>
 
 	<dependencies>
 		<!-- web -->
@@ -19,10 +19,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- office-excel -->
+		<!-- poi-excel -->
 		<dependency>
 			<groupId>org.easyj.boot</groupId>
-			<artifactId>easyj-spring-boot-starter-office-excel</artifactId>
+			<artifactId>easyj-spring-boot-starter-poi-excel</artifactId>
 		</dependency>
 
 

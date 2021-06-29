@@ -1,4 +1,4 @@
-package org.easyj.spring.boot.samples.office.excel.config;
+package org.easyj.spring.boot.samples.poi.excel.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class Swagger2Config {
 	/**
 	 * 扫描包路径
 	 */
-	private static final String API_PACKAGE = "org.easyj.spring.boot.samples.office.excel.restcontroller";
+	private static final String API_PACKAGE = "org.easyj.spring.boot.samples.poi.excel.restcontroller";
 
 	@Bean
 	public Docket createRestApi1() {
@@ -37,7 +37,7 @@ public class Swagger2Config {
 	}
 
 	private ApiInfo apiInfo() {
-		Contact contact = new Contact("EasyJ开源项目组", "https://gitee.com/easyj-projects", "841369634@qq.com");
+		Contact contact = new Contact("EasyJ开源社区", "https://gitee.com/easyj-projects", "841369634@qq.com");
 		return new ApiInfoBuilder()
 				.title("测试接口")
 				.description("")

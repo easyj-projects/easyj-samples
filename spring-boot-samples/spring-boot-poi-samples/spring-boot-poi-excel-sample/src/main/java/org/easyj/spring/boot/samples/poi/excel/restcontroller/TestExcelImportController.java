@@ -1,10 +1,10 @@
-package org.easyj.spring.boot.samples.office.excel.restcontroller;
+package org.easyj.spring.boot.samples.poi.excel.restcontroller;
 
 import java.util.List;
 
 import org.easyj.core.util.StringUtils;
-import org.easyj.office.excel.util.ExcelUtils;
-import org.easyj.spring.boot.samples.office.excel.mockquery.MyEntity;
+import org.easyj.poi.excel.util.ExcelUtils;
+import org.easyj.spring.boot.samples.poi.excel.mockquery.MyEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;

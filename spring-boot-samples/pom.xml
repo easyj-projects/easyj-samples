@@ -16,7 +16,7 @@
 
 	<modules>
 		<module>spring-boot-common</module>
-		<module>spring-boot-office-samples</module>
+		<module>spring-boot-poi-samples</module>
 		<module>spring-boot-web-samples</module>
 	</modules>
 </project>

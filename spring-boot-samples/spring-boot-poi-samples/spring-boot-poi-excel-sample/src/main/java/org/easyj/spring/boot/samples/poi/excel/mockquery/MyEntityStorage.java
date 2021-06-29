@@ -1,4 +1,4 @@
-package org.easyj.spring.boot.samples.office.excel.mockquery;
+package org.easyj.spring.boot.samples.poi.excel.mockquery;
 
 import java.util.ArrayList;
 import java.util.Date;

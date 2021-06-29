@@ -1,9 +1,9 @@
-package org.easyj.spring.boot.samples.office.excel.mockquery;
+package org.easyj.spring.boot.samples.poi.excel.mockquery;
 
 import java.util.Date;
 
-import org.easyj.office.excel.annotation.Excel;
-import org.easyj.office.excel.annotation.ExcelCell;
+import org.easyj.poi.excel.annotation.Excel;
+import org.easyj.poi.excel.annotation.ExcelCell;
 
 /**
  * @author wangliang181230

@@ -1,4 +1,4 @@
-package org.easyj.spring.boot.samples.office.excel;
+package org.easyj.spring.boot.samples.poi.excel;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,13 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 使用 EasyJ的Excel相关功能 的样例
  *
  * @author wangliang181230
- * @see org.easyj.web.office.excel.ExcelExport
- * @see org.easyj.office.excel.util.ExcelUtils
+ * @see org.easyj.web.poi.excel.ExcelExport
+ * @see org.easyj.poi.excel.util.ExcelUtils
  */
 @SpringBootApplication
-public class OfficeExcelSampleApplication {
+public class PoiExcelSampleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OfficeExcelSampleApplication.class, args);
+		SpringApplication.run(PoiExcelSampleApplication.class, args);
 	}
 }

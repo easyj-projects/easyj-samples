@@ -1,7 +1,7 @@
-package org.easyj.spring.boot.samples.office.excel.mockquery;
+package org.easyj.spring.boot.samples.poi.excel.mockquery;
 
-import org.easyj.core.querier.AbstractQuerier;
 import org.easyj.core.util.ComparableUtils;
+import org.easyj.data.memory.querier.AbstractQuerier;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
