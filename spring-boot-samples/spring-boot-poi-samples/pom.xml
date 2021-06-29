@@ -15,5 +15,6 @@
 
 	<modules>
 		<module>spring-boot-poi-excel-sample</module>
+		<module>spring-boot-poi-excel-afterturn-sample</module>
 	</modules>
 </project>

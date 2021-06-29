@@ -2,22 +2,20 @@ package org.easyj.spring.boot.samples.poi.excel.mockquery;
 
 import java.util.Date;
 
-import org.easyj.poi.excel.annotation.Excel;
-import org.easyj.poi.excel.annotation.ExcelCell;
+import cn.afterturn.easypoi.excel.annotation.Excel;
 
 /**
  * @author wangliang181230
  */
-@Excel
 public class MyEntity {
 
-	@ExcelCell(headName = "姓名", cellNum = 0)
+	@Excel(name = "姓名", orderNum = "0")
 	private String name;
 
-	@ExcelCell(headName = "年龄", cellNum = 1)
+	@Excel(name = "年龄", orderNum = "1")
 	private Integer age;
 
-	@ExcelCell(headName = "出生日期", cellNum = 2)
+	@Excel(name = "出生日期", orderNum = "2")
 	private Date birthday;
 
 	// 测试无注解的情况
