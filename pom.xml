@@ -4,17 +4,63 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.easyj</groupId>
+		<groupId>icu.easyj</groupId>
 		<artifactId>easyj-build</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
+		<version>1.0.2</version>
 		<relativePath/>
 	</parent>
 
 	<artifactId>easyj-samples-parent</artifactId>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
+
 	<name>Parent</name>
+	<description>EasyJ功能的示例项目。</description>
 	<url>https://gitee.com/easyj-projects/easyj-samples</url>
+
+	<inceptionYear>2021</inceptionYear>
+
+	<organization>
+		<name>EasyJ开源社区</name>
+		<url>https://gitee.com/easyj-projects</url>
+	</organization>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>wangliang181230</id>
+			<name>王良</name>
+			<email>841369634@qq.com</email>
+			<url>https://gitee.com/wangliang181230</url>
+			<organization>浙江蕙康科技有限公司</organization>
+			<organizationUrl>https://www.jyhk.com</organizationUrl>
+			<roles>
+				<role>Java架构师</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<modules>
+		<module>spring-boot-samples</module>
+	</modules>
+
+	<scm>
+		<connection>scm:git@gitee.com:easyj-projects/easyj-samples.git</connection>
+		<developerConnection>scm:git@gitee.com:easyj-projects/easyj-samples.git</developerConnection>
+		<url>https://gitee.com/easyj-projects/easyj-samples</url>
+	</scm>
+
+	<issueManagement>
+		<system>gitee</system>
+		<url>https://gitee.com/easyj-projects/easyj-samples/issues</url>
+	</issueManagement>
 
 	<properties>
 		<!-- 编译配置 -->
@@ -25,11 +71,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- 当前样例项目的版本 -->
-		<revision>0.1.0-SNAPSHOT</revision>
+		<revision>0.1.1-SNAPSHOT</revision>
 
-		<!-- EasjJ相关依赖 -->
-		<easyj.version>0.1.0-SNAPSHOT</easyj.version>
-		<easyj-boot.version>0.1.0-SNAPSHOT</easyj-boot.version>
+		<!-- EasjJ-Boot版本 -->
+		<easyj-boot.version>0.1.1-SNAPSHOT</easyj-boot.version>
 
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.5.2</spring-boot.version>
@@ -38,16 +83,11 @@
 		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
-	<!-- Modules -->
-	<modules>
-		<module>spring-boot-samples</module>
-	</modules>
-
 	<dependencyManagement>
 		<dependencies>
 			<!-- Easyj Boot -->
 			<dependency>
-				<groupId>org.easyj.boot</groupId>
+				<groupId>icu.easyj.boot</groupId>
 				<artifactId>easyj-spring-boot-bom</artifactId>
 				<version>${easyj-boot.version}</version>
 				<type>pom</type>
@@ -89,78 +129,6 @@
 		</dependency>
 	</dependencies>
 
-	<inceptionYear>2021</inceptionYear>
-
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-
-	<organization>
-		<name>EasyJ开源社区</name>
-		<url>https://gitee.com/easyj-projects</url>
-	</organization>
-
-	<developers>
-		<developer>
-			<id>wangliang181230</id>
-			<name>王良</name>
-			<url>https://gitee.com/wangliang181230</url>
-			<email>841369634@qq.com</email>
-			<organization>浙江蕙康科技有限公司</organization>
-			<organizationUrl>https://www.jyhk.com</organizationUrl>
-			<roles>
-				<role>Java架构师</role>
-			</roles>
-		</developer>
-	</developers>
-
-	<scm>
-		<url>https://gitee.com/easyj-projects/easyj-samples</url>
-		<connection>scm:git@gitee.com:easyj-projects/easyj-samples.git</connection>
-		<developerConnection>scm:git@gitee.com:easyj-projects/easyj-samples.git</developerConnection>
-	</scm>
-
-	<issueManagement>
-		<system>gitee</system>
-		<url>https://gitee.com/easyj-projects/easyj-samples/issues</url>
-	</issueManagement>
-
-	<!-- 资源仓库管理 -->
-	<repositories>
-		<repository>
-			<id>kt-nexus</id>
-			<name>kt-nexus</name>
-			<url>http://www.kingtsoft.com:33084/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
-
-	<profiles>
-		<!-- profile：Release -->
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<!-- 使用插件：Javadoc -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -168,8 +136,7 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<configuration>
-						<!-- 样例项目，不deploy -->
-						<skip>true</skip>
+						<skip>true</skip><!-- 样例项目，不用deploy -->
 					</configuration>
 				</plugin>
 			</plugins>
