@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>icu.easyj</groupId>
 		<artifactId>easyj-build</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.6</version>
 		<relativePath/>
 	</parent>
 
@@ -28,7 +28,7 @@
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -71,10 +71,10 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- 当前样例项目的版本 -->
-		<revision>0.1.1-SNAPSHOT</revision>
+		<revision>0.1.2-SNAPSHOT</revision>
 
 		<!-- EasjJ-Boot版本 -->
-		<easyj-boot.version>0.1.1-SNAPSHOT</easyj-boot.version>
+		<easyj-boot.version>0.1.2-SNAPSHOT</easyj-boot.version>
 
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.5.2</spring-boot.version>
