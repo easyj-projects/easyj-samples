@@ -11,7 +11,8 @@
 
 	<artifactId>easyj-spring-boot-web-samples</artifactId>
 	<packaging>pom</packaging>
-	<name>Spring Boot Web Samples</name>
+
+	<name>spring-boot-web == Samples Parent ==</name>
 
 	<modules>
 		<module>spring-boot-web-cache304-sample</module>

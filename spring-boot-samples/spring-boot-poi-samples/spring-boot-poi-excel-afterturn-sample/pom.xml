@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>easyj-spring-boot-poi-excel-afterturn-sample</artifactId>
+
 	<name>spring-boot-poi-excel-afterturn-sample</name>
 
 	<dependencies>

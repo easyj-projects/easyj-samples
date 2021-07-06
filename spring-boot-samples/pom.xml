@@ -12,7 +12,8 @@
 	<groupId>icu.easyj.boot</groupId>
 	<artifactId>easyj-spring-boot-samples</artifactId>
 	<packaging>pom</packaging>
-	<name>Spring Boot Samples</name>
+
+	<name>spring-boot == Samples Parent ==</name>
 
 	<modules>
 		<module>spring-boot-common</module>

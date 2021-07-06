@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>easyj-spring-boot-common</artifactId>
+
 	<name>spring-boot-common</name>
 
 	<dependencies>

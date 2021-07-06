@@ -1,4 +1,4 @@
-package icu.easyj.spring.boot.samples.poi.excel.config;
+package icu.easyj.spring.boot.samples.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,7 @@ public class Swagger2Config {
 	/**
 	 * 扫描包路径
 	 */
-	private static final String API_PACKAGE = "icu.easyj.spring.boot.samples.poi.excel.restcontroller";
+	private static final String API_PACKAGE = "icu.easyj.spring.boot.samples";
 
 	@Bean
 	public Docket createRestApi1() {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestCache304Controller {
 
-	@Cache304(value = 10, useMaxAge = true)
+	@Cache304(value = 15, useMaxAge = true, limitMaxAge = 3)
 	@GetMapping("/test/cache-304/10-true")
 	public String test1() {
 		return "test1";

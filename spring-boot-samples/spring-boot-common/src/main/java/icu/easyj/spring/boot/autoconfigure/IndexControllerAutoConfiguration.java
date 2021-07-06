@@ -1,6 +1,7 @@
-package icu.easyj.spring.boot.samples.config;
+package icu.easyj.spring.boot.autoconfigure;
 
-import icu.easyj.spring.boot.samples.controller.IndexController;
+import icu.easyj.spring.boot.controller.IndexController;
+import icu.easyj.spring.boot.samples.config.Swagger2Config;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
@@ -10,6 +11,6 @@ import org.springframework.context.annotation.Lazy;
  */
 @Lazy // 当前自动装配类，在项目启动过程中，无需实例化，所以添加了 @Lazy
 @Configuration(proxyBeanMethods = false)
-@Import(IndexController.class)
+@Import({IndexController.class, Swagger2Config.class})
 public class IndexControllerAutoConfiguration {
 }

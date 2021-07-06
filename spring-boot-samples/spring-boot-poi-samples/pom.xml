@@ -11,7 +11,8 @@
 
 	<artifactId>easyj-spring-boot-poi-samples</artifactId>
 	<packaging>pom</packaging>
-	<name>Spring Boot POI Samples</name>
+
+	<name>spring-boot-poi == Samples Parent ==</name>
 
 	<modules>
 		<module>spring-boot-poi-excel-sample</module>

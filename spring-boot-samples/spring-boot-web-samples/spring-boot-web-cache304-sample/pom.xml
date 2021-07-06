@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>easyj-spring-boot-web-cache304-sample</artifactId>
+
 	<name>spring-boot-web-cache304-sample</name>
 
 	<dependencies>

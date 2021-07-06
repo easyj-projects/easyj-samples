@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>icu.easyj</groupId>
 		<artifactId>easyj-build</artifactId>
-		<version>1.0.8</version>
+		<version>1.0.9</version>
 		<relativePath/>
 	</parent>
 
@@ -48,6 +48,8 @@
 	</developers>
 
 	<modules>
+		<module>dependencies</module>
+
 		<module>spring-boot-samples</module>
 	</modules>
 
@@ -63,62 +65,38 @@
 	</issueManagement>
 
 	<properties>
+		<!-- 当前样例项目的版本 -->
+		<revision>0.1.2-SNAPSHOT</revision>
+
 		<!-- 编译配置 -->
 		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<!-- 当前样例项目的版本 -->
-		<revision>0.1.2-SNAPSHOT</revision>
-
-		<!-- EasjJ-Boot版本 -->
-		<easyj-boot.version>0.1.2-SNAPSHOT</easyj-boot.version>
-
-		<!-- Spring相关依赖 -->
-		<spring-boot.version>2.5.2</spring-boot.version>
-
-		<!-- Swagger -->
-		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- Easyj Boot -->
 			<dependency>
-				<groupId>icu.easyj.boot</groupId>
-				<artifactId>easyj-spring-boot-bom</artifactId>
-				<version>${easyj-boot.version}</version>
+				<groupId>icu.easyj</groupId>
+				<artifactId>easyj-samples-dependencies</artifactId>
+				<version>0.1.1</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-
-			<!-- Spring Boot -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-
-			<!-- Swagger -->
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger2</artifactId>
-				<version>${swagger.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.springfox</groupId>
-				<artifactId>springfox-swagger-ui</artifactId>
-				<version>${swagger.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
-	<!-- 样例项目，肯定会使用到API窗体化工具 -->
 	<dependencies>
+		<!-- 引用依赖：Provided dependencies。（注：仅参与编译，无需被继承的依赖。） -->
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- 引用依赖：Swagger（注：样例项目，使用API窗体化工具，方便测试） -->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -126,6 +104,13 @@
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
+		</dependency>
+
+		<!-- 引用依赖：Tests -->
+		<dependency>
+			<groupId>icu.easyj</groupId>
+			<artifactId>easyj-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
