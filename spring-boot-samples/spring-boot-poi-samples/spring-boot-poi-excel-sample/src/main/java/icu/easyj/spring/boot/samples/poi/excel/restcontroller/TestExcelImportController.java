@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * 测试 @ExcelExport 的 Controller
+ * 测试 ExcelUtils实现Excel文件导入功能
  *
  * @author wangliang181230
  */
