@@ -25,8 +25,13 @@
 			<groupId>icu.easyj.boot</groupId>
 			<artifactId>easyj-spring-boot-starter-poi-excel-afterturn</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>5.0.0</version>
+		</dependency>
 
-
+		<!-- EasyJ Spring Boot Common -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>easyj-spring-boot-common</artifactId>

@@ -23,8 +23,19 @@ public class MyEntityStorage {
 		DATA_LIST.add(new MyEntity("fffggg", 9, new Date(2021 - 1900 - 9, 1 - 1, 1), "fffff"));
 	}
 
-	public static List<MyEntity> doQuery(QueryParam queryParam) {
+	public static List<MyEntity> findList(QueryParam queryParam) {
 		MyEntityQuerier querier = new MyEntityQuerier(queryParam);
 		return querier.doQuery(DATA_LIST);
+	}
+
+	public static MyPageResult<MyEntity> findPaging(QueryParam queryParam) {
+		MyPageResult<MyEntity> page = new MyPageResult<>();
+
+		MyEntityQuerier querier = new MyEntityQuerier(queryParam);
+
+		page.setTotal(querier.doCount(DATA_LIST));
+		page.setList(querier.doQuery(DATA_LIST));
+
+		return page;
 	}
 }

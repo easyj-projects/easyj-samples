@@ -26,7 +26,7 @@
 			<artifactId>easyj-spring-boot-starter-web-cache304</artifactId>
 		</dependency>
 
-
+		<!-- EasyJ Spring Boot Common -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>easyj-spring-boot-common</artifactId>
