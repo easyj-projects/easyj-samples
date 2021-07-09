@@ -1,0 +1,4 @@
+datasource:
+  url: jdbc:mysql://192.168.1.1:3306
+  #username: root #默认就是root，无需配置
+  password: testpassword1

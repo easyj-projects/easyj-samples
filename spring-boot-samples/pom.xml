@@ -17,7 +17,10 @@
 
 	<modules>
 		<module>spring-boot-common</module>
+
 		<module>spring-boot-poi-samples</module>
 		<module>spring-boot-web-samples</module>
+
+		<module>spring-boot-environment-enhanced-sample</module>
 	</modules>
 </project>

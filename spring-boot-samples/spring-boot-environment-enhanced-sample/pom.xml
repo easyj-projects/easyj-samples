@@ -9,21 +9,15 @@
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-common</artifactId>
+	<artifactId>easyj-spring-boot-environment-enhanced-sample</artifactId>
 
-	<name>spring-boot-common</name>
+	<name>spring-boot-environment-enhanced-sample</name>
 
 	<dependencies>
 		<!-- EasyJ Spring Boot Starter -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
 			<artifactId>easyj-spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
 </project>

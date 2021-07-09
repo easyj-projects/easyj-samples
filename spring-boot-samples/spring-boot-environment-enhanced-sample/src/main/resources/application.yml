@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: env-enhanced-sample
+
+easyj:
+  global:
+    env-name: 开发环境
+    application-name: 环境增强功能示例
+
+logging:
+  level.root: warn #为了方便观察示例打印的日志，将默认日志级别调为warn
