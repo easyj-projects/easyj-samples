@@ -81,7 +81,7 @@
 			<dependency>
 				<groupId>icu.easyj</groupId>
 				<artifactId>easyj-samples-dependencies</artifactId>
-				<version>0.1.2-SNAPSHOT</version>
+				<version>0.1.1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
