@@ -18,6 +18,9 @@ public class PoiExcelSampleApplicationTest {
 	@Autowired
 	TestExcelImportController testExcelImportController;
 
+	/**
+	 * 测试是否能够启动
+	 */
 	@Test
 	void testStartup() {
 		Assertions.assertNotNull(testExcelExportController);

@@ -15,6 +15,9 @@ public class WebCache304SampleApplicationTest {
 	@Autowired
 	TestCache304Controller testCache304Controller;
 
+	/**
+	 * 测试是否能够启动
+	 */
 	@Test
 	void testStartup() {
 		Assertions.assertNotNull(testCache304Controller);
