@@ -1,3 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-icu.easyj.spring.boot.autoconfigure.IndexControllerAutoConfiguration

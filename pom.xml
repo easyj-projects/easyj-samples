@@ -50,7 +50,7 @@
 	<modules>
 		<module>dependencies</module>
 
-		<module>spring-boot-samples</module>
+		<module>spring-boot-samples-parent</module>
 	</modules>
 
 	<scm>

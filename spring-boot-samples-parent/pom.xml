@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>icu.easyj</groupId>
+		<artifactId>easyj-samples-parent</artifactId>
+		<version>${revision}</version>
+	</parent>
+
+	<groupId>icu.easyj.boot</groupId>
+	<artifactId>easyj-spring-boot-samples-parent</artifactId>
+	<packaging>pom</packaging>
+
+	<name>boot-samples-parent</name>
+
+	<modules>
+		<module>spring-boot-sample-common</module>
+
+		<module>spring-boot-sample-environment-enhanced</module>
+
+		<module>spring-boot-samples-poi-parent</module>
+		<!--
+		<module>spring-boot-sample-poi-excel</module>
+		<module>spring-boot-sample-poi-excel-afterturn</module>
+		-->
+
+		<module>spring-boot-samples-web-parent</module>
+		<!--
+		<module>spring-boot-sample-web-cache304</module>
+		-->
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>icu.easyj.boot</groupId>
+			<artifactId>easyj-spring-boot-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
