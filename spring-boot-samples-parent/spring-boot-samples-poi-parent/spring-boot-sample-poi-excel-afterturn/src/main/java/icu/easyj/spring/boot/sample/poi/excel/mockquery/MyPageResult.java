@@ -5,9 +5,7 @@ import java.util.List;
 /**
  * 分页查询出参
  *
- * @author 王良/wangliang@jyhk.com
- * @version 1.0
- * @since 2021/7/7 18:26
+ * @author wangliang181230
  */
 public class MyPageResult<T> {
 
