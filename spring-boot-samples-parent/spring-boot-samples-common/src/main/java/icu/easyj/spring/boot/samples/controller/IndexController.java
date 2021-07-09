@@ -1,4 +1,4 @@
-package icu.easyj.spring.boot.controller;
+package icu.easyj.spring.boot.samples.controller;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;

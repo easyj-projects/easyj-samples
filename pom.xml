@@ -81,7 +81,7 @@
 			<dependency>
 				<groupId>icu.easyj</groupId>
 				<artifactId>easyj-samples-dependencies</artifactId>
-				<version>0.1.1</version>
+				<version>0.1.2-SNAPSHOT</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -122,6 +122,13 @@
 					<artifactId>maven-deploy-plugin</artifactId>
 					<configuration>
 						<skip>true</skip><!-- 样例项目，不用deploy -->
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<configuration>
+						<skip>true</skip><!-- 样例项目，不用checkstyle -->
 					</configuration>
 				</plugin>
 			</plugins>

@@ -9,7 +9,7 @@
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-sample-common</artifactId>
+	<artifactId>easyj-spring-boot-samples-common</artifactId>
 
 	<name>boot-sample-common</name>
 
@@ -26,4 +26,18 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<configuration>
+						<skip>false</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>

@@ -16,7 +16,7 @@
 	<name>boot-samples-parent</name>
 
 	<modules>
-		<module>spring-boot-sample-common</module>
+		<module>spring-boot-samples-common</module>
 
 		<module>spring-boot-sample-environment-enhanced</module>
 

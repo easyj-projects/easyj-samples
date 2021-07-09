@@ -26,10 +26,10 @@
 			<artifactId>easyj-spring-boot-starter-web-cache304</artifactId>
 		</dependency>
 
-		<!-- EasyJ Spring Boot Common -->
+		<!-- EasyJ Spring Boot Samples Common -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
-			<artifactId>easyj-spring-boot-sample-common</artifactId>
+			<artifactId>easyj-spring-boot-samples-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
