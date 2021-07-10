@@ -4,16 +4,16 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>icu.easyj</groupId>
+		<groupId>icu.easyj.sample</groupId>
 		<artifactId>easyj-samples-parent</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<groupId>icu.easyj.boot</groupId>
+	<groupId>icu.easyj.boot.sample</groupId>
 	<artifactId>easyj-spring-boot-samples-parent</artifactId>
 	<packaging>pom</packaging>
 
-	<name>boot-samples-parent</name>
+	<name>${project.groupId} :: ${project.artifactId}</name>
 
 	<modules>
 		<module>spring-boot-samples-common</module>

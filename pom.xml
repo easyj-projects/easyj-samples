@@ -10,11 +10,12 @@
 		<relativePath/>
 	</parent>
 
+	<groupId>icu.easyj.sample</groupId>
 	<artifactId>easyj-samples-parent</artifactId>
 	<version>${revision}</version>
 	<packaging>pom</packaging>
 
-	<name>Parent</name>
+	<name>${project.groupId} :: ${project.artifactId}</name>
 	<description>EasyJ功能的示例项目。</description>
 	<url>https://gitee.com/easyj-projects/easyj-samples</url>
 
@@ -79,9 +80,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>icu.easyj</groupId>
+				<groupId>icu.easyj.sample</groupId>
 				<artifactId>easyj-samples-dependencies</artifactId>
-				<version>0.1.1</version>
+				<version>${project.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
