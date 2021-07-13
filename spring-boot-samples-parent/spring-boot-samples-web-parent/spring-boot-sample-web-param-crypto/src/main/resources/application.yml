@@ -1,0 +1,12 @@
+server:
+  port: 8004
+
+easyj:
+  web:
+    param:
+      crypto:
+        handler:
+          algorithm: AES/CBC/PKCS7Padding
+          key: 12345678901234567890123456789012
+          iv: 1234567890123456
+          charset: UTF-8
