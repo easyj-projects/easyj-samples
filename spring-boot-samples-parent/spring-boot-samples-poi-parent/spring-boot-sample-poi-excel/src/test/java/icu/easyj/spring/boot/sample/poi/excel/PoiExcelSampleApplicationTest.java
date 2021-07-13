@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author wangliang181230
  */
 @SpringBootTest
-public class PoiExcelSampleApplicationTest {
+class PoiExcelSampleApplicationTest {
 
 	@Autowired
 	TestExcelExportController testExcelExportController;

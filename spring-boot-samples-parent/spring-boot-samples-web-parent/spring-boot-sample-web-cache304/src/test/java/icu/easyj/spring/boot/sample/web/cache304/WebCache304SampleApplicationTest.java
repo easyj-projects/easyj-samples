@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author wangliang181230
  */
 @SpringBootTest
-public class WebCache304SampleApplicationTest {
+class WebCache304SampleApplicationTest {
 
 	@Autowired
 	TestCache304Controller testCache304Controller;
