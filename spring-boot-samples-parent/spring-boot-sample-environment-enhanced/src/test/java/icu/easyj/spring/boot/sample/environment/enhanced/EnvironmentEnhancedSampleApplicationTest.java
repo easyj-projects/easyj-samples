@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
+ * {@link EnvironmentEnhancedSampleApplication} 测试类
+ *
  * @author wangliang181230
  */
 @SpringBootTest

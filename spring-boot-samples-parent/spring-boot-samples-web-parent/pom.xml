@@ -16,5 +16,6 @@
 
 	<modules>
 		<module>spring-boot-sample-web-cache304</module>
+		<module>spring-boot-sample-web-param-crypto</module>
 	</modules>
 </project>

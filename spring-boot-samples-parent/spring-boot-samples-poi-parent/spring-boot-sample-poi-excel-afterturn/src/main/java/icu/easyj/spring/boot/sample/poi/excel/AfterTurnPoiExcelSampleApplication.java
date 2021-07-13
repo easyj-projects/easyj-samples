@@ -8,7 +8,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author wangliang181230
  * @see icu.easyj.web.poi.excel.ExcelExport
- * @see icu.easyj.poi.excel.util.ExcelUtils
+ * @see icu.easyj.web.poi.excel.ExcelExportAspect
+ * @see icu.easyj.web.poi.excel.IExcelExporter
+ * @see icu.easyj.spring.boot.autoconfigure.web.poi.excel.export.excelexporterimpl.AfterturnExcelExporterImpl
+ * @see cn.afterturn.easypoi.excel.ExcelExportUtil
+ * @see cn.afterturn.easypoi.excel.ExcelImportUtil
+ * @see icu.easyj.spring.boot.autoconfigure.web.poi.excel.export.AfterturnExcelExporterAutoConfiguration
  */
 @SpringBootApplication
 public class AfterTurnPoiExcelSampleApplication {

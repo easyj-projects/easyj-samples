@@ -10,12 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 使用 EasyJ的Excel相关功能 的样例
  *
  * @author wangliang181230
+ *
  * <p>
  * // 功能1：约定default、global、area、project、env配置位置的功能
  * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor
  * <p>
  * // 功能2：自动加载EasyJ定义的全局配置信息
  * @see icu.easyj.config.GlobalConfigs
+ * @see icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties
+ * @see icu.easyj.spring.boot.autoconfigure.global.configs.GlobalConfigsAutoConfiguration
  * <p>
  * // 功能3：待添加......
  * @see xxx
