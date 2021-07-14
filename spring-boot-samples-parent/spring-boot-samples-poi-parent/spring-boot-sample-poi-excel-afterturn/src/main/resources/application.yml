@@ -3,9 +3,8 @@ server:
 
 easyj:
   web:
-    excel:
-      export:
-        type: afterturn #如果没有优先级比afterturn高的Excel导出器，可以不用配置这一项
-        list-field-name: list #对应`MyPageResult`类的`list`属性
-
-
+    poi:
+      excel:
+        export:
+          type: afterturn #如果没有优先级比afterturn高的Excel导出器，可以不用配置这一项
+          list-field-name: list #对应`MyPageResult`类的`list`属性
