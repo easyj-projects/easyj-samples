@@ -2,8 +2,8 @@ package icu.easyj.spring.boot.sample.poi.excel;
 
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.TestExcelExportController;
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.TestExcelImportController;
-import icu.easyj.web.poi.excel.DefaultExcelExporterImpl;
 import icu.easyj.web.poi.excel.IExcelExporter;
+import icu.easyj.web.poi.excel.impls.DefaultExcelExporterImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
