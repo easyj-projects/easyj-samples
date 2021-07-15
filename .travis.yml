@@ -1,0 +1,31 @@
+language: java
+
+sudo: false # faster builds
+
+install: true
+
+jdk:
+  - openjdk8
+  - openjdk11
+
+notifications:
+  email: false
+
+cache:
+  directories:
+    - '$HOME/.m2'
+
+before_script:
+  - if [ "$TRAVIS_JDK_VERSION" == "openjdk8" ]; then
+    export IMAGE_NAME="openjdk:8u212-jre-alpine";
+    fi
+  - if [ "$TRAVIS_JDK_VERSION" == "openjdk11" ]; then
+    export IMAGE_NAME="openjdk:11-jre-stretch";
+    fi
+
+script:
+  - export TZ=Asia/Shanghai
+  - travis_wait 30 mvn clean install -B -Pcicd -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
