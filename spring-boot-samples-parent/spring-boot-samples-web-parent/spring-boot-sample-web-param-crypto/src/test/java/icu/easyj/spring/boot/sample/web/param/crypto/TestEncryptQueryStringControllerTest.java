@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
-import static icu.easyj.spring.boot.sample.web.param.crypto.WebParamCryptoSampleApplicationTest.SYMMETRIC_CRYPTO;
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**

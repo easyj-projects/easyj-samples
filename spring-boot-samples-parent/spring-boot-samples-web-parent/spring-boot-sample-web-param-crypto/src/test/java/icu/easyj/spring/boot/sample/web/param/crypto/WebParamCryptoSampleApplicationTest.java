@@ -1,16 +1,18 @@
 package icu.easyj.spring.boot.sample.web.param.crypto;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import icu.easyj.crypto.CryptoFactory;
-import icu.easyj.crypto.symmetric.ISymmetricCrypto;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.ALGORITHM;
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.CHARSET;
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.IV;
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.KEY;
+import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -22,16 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 @SpringBootTest
 class WebParamCryptoSampleApplicationTest {
-	static final String ALGORITHM_TYPE = "AES";
-	static final String MODE = "CBC";
-	static final String PADDING = "PKCS7Padding";
-
-	static final String ALGORITHM = ALGORITHM_TYPE + "/" + MODE + "/" + PADDING;
-	static final String KEY = "12345678901234567890123456789012";
-	static final String IV = "1234567890123456";
-	static final Charset CHARSET = StandardCharsets.UTF_8;
-
-	static final ISymmetricCrypto SYMMETRIC_CRYPTO = CryptoFactory.getSymmetricCrypto(ALGORITHM, KEY, IV, CHARSET);
 
 	@Autowired
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
