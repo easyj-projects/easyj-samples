@@ -1,11 +1,16 @@
 server:
   port: 8004
 
+spring:
+  mvc:
+    converters:
+      preferred-json-mapper: fastjson
+
 easyj:
   web:
     param-crypto:
       filter:
-        parameter-name: data
+        query-string-name: data
       handler:
         algorithm: AES/CBC/PKCS7Padding
         key: 12345678901234567890123456789012
