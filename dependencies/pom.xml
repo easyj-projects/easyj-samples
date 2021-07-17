@@ -12,7 +12,7 @@
 
 	<groupId>icu.easyj.sample</groupId>
 	<artifactId>easyj-samples-dependencies</artifactId>
-	<version>0.1.3-SNAPSHOT</version>
+	<version>0.1.3</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
@@ -32,7 +32,7 @@
 
 	<properties>
 		<!-- EasyJ-Boot版本 -->
-		<easyj-boot.version>0.1.3-SNAPSHOT</easyj-boot.version>
+		<easyj-boot.version>0.1.3</easyj-boot.version>
 
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.5.2</spring-boot.version>
