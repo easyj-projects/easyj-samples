@@ -5,6 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 import icu.easyj.config.GlobalConfigs;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
+import icu.easyj.crypto.GlobalCrypto;
+import icu.easyj.crypto.ICrypto;
+import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
 import icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
@@ -15,6 +18,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * {@link EnvironmentEnhancedSampleApplication} 测试类
@@ -42,6 +46,14 @@ class EnvironmentEnhancedSampleApplicationTest {
 		assertNotNull(dataSourceProperties);
 		assertNotNull(rabbitMQProperties);
 		assertNotNull(environment);
+
+		// 全局加密算法
+		ICrypto crypto = GlobalCrypto.getCrypto();
+		assertTrue(crypto instanceof IAsymmetricCrypto);
+
+		String data = "123456abcdef";
+		String encryptedData = crypto.encryptBase64(data);
+		assertEquals(data, crypto.decryptBase64(encryptedData));
 	}
 
 	/**
@@ -56,7 +68,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 				StringUtils.toString(rabbitMQProperties));
 
 		// 校验环境中的配置源数量
-		assertEquals(24, environment.getPropertySources().size());
+		assertEquals(25, environment.getPropertySources().size());
 	}
 
 	/**
