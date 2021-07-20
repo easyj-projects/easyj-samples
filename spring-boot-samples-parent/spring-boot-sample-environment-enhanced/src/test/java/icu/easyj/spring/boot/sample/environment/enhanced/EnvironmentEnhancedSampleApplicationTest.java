@@ -3,6 +3,7 @@ package icu.easyj.spring.boot.sample.environment.enhanced;
 import java.lang.reflect.InvocationTargetException;
 
 import icu.easyj.config.GlobalConfigs;
+import icu.easyj.core.util.PatternUtils;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
 import icu.easyj.crypto.GlobalCrypto;
@@ -11,6 +12,7 @@ import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
 import icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
+import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +35,9 @@ class EnvironmentEnhancedSampleApplicationTest {
 	@Autowired
 	RabbitMQProperties rabbitMQProperties;
 	@Autowired
+	TestEasyjFunctionPropertySourceProperties testProperties;
+
+	@Autowired
 	GlobalProperties globalProperties;
 
 	@Autowired
@@ -43,15 +48,21 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 */
 	@Test
 	void testStartup() {
+		// 配置的bean不为空
 		assertNotNull(dataSourceProperties);
 		assertNotNull(rabbitMQProperties);
+		assertNotNull(testProperties);
+
+		// 环境不为空
 		assertNotNull(environment);
+		// 校验环境中的配置源数量
+		assertEquals(26, environment.getPropertySources().size());
 
 		// 全局加密算法
 		ICrypto crypto = GlobalCrypto.getCrypto();
 		assertTrue(crypto instanceof IAsymmetricCrypto);
 
-		String data = "123456abcdef";
+		String data = "123456abcdef啊呀哇";
 		String encryptedData = crypto.encryptBase64(data);
 		assertEquals(data, crypto.decryptBase64(encryptedData));
 	}
@@ -66,9 +77,35 @@ class EnvironmentEnhancedSampleApplicationTest {
 				StringUtils.toString(dataSourceProperties));
 		assertEquals("RabbitMQProperties(url=\"11.22.33.44:5672\", username=\"guest\", password=\"testpassword2\")",
 				StringUtils.toString(rabbitMQProperties));
+	}
 
-		// 校验环境中的配置源数量
-		assertEquals(25, environment.getPropertySources().size());
+	/**
+	 * 测试函数式配置
+	 */
+	@Test
+	void testEasyjFunctionPropertySource() {
+		String decrypt = testProperties.getDecrypt();
+		String random = testProperties.getRandom();
+		String randomUuid32 = testProperties.getRandomUuid32();
+		String randomUuid = testProperties.getRandomUuid();
+		int randomPort = testProperties.getRandomPort();
+		short randomShort = testProperties.getRandomShort();
+		int randomInt = testProperties.getRandomInt();
+		long randomLong = testProperties.getRandomLong();
+		String randomChoose = testProperties.getRandomChoose();
+
+		assertEquals("开发环境", decrypt);
+		assertEquals(32, random.length());
+		assertEquals(32, randomUuid32.length());
+		assertEquals(36, randomUuid.length());
+		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID32, random));
+		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID32, randomUuid32));
+		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID, randomUuid));
+		assertTrue(randomPort >= 10000 && randomPort <= 20000);
+		assertTrue(randomShort >= 1001 && randomShort <= 2000);
+		assertTrue(randomInt >= 2001 && randomInt <= 3000);
+		assertTrue(randomLong >= 3001 && randomLong <= 4000);
+		assertTrue("1,2,3,4".contains(randomChoose));
 	}
 
 	/**

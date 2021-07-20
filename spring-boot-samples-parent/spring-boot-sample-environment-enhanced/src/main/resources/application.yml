@@ -11,3 +11,17 @@ easyj:
 
 logging:
   level.root: warn #为了方便观察示例打印的日志，将默认日志级别调为warn
+
+#测试函数式配置源的功能
+test:
+  decrypt: ${easyj.crypto.decrypt('myA0TgsSy48UGmHNBei3YdBVG3+XwzDh1D7xSALHWNE/Zwf2XPWQi1/j1JytgBBiRDZRsf5oPNUrTZqyaxE2GLiD4vSD2oQD1EE/Odo1DY2ITLqavftsHt5qSjbmpBj/D2HwRRo+v+CXEBoThBJ2OM/ZBG8mClSYDowgEODN7ZA=')}
+  host: ${easyj.localIp.pattern('10.10.10.*', '192.168.10.*', '192.168.1.*')} #按参数顺序优先级匹配网卡IP
+  random-port: ${easyj.random.port(10000, 20000)} #随机获取未被占用的端口号
+
+  random: ${easyj.random} #同${easyj.random.uuid32}
+  random-uuid32: ${easyj.random.uuid32}
+  random-uuid: ${easyj.random.uuid}
+  random-short: ${easyj.random.short(1001, 2000)}
+  random-int: ${easyj.random.int(2001, 3000)}
+  random-long: ${easyj.random.long(3001L, 4000l)} #随机long，配置中的值末尾必须添加'L'，否则会报Integer转换Long失败的异常。
+  random-choose: ${easyj.random.choose(1, 2, 3, 4)}

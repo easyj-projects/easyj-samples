@@ -19,5 +19,12 @@
 			<groupId>icu.easyj.boot</groupId>
 			<artifactId>easyj-spring-boot-starter</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<!-- 只参与打包生成`spring-configuration-metadata.json`文件 -->
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 </project>
