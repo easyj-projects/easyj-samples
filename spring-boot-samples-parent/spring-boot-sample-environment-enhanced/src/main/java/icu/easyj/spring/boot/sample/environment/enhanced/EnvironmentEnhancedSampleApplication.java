@@ -12,15 +12,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wangliang181230
  *
  * <p>
- * // 功能1：约定default、global、area、project、env配置位置的功能
+ * // 功能1：约定default、global、area、project、env配置位置的功能。核心类，如下：
  * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor
  * <p>
- * // 功能2：自动加载EasyJ定义的全局配置信息
+ * // 功能2：自动加载EasyJ定义的全局配置信息。核心类，如下：
  * @see icu.easyj.config.GlobalConfigs
  * @see icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties
- * @see icu.easyj.spring.boot.autoconfigure.global.configs.GlobalConfigsAutoConfiguration
+ * @see icu.easyj.spring.boot.autoconfigure.global.configs.EasyjGlobalConfigsAutoConfiguration
  * <p>
- * // 功能3：待添加......
+ * // 功能3：函数式配置，目前提供了三种函数。核心类，如下：
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource 函数式配置源
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySourceEnvironmentPostProcessor 加载函数式配置源的环境处理器
+ * @see icu.easyj.spring.boot.env.enhanced.util.CryptoPropertyUtils // ${easyj.crypto.xxx} 函数的工具类
+ * @see icu.easyj.spring.boot.env.enhanced.util.LocalIpPropertyUtils // ${easyj.localIp.xxx} 函数的工具类
+ * @see icu.easyj.spring.boot.env.enhanced.util.RandomPropertyUtils // ${easyj.random.xxx} 函数的工具类
+ * <p>
+ * // 功能4：待添加......
  * @see xxx
  */
 @SpringBootApplication

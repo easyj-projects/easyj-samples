@@ -24,10 +24,11 @@ public class TestExcelExportController {
 	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/list")
 	public List<MyEntity> testExcelExportByListResult(QueryParam param) {
-		// 重要：当此次请求为excel导出请求时，将分页参数清除
+		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {
 			param.setPageSize(0); // 设置为0，表示不分页
 		}
+		//endregion
 
 		return MyEntityStorage.findList(param);
 	}
@@ -36,10 +37,11 @@ public class TestExcelExportController {
 	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/paging")
 	public MyPageResult<MyEntity> testExcelExportByPageResult(QueryParam param) {
-		// 重要：当此次请求为excel导出请求时，将分页参数清除
+		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {
 			param.setPageSize(0); // 设置为0，表示不分页
 		}
+		//endregion
 
 		return MyEntityStorage.findPaging(param);
 	}
@@ -48,10 +50,11 @@ public class TestExcelExportController {
 	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/one")
 	public MyEntity testExcelExportByOne(QueryParam param) {
-		// 重要：当此次请求为excel导出请求时，将分页参数清除
+		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {
 			param.setPageSize(0); // 设置为0，表示不分页
 		}
+		//endregion
 
 		List<MyEntity> list = MyEntityStorage.findList(param);
 		if (list.size() > 0) {
