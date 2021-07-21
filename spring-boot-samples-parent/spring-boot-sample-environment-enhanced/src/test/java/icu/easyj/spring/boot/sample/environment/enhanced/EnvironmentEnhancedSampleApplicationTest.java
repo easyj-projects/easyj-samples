@@ -69,7 +69,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	}
 
 	/**
-	 * 测试约定配置文件的功能
+	 * 功能1：测试约定配置文件的功能
 	 */
 	@Test
 	void testEasyjAppointedEnvironmentPostProcessor() {
@@ -81,7 +81,23 @@ class EnvironmentEnhancedSampleApplicationTest {
 	}
 
 	/**
-	 * 测试函数式配置
+	 * 功能2：测试EasyJ定义的全局配置
+	 */
+	@Test
+	void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
+		// 判断全局配置是否已正常设置，并且内容正确
+		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
+				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, configs=null)";
+		assertEquals(expected, StringUtils.toString(globalProperties));
+
+		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
+		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
+				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, configs={})";
+		assertEquals(expected, StringUtils.toString(globalConfigs));
+	}
+
+	/**
+	 * 功能3：测试函数式配置
 	 */
 	@Test
 	void testEasyjFunctionPropertySource() {
@@ -101,6 +117,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 
 		assertEquals("开发环境", cryptoDecrypt);
 
+		System.out.println("localIpPattern = " + localIpPattern);
 		assertTrue(PatternUtils.validate(PatternPool.IPV4, localIpPattern));
 
 		assertEquals(32, random.length());
@@ -114,21 +131,5 @@ class EnvironmentEnhancedSampleApplicationTest {
 		assertTrue(randomInt >= 2001 && randomInt <= 3000);
 		assertTrue(randomLong >= 3001 && randomLong <= 4000);
 		assertTrue("1,2,3,4".contains(randomChoose));
-	}
-
-	/**
-	 * 测试EasyJ定义的全局配置
-	 */
-	@Test
-	void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
-		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
-				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, configs=null)";
-		assertEquals(expected, StringUtils.toString(globalProperties));
-
-		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
-		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
-				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, configs={})";
-		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 }
