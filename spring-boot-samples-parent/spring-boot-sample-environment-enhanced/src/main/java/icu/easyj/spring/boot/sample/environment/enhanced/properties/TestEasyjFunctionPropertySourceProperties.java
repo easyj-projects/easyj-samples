@@ -4,40 +4,55 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 测试各种函数式配置
+ * 测试各种”函数式配置“的配置类
  *
  * @author wangliang181230
- * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource // 函数式配置源
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource 函数式配置源
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySourceEnvironmentPostProcessor 加载函数式配置源的环境处理器
  */
 @Configuration(proxyBeanMethods = false)
 @ConfigurationProperties("test")
 public class TestEasyjFunctionPropertySourceProperties {
 
-	private String decrypt;
+	/**
+	 * @see icu.easyj.spring.boot.env.enhanced.util.CryptoPropertyUtils
+	 */
+	private String cryptoDecrypt;
 
+	/**
+	 * @see icu.easyj.spring.boot.env.enhanced.util.LocalIpPropertyUtils
+	 */
+	private String localIpPattern;
+
+	/**
+	 * @see icu.easyj.spring.boot.env.enhanced.util.RandomPropertyUtils
+	 */
 	private String random;
-
 	private String randomUuid32;
-
 	private String randomUuid;
-
 	private int randomPort;
-
 	private short randomShort;
-
 	private int randomInt;
-
 	private long randomLong;
-
 	private String randomChoose;
 
 
-	public String getDecrypt() {
-		return decrypt;
+	//region Getter、Setter
+
+	public String getCryptoDecrypt() {
+		return cryptoDecrypt;
 	}
 
-	public void setDecrypt(String decrypt) {
-		this.decrypt = decrypt;
+	public void setCryptoDecrypt(String cryptoDecrypt) {
+		this.cryptoDecrypt = cryptoDecrypt;
+	}
+
+	public String getLocalIpPattern() {
+		return localIpPattern;
+	}
+
+	public void setLocalIpPattern(String localIpPattern) {
+		this.localIpPattern = localIpPattern;
 	}
 
 	public String getRandom() {
@@ -103,4 +118,6 @@ public class TestEasyjFunctionPropertySourceProperties {
 	public void setRandomChoose(String randomChoose) {
 		this.randomChoose = randomChoose;
 	}
+
+	//endregion
 }

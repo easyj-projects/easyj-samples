@@ -2,6 +2,7 @@ package icu.easyj.spring.boot.sample.environment.enhanced;
 
 import java.lang.reflect.InvocationTargetException;
 
+import cn.hutool.core.lang.PatternPool;
 import icu.easyj.config.GlobalConfigs;
 import icu.easyj.core.util.PatternUtils;
 import icu.easyj.core.util.ReflectionUtils;
@@ -84,7 +85,10 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 */
 	@Test
 	void testEasyjFunctionPropertySource() {
-		String decrypt = testProperties.getDecrypt();
+		String cryptoDecrypt = testProperties.getCryptoDecrypt();
+
+		String localIpPattern = testProperties.getLocalIpPattern();
+
 		String random = testProperties.getRandom();
 		String randomUuid32 = testProperties.getRandomUuid32();
 		String randomUuid = testProperties.getRandomUuid();
@@ -94,13 +98,17 @@ class EnvironmentEnhancedSampleApplicationTest {
 		long randomLong = testProperties.getRandomLong();
 		String randomChoose = testProperties.getRandomChoose();
 
-		assertEquals("开发环境", decrypt);
+
+		assertEquals("开发环境", cryptoDecrypt);
+
+		assertTrue(PatternUtils.validate(PatternPool.IPV4, localIpPattern));
+
 		assertEquals(32, random.length());
 		assertEquals(32, randomUuid32.length());
 		assertEquals(36, randomUuid.length());
-		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID32, random));
-		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID32, randomUuid32));
-		assertTrue(PatternUtils.validate(PatternUtils.REGEX_UUID, randomUuid));
+		assertTrue(PatternUtils.validate(PatternPool.UUID_SIMPLE, random));
+		assertTrue(PatternUtils.validate(PatternPool.UUID_SIMPLE, randomUuid32));
+		assertTrue(PatternUtils.validate(PatternPool.UUID, randomUuid));
 		assertTrue(randomPort >= 10000 && randomPort <= 20000);
 		assertTrue(randomShort >= 1001 && randomShort <= 2000);
 		assertTrue(randomInt >= 2001 && randomInt <= 3000);
