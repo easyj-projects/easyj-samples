@@ -35,7 +35,7 @@
 		<easyj-boot.version>0.1.5-SNAPSHOT</easyj-boot.version>
 
 		<!-- Spring相关依赖 -->
-		<spring-boot.version>2.5.2</spring-boot.version>
+		<spring-boot.version>2.5.3</spring-boot.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
