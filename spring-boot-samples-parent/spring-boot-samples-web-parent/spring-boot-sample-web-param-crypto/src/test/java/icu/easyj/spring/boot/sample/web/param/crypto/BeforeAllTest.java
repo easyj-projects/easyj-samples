@@ -11,16 +11,16 @@ import icu.easyj.crypto.symmetric.ISymmetricCrypto;
  *
  * @author wangliang181230
  */
-class BeforeAllTest {
+public class BeforeAllTest {
 
-	static final String ALGORITHM_TYPE = "AES";
-	static final String MODE = "CBC";
-	static final String PADDING = "PKCS7Padding";
+	public static final String ALGORITHM_TYPE = "AES";
+	public static final String MODE = "CBC";
+	public static final String PADDING = "PKCS7Padding";
 
-	static final String ALGORITHM = ALGORITHM_TYPE + "/" + MODE + "/" + PADDING;
-	static final String KEY = "12345678901234567890123456789012";
-	static final String IV = "1234567890123456";
-	static final Charset CHARSET = StandardCharsets.UTF_8;
+	public static final String ALGORITHM = ALGORITHM_TYPE + "/" + MODE + "/" + PADDING;
+	public static final String KEY = "12345678901234567890123456789012";
+	public static final String IV = "1234567890123456";
+	public static final Charset CHARSET = StandardCharsets.UTF_8;
 
-	static final ISymmetricCrypto SYMMETRIC_CRYPTO = CryptoFactory.getSymmetricCrypto(ALGORITHM, KEY, IV, CHARSET);
+	public static final ISymmetricCrypto SYMMETRIC_CRYPTO = CryptoFactory.getSymmetricCrypto(ALGORITHM, KEY, IV, CHARSET);
 }
