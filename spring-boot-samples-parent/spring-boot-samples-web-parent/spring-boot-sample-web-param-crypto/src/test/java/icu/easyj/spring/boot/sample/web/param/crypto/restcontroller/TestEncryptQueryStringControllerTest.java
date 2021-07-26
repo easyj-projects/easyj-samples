@@ -1,7 +1,9 @@
 package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 
-import java.nio.charset.StandardCharsets;
+import javax.servlet.Filter;
 
+import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
+import icu.easyj.spring.boot.test.EasyjMockRequest;
 import icu.easyj.web.param.crypto.IParamCryptoFilterProperties;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
@@ -12,18 +14,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
-import org.springframework.web.context.WebApplicationContext;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * {@link TestEncryptQueryStringController} 测试类
@@ -31,10 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author wangliang181230
  */
 @SpringBootTest
-class TestEncryptQueryStringControllerTest {
-
-	@Autowired
-	WebApplicationContext wac;
+class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Autowired
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -43,13 +34,14 @@ class TestEncryptQueryStringControllerTest {
 	@Autowired
 	IParamCryptoHandler cryptoHandler;
 
-	MockMvc mockMvc;
-
+	@Override
 	@BeforeEach
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-				.addFilter(new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler))
-				.build();
+	public void beforeEach() {
+		// 创建需执行的过滤器
+		Filter filter = new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler);
+
+		// 初始化MockMvc
+		this.initMockMvc(filter);
 	}
 
 	/**
@@ -62,28 +54,18 @@ class TestEncryptQueryStringControllerTest {
 		String encryptedQueryString = SYMMETRIC_CRYPTO.encryptBase64(queryString);
 
 		// 创建模拟请求
-		MockHttpServletRequestBuilder mockRequest;
-		if (StringUtils.hasLength(cryptoFilterProperties.getQueryStringName())) {
-			mockRequest = MockMvcRequestBuilders
-					.get(path)
+		EasyjMockRequest mockRequest;
+		if (StringUtils.hasText(cryptoFilterProperties.getQueryStringName())) {
+			mockRequest = mockGet(path)
 					.queryParam(cryptoFilterProperties.getQueryStringName(), encryptedQueryString);
 		} else {
-			mockRequest = MockMvcRequestBuilders
-					.get(path + "?" + encryptedQueryString);
+			mockRequest = mockGet(path + "?" + encryptedQueryString);
 		}
 
-		// 发送请求
-		ResultActions resultActions = mockMvc.perform(mockRequest);
-		// 接收响应
-		MvcResult result = resultActions.andReturn();
-		// 获取响应
-		int status = result.getResponse().getStatus();
-//		String contentType = result.getResponse().getContentType();
-//		int contentLength = result.getResponse().getContentLength();
-		String content = result.getResponse().getContentAsString(StandardCharsets.UTF_8);
-		// 校验响应内容
-		assertEquals(HttpStatus.OK.value(), status);
-		assertEquals(SYMMETRIC_CRYPTO.encryptBase64("{\"name\":\"111啊啊啊222呀呀呀,哇哇哇\"}"), content);
+		mockRequest.send() // 发送请求
+				.status().isOk() // 判断请求成功
+				.contentType().is(MediaType.TEXT_PLAIN) // 加密过，为Base64串，所以不是JSON
+				.content().is(SYMMETRIC_CRYPTO.encryptBase64("{\"name\":\"111啊啊啊222呀呀呀,哇哇哇\"}"));
 	}
 
 	/**
@@ -95,16 +77,17 @@ class TestEncryptQueryStringControllerTest {
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 
 		// 创建模拟请求
-		MockHttpServletRequestBuilder mockRequest;
+		EasyjMockRequest mockRequest;
 		if (StringUtils.hasLength(cryptoFilterProperties.getQueryStringName())) {
-			mockRequest = MockMvcRequestBuilders.get(path).queryParam(cryptoFilterProperties.getQueryStringName(), queryString);
+			mockRequest = super.mockGet(path)
+					.queryParam(cryptoFilterProperties.getQueryStringName(), queryString);
 		} else {
-			mockRequest = MockMvcRequestBuilders.get(path + "?" + queryString);
+			mockRequest = super.mockGet(path + "?" + queryString);
 		}
 
 		// 发送请求
 		try {
-			mockMvc.perform(mockRequest);
+			mockRequest.send();
 		} catch (Exception e) {
 			Assertions.assertEquals(ParamDecryptException.class, e.getClass());
 			Assertions.assertEquals("QueryString入参未加密或格式有误，解密失败", e.getMessage());

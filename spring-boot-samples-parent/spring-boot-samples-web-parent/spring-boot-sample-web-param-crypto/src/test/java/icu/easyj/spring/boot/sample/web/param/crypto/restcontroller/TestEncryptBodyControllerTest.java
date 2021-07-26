@@ -1,9 +1,11 @@
 package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 
-import java.nio.charset.StandardCharsets;
+import javax.servlet.Filter;
 
 import com.alibaba.fastjson.JSON;
 import icu.easyj.spring.boot.sample.web.param.crypto.param.TestBodyParam;
+import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
+import icu.easyj.spring.boot.test.EasyjMockRequest;
 import icu.easyj.web.param.crypto.IParamCryptoFilterProperties;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
@@ -14,19 +16,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.util.NestedServletException;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * {@link TestEncryptBodyController} 测试类
@@ -34,10 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author wangliang181230
  */
 @SpringBootTest
-class TestEncryptBodyControllerTest {
-
-	@Autowired
-	WebApplicationContext wac;
+class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Autowired
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -46,13 +36,14 @@ class TestEncryptBodyControllerTest {
 	@Autowired
 	IParamCryptoHandler cryptoHandler;
 
-	MockMvc mockMvc;
-
+	@Override
 	@BeforeEach
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac)
-				.addFilter(new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler))
-				.build();
+	public void beforeEach() {
+		// 创建需执行的过滤器
+		Filter filter = new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler);
+
+		// 初始化MockMvc
+		this.initMockMvc(filter);
 	}
 
 	/**
@@ -64,24 +55,16 @@ class TestEncryptBodyControllerTest {
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
 		String encryptedBody = SYMMETRIC_CRYPTO.encryptBase64(JSON.toJSONString(bodyParam));
 
-		// 创建模拟请求
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.post(path)
+		super.mockPost(path)
+				// 设置请求内容
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(encryptedBody);
-
-		// 发送请求
-		ResultActions resultActions = mockMvc.perform(mockRequest);
-		// 接收响应
-		MvcResult result = resultActions.andReturn();
-		// 获取响应
-		int status = result.getResponse().getStatus();
-//		String contentType = result.getResponse().getContentType();
-//		int contentLength = result.getResponse().getContentLength();
-		String content = result.getResponse().getContentAsString(StandardCharsets.UTF_8);
-		// 校验响应内容
-		assertEquals(HttpStatus.OK.value(), status);
-		assertEquals(SYMMETRIC_CRYPTO.encryptBase64("{\"name\":\"" + bodyParam.getAaa() + bodyParam.getBbb() + "\"}"), content);
+				.content(encryptedBody)
+				// 发送请求
+				.send()
+				// 校验响应内容
+				.status().isOk()
+				.contentType().is(MediaType.TEXT_PLAIN)
+				.content().is(SYMMETRIC_CRYPTO.encryptBase64("{\"name\":\"" + bodyParam.getAaa() + bodyParam.getBbb() + "\"}"));
 	}
 
 	/**
@@ -94,14 +77,13 @@ class TestEncryptBodyControllerTest {
 		String body = JSON.toJSONString(bodyParam);
 
 		// 创建模拟请求
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.post(path)
+		EasyjMockRequest mockRequest = super.mockPost(path)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(body);
 
 		// 发送请求
 		try {
-			mockMvc.perform(mockRequest);
+			mockRequest.send();
 		} catch (Exception e) {
 			Assertions.assertEquals(NestedServletException.class, e.getClass());
 			Assertions.assertEquals(ParamDecryptException.class, e.getCause().getClass());
