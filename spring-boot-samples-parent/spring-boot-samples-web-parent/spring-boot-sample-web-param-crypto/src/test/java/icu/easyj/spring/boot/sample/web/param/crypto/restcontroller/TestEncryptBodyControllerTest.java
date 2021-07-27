@@ -5,7 +5,7 @@ import javax.servlet.Filter;
 import com.alibaba.fastjson.JSON;
 import icu.easyj.spring.boot.sample.web.param.crypto.param.TestBodyParam;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
-import icu.easyj.spring.boot.test.EasyjMockRequest;
+import icu.easyj.spring.boot.test.MockRequest;
 import icu.easyj.web.param.crypto.IParamCryptoFilterProperties;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
@@ -77,7 +77,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 		String body = JSON.toJSONString(bodyParam);
 
 		// 创建模拟请求
-		EasyjMockRequest mockRequest = super.mockPost(path)
+		MockRequest mockRequest = super.mockPost(path)
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(body);
 

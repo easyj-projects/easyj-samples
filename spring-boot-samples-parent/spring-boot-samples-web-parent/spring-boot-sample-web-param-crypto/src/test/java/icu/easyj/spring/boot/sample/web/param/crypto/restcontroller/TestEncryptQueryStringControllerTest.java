@@ -3,7 +3,7 @@ package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 import javax.servlet.Filter;
 
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
-import icu.easyj.spring.boot.test.EasyjMockRequest;
+import icu.easyj.spring.boot.test.MockRequest;
 import icu.easyj.web.param.crypto.IParamCryptoFilterProperties;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
@@ -54,7 +54,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 		String encryptedQueryString = SYMMETRIC_CRYPTO.encryptBase64(queryString);
 
 		// 创建模拟请求
-		EasyjMockRequest mockRequest;
+		MockRequest mockRequest;
 		if (StringUtils.hasText(cryptoFilterProperties.getQueryStringName())) {
 			mockRequest = mockGet(path)
 					.queryParam(cryptoFilterProperties.getQueryStringName(), encryptedQueryString);
@@ -77,7 +77,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 
 		// 创建模拟请求
-		EasyjMockRequest mockRequest;
+		MockRequest mockRequest;
 		if (StringUtils.hasLength(cryptoFilterProperties.getQueryStringName())) {
 			mockRequest = super.mockGet(path)
 					.queryParam(cryptoFilterProperties.getQueryStringName(), queryString);
