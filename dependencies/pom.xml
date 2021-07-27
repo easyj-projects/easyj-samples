@@ -12,7 +12,7 @@
 
 	<groupId>icu.easyj.sample</groupId>
 	<artifactId>easyj-samples-dependencies</artifactId>
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.1.5</version>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
@@ -31,8 +31,9 @@
 	</issueManagement>
 
 	<properties>
-		<!-- EasyJ-Boot版本 -->
-		<easyj-boot.version>0.1.5-SNAPSHOT</easyj-boot.version>
+		<!-- EasyJ -->
+		<easyj.version>0.1.5</easyj.version>
+		<easyj-spring-boot.version>${easyj.version}</easyj-spring-boot.version>
 
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.5.3</spring-boot.version>
@@ -47,7 +48,7 @@
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
 				<artifactId>easyj-spring-boot-dependencies</artifactId>
-				<version>${easyj-boot.version}</version>
+				<version>${easyj-spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -56,7 +57,7 @@
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
 				<artifactId>easyj-spring-boot-bom</artifactId>
-				<version>${easyj-boot.version}</version>
+				<version>${easyj-spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

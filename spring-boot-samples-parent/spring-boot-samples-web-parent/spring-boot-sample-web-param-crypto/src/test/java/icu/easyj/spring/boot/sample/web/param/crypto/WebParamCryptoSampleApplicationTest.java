@@ -44,7 +44,7 @@ class WebParamCryptoSampleApplicationTest {
 	 * 测试读取的配置信息是否正确
 	 */
 	@Test
-	void testHandlerProperties() {
+	void testParamCryptoHandlerProperties() {
 		assertEquals(ALGORITHM, cryptoHandlerProperties.getAlgorithm());
 		assertEquals(KEY, cryptoHandlerProperties.getKey());
 		assertEquals(IV, cryptoHandlerProperties.getIv());
@@ -55,7 +55,7 @@ class WebParamCryptoSampleApplicationTest {
 	}
 
 	@Test
-	void testHandler() throws Exception {
+	void testParamCryptoHandler() {
 		String data = "112233";
 
 		String encryptedData1 = cryptoHandler.encrypt(data);

@@ -5,7 +5,6 @@ import javax.servlet.Filter;
 import com.alibaba.fastjson.JSON;
 import icu.easyj.spring.boot.sample.web.param.crypto.param.TestBodyParam;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
-import icu.easyj.spring.boot.test.MockRequest;
 import icu.easyj.web.param.crypto.IParamCryptoFilterProperties;
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
@@ -47,7 +46,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	}
 
 	/**
-	 * case: 入参正常加密的情况
+	 * 正常case: 测试入参正常加密的情况
 	 */
 	@Test
 	void testEncryptBodySuccess() throws Exception {
@@ -68,29 +67,23 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	}
 
 	/**
-	 * case: 入参未加密的情况
+	 * 异常case: 测试入参未加密的情况
 	 */
 	@Test
-	void testEncryptBodyFail1() throws Exception {
+	void testEncryptBodyFail() {
 		String path = "/test/body";
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
-		String body = JSON.toJSONString(bodyParam);
 
-		// 创建模拟请求
-		MockRequest mockRequest = super.mockPost(path)
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(body);
-
-		// 发送请求
 		try {
-			mockRequest.send();
+			super.mockPost(path)
+					.content(bodyParam)
+					.send();
+			throw new AssertionError("未抛出异常，和预期不一样，预期应该会抛出NestedServletException才对。");
 		} catch (Exception e) {
 			Assertions.assertEquals(NestedServletException.class, e.getClass());
 			Assertions.assertEquals(ParamDecryptException.class, e.getCause().getClass());
 			Assertions.assertEquals("Body入参未加密或格式有误，解密失败", e.getCause().getMessage());
-			return;
+			// 执行到这里，表示和预期一致，测试异常case成功
 		}
-
-		throw new RuntimeException("未抛出异常，和预期不一样，应该会抛出ParamDecryptException才对。");
 	}
 }

@@ -62,6 +62,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 			mockRequest = mockGet(path + "?" + encryptedQueryString);
 		}
 
+		// 发送请求，并校验响应
 		mockRequest.send() // 发送请求
 				.status().isOk() // 判断请求成功
 				.contentType().is(MediaType.TEXT_PLAIN) // 加密过，为Base64串，所以不是JSON
@@ -72,7 +73,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	 * case: 入参未加密的情况
 	 */
 	@Test
-	void testEncryptQueryStringFail1() throws Exception {
+	void testEncryptQueryStringFail1() {
 		String path = "/test/querystring";
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 
