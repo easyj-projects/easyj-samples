@@ -8,8 +8,8 @@ import icu.easyj.core.util.PatternUtils;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
 import icu.easyj.crypto.GlobalCrypto;
-import icu.easyj.crypto.ICrypto;
 import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
+import icu.easyj.crypto.symmetric.ISymmetricCrypto;
 import icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
@@ -59,13 +59,27 @@ class EnvironmentEnhancedSampleApplicationTest {
 		// 校验环境中的配置源数量
 		assertEquals(26, environment.getPropertySources().size());
 
-		// 全局加密算法
-		ICrypto crypto = GlobalCrypto.getCrypto();
-		assertTrue(crypto instanceof IAsymmetricCrypto);
+		//region 全局非加密算法
 
-		String data = "123456abcdef啊呀哇";
-		String encryptedData = crypto.encryptBase64(data);
-		assertEquals(data, crypto.decryptBase64(encryptedData));
+		IAsymmetricCrypto asymmetricCrypto = GlobalCrypto.getAsymmetricCrypto();
+		assertNotNull(asymmetricCrypto);
+
+		String data1 = "@wangliang181230是一名架构师。";
+		String encryptedData1 = asymmetricCrypto.encryptBase64(data1);
+		assertEquals(data1, asymmetricCrypto.decryptBase64(encryptedData1));
+
+		//endregion
+
+		//region 全局加密算法
+
+		ISymmetricCrypto symmetricCrypto = GlobalCrypto.getSymmetricCrypto();
+		assertNotNull(symmetricCrypto);
+
+		String data2 = "@wangliang181230是一名打工人。";
+		String encryptedData2 = symmetricCrypto.encryptBase64(data2);
+		assertEquals(data2, symmetricCrypto.decryptBase64(encryptedData2));
+
+		//endregion
 	}
 
 	/**
