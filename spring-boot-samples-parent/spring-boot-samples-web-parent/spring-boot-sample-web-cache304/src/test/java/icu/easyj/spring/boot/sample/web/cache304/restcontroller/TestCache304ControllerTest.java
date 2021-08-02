@@ -97,18 +97,8 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 				.header()
 				.notContains(HttpHeaders.LAST_MODIFIED, HttpHeaders.EXPIRES, HttpHeaders.CACHE_CONTROL);
 
-		// 有缓存，且未过期时，发送请求
+		// 有缓存，发送请求（实际上是无意义的头信息）
 		Date now = new Date();
-		super.mockGet(path)
-				.header(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.format(DateFormatType.SS, now))
-				.send()
-				.status().isOk()
-				.content().is("noCache304").end()
-				.header()
-				.notContains(HttpHeaders.LAST_MODIFIED, HttpHeaders.EXPIRES, HttpHeaders.CACHE_CONTROL);
-
-		// 有缓存，但已过期时，发送请求
-		now = new Date(now.getTime() - CACHE_SECONDS2 * 1000);
 		super.mockGet(path)
 				.header(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.format(DateFormatType.SS, now))
 				.send()
