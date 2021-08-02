@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>icu.easyj.boot.sample</groupId>
-		<artifactId>easyj-spring-boot-samples-web-parent</artifactId>
+		<artifactId>spring-boot-samples-web-parent</artifactId>
 		<version>${revision}</version>
 	</parent>
 

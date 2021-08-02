@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>icu.easyj.boot.sample</groupId>
-		<artifactId>easyj-spring-boot-samples-parent</artifactId>
+		<artifactId>spring-boot-samples-parent</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-samples-poi-parent</artifactId>
+	<artifactId>spring-boot-samples-poi-parent</artifactId>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>

@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>icu.easyj.boot.sample</groupId>
-	<artifactId>easyj-spring-boot-samples-parent</artifactId>
+	<artifactId>spring-boot-samples-parent</artifactId>
 	<packaging>pom</packaging>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
