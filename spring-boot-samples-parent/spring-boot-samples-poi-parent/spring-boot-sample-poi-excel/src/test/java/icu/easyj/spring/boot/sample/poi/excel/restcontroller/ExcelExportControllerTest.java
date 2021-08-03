@@ -1,5 +1,6 @@
 package icu.easyj.spring.boot.sample.poi.excel.restcontroller;
 
+import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyEntity;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
 import icu.easyj.web.constant.HttpHeaderConstants;
 import org.junit.jupiter.api.Test;
@@ -39,6 +40,9 @@ class ExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 				.contentType().is("application/vnd.ms-excel")
 				.header()
 				.isMatch(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"*\"")
-				.is(HttpHeaders.CACHE_CONTROL, HttpHeaderConstants.NO_CACHE);
+				.is(HttpHeaders.CACHE_CONTROL, HttpHeaderConstants.NO_CACHE).end()
+				.file().excelToList(MyEntity.class)
+				.is(2)
+				.is("[MyEntity(name=\"aaabbb\", age=4, birthday=2017-01-01, desc=null), MyEntity(name=\"bbbccc\", age=5, birthday=2016-01-01, desc=null)]");
 	}
 }
