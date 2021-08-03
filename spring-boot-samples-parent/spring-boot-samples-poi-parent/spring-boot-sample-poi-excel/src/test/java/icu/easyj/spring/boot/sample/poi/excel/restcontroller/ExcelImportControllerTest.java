@@ -15,7 +15,7 @@ class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
 	void testExcelImport() throws Exception {
-		super.mockMultipart("/test/excel-import")
+		super.mockPostMultipart("/test/excel-import")
 				.file("file", "testExcelImport.xlsx")
 				.send()
 				.isOk()
