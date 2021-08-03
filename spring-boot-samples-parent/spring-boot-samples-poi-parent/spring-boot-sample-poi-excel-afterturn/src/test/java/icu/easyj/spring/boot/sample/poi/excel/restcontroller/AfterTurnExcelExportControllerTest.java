@@ -41,7 +41,7 @@ class AfterTurnExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 				.header()
 				.isMatch(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"*\"")
 				.is(HttpHeaders.CACHE_CONTROL, HttpHeaderConstants.NO_CACHE).end()
-				.file().is(4387).excelToList(MyEntity.class)
+				.file().excelToList(MyEntity.class)
 				.is(2)
 				// TODO: birthday字段加过注解，但是没有解析出来，应该是afterturn的BUG。已提交issue给afterturn。
 				.is("[MyEntity(name=\"aaabbb\", age=4, birthday=null, desc=null), MyEntity(name=\"bbbccc\", age=5, birthday=null, desc=null)]");
