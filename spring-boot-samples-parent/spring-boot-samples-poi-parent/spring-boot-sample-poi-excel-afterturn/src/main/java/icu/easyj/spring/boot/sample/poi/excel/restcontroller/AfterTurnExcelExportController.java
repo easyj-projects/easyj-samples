@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wangliang181230
  */
 @RestController
-public class ExcelExportController {
+public class AfterTurnExcelExportController {
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（list）", dataType = MyEntity.class)
 	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")

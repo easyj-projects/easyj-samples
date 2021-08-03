@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author wangliang181230
  */
 @RestController
-public class ExcelImportController {
+public class AfterTurnExcelImportController {
 
 	@PostMapping("/test/excel-import")
 	public List<MyEntity> testExcelImport(@RequestPart("file") MultipartFile file) throws Exception {

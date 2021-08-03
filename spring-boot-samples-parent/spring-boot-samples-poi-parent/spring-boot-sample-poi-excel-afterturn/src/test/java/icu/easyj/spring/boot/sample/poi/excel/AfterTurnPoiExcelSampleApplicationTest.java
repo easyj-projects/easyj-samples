@@ -1,7 +1,7 @@
 package icu.easyj.spring.boot.sample.poi.excel;
 
-import icu.easyj.spring.boot.sample.poi.excel.restcontroller.ExcelExportController;
-import icu.easyj.spring.boot.sample.poi.excel.restcontroller.ExcelImportController;
+import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelExportController;
+import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelImportController;
 import icu.easyj.web.poi.excel.IExcelExporter;
 import icu.easyj.web.poi.excel.impls.AfterturnExcelExporterImpl;
 import org.junit.jupiter.api.Assertions;
@@ -18,9 +18,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AfterTurnPoiExcelSampleApplicationTest {
 
 	@Autowired
-	ExcelExportController excelExportController;
+	AfterTurnExcelExportController afterTurnExcelExportController;
 	@Autowired
-	ExcelImportController excelImportController;
+	AfterTurnExcelImportController afterTurnExcelImportController;
 
 	@Autowired
 	IExcelExporter excelExporter;
@@ -30,8 +30,8 @@ class AfterTurnPoiExcelSampleApplicationTest {
 	 */
 	@Test
 	void testStartup() {
-		Assertions.assertNotNull(excelExportController);
-		Assertions.assertNotNull(excelImportController);
+		Assertions.assertNotNull(afterTurnExcelExportController);
+		Assertions.assertNotNull(afterTurnExcelImportController);
 
 		// 判断Excel导出器，是否为基于afterturn的实现
 		Assertions.assertTrue(excelExporter instanceof AfterturnExcelExporterImpl);
