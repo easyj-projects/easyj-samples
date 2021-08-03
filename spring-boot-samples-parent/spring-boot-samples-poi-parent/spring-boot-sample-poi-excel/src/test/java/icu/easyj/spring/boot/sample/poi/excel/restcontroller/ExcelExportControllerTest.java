@@ -41,7 +41,7 @@ class ExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 				.header()
 				.isMatch(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"*\"")
 				.is(HttpHeaders.CACHE_CONTROL, HttpHeaderConstants.NO_CACHE).end()
-				.file().excelToList(MyEntity.class)
+				.file().is(5632).excelToList(MyEntity.class)
 				.is(2)
 				.is("[MyEntity(name=\"aaabbb\", age=4, birthday=2017-01-01, desc=null), MyEntity(name=\"bbbccc\", age=5, birthday=2016-01-01, desc=null)]");
 	}

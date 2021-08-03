@@ -11,7 +11,7 @@ import org.springframework.http.MediaType;
  * @author wangliang181230
  */
 @SpringBootTest
-class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
+class AfterTurnExcelImportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
 	void testExcelImport() throws Exception {
