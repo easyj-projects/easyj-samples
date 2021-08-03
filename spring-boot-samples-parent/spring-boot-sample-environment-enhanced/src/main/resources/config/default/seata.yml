@@ -1,0 +1,5 @@
+# 类存在时，才加载以下配置
+easyj.config.activate.on-class: io.seata.core.context.RootContext
+
+seata:
+  tx-service-group: my_test_tx_group
