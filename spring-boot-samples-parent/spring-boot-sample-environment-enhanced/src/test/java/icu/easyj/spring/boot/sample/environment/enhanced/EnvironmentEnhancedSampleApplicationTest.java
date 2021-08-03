@@ -58,28 +58,6 @@ class EnvironmentEnhancedSampleApplicationTest {
 		assertNotNull(environment);
 		// 校验环境中的配置源数量
 		assertEquals(26, environment.getPropertySources().size());
-
-		//region 全局非加密算法
-
-		IAsymmetricCrypto asymmetricCrypto = GlobalCrypto.getAsymmetricCrypto();
-		assertNotNull(asymmetricCrypto);
-
-		String data1 = "@wangliang181230是一名架构师。";
-		String encryptedData1 = asymmetricCrypto.encryptBase64(data1);
-		assertEquals(data1, asymmetricCrypto.decryptBase64(encryptedData1));
-
-		//endregion
-
-		//region 全局加密算法
-
-		ISymmetricCrypto symmetricCrypto = GlobalCrypto.getSymmetricCrypto();
-		assertNotNull(symmetricCrypto);
-
-		String data2 = "@wangliang181230是一名打工人。";
-		String encryptedData2 = symmetricCrypto.encryptBase64(data2);
-		assertEquals(data2, symmetricCrypto.decryptBase64(encryptedData2));
-
-		//endregion
 	}
 
 	/**
@@ -145,5 +123,34 @@ class EnvironmentEnhancedSampleApplicationTest {
 		assertTrue(randomInt >= 2001 && randomInt <= 3000);
 		assertTrue(randomLong >= 3001 && randomLong <= 4000);
 		assertTrue("1,2,3,4".contains(randomChoose));
+	}
+
+	/**
+	 * 功能4：全局加密算法（含对称和非对称加密）
+	 */
+	@Test
+	void testGlobalCrypto() {
+		//region 全局非加密算法
+
+		IAsymmetricCrypto asymmetricCrypto = GlobalCrypto.getAsymmetricCrypto();
+		assertNotNull(asymmetricCrypto);
+
+		String data1 = "@wangliang181230是一名架构师。";
+		String encryptedData1 = asymmetricCrypto.encryptBase64(data1);
+		assertEquals(data1, asymmetricCrypto.decryptBase64(encryptedData1));
+
+		//endregion
+
+
+		//region 全局加密算法
+
+		ISymmetricCrypto symmetricCrypto = GlobalCrypto.getSymmetricCrypto();
+		assertNotNull(symmetricCrypto);
+
+		String data2 = "@wangliang181230是一名打工人。";
+		String encryptedData2 = symmetricCrypto.encryptBase64(data2);
+		assertEquals(data2, symmetricCrypto.decryptBase64(encryptedData2));
+
+		//endregion
 	}
 }

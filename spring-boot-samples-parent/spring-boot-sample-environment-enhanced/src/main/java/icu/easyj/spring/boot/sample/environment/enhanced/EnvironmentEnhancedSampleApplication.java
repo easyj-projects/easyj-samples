@@ -27,8 +27,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @see icu.easyj.spring.boot.env.enhanced.util.LocalIpPropertyUtils // ${easyj.localIp.xxx} 函数的工具类
  * @see icu.easyj.spring.boot.env.enhanced.util.RandomPropertyUtils // ${easyj.random.xxx} 函数的工具类
  * <p>
- * // 功能4：待添加......
- * @see xxx
+ * // 功能4：全局加密算法（含对称和非对称加密）
+ * @see icu.easyj.crypto.GlobalCrypto // 全局加密算法生成器
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor // 负责加载配置并生成算法实例
  */
 @SpringBootApplication
 public class EnvironmentEnhancedSampleApplication {
