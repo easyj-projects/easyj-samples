@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author wangliang181230
  */
 @RestController
-public class TestExcelExportController {
+public class ExcelExportController {
 
 	@ExcelExport(fileNamePre = "EasyJ的Excel功能导出的文件（list）", dataType = MyEntity.class)
 	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
