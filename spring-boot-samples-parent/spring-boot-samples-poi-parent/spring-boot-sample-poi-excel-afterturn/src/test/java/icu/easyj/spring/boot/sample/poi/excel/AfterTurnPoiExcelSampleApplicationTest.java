@@ -1,9 +1,11 @@
 package icu.easyj.spring.boot.sample.poi.excel;
 
+import icu.easyj.poi.excel.converter.ExcelConverterUtils;
+import icu.easyj.poi.excel.converter.IExcelConverter;
+import icu.easyj.poi.excel.converter.impls.AfterTurnExcelConverter;
+import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyEntity;
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelExportController;
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelImportController;
-import icu.easyj.web.poi.excel.IExcelExporter;
-import icu.easyj.web.poi.excel.impls.AfterturnExcelExporterImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +24,6 @@ class AfterTurnPoiExcelSampleApplicationTest {
 	@Autowired
 	AfterTurnExcelImportController afterTurnExcelImportController;
 
-	@Autowired
-	IExcelExporter excelExporter;
-
 	/**
 	 * 测试是否能够启动
 	 */
@@ -33,7 +32,7 @@ class AfterTurnPoiExcelSampleApplicationTest {
 		Assertions.assertNotNull(afterTurnExcelExportController);
 		Assertions.assertNotNull(afterTurnExcelImportController);
 
-		// 判断Excel导出器，是否为基于afterturn的实现
-		Assertions.assertTrue(excelExporter instanceof AfterturnExcelExporterImpl);
+		IExcelConverter converter = ExcelConverterUtils.getConverter(MyEntity.class);
+		Assertions.assertEquals(AfterTurnExcelConverter.class, converter.getClass());
 	}
 }

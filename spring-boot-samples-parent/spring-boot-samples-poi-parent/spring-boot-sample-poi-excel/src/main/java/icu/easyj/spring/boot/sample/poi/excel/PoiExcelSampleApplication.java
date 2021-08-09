@@ -11,8 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * 核心类，如下：
  * @see icu.easyj.web.poi.excel.ExcelExport
  * @see icu.easyj.web.poi.excel.ExcelExportAspect
- * @see icu.easyj.web.poi.excel.IExcelExporter
- * @see icu.easyj.web.poi.excel.impls.DefaultExcelExporterImpl
+ * @see icu.easyj.poi.excel.converter.IExcelConverter
+ * @see icu.easyj.poi.excel.converter.impls.EasyjExcelConverter
  * @see icu.easyj.web.poi.excel.ExcelExportUtils
  * @see icu.easyj.poi.excel.util.ExcelUtils
  * @see icu.easyj.spring.boot.autoconfigure.web.poi.excel.export.EasyjExcelExporterAutoConfiguration
