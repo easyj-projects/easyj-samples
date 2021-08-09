@@ -37,7 +37,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Override
 	@BeforeEach
-	public void beforeEach() {
+	public void initMockMvcBeforeEachTestMethod() {
 		// 创建需执行的过滤器
 		Filter filter = new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler);
 
