@@ -3,6 +3,7 @@ package icu.easyj.spring.boot.sample.poi.excel.mockquery;
 import java.util.Date;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
  * @author wangliang181230
@@ -16,6 +17,7 @@ public class MyEntity {
 	private Integer age;
 
 	@Excel(name = "出生日期", orderNum = "2")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
 	private Date birthday;
 
 	// 测试无注解的情况

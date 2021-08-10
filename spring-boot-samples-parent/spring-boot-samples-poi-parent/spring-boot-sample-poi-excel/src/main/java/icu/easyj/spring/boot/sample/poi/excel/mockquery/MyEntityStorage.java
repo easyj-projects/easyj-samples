@@ -1,8 +1,10 @@
 package icu.easyj.spring.boot.sample.poi.excel.mockquery;
 
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import icu.easyj.core.util.DateUtils;
 
 /**
  * MyEntity存储器
@@ -14,13 +16,17 @@ public class MyEntityStorage {
 	private static final List<MyEntity> DATA_LIST;
 
 	static {
-		DATA_LIST = new ArrayList<>();
-		DATA_LIST.add(new MyEntity("aaabbb", 4, new Date(2021 - 1900 - 4, 1 - 1, 1), "aaaaa"));
-		DATA_LIST.add(new MyEntity("bbbccc", 5, new Date(2021 - 1900 - 5, 1 - 1, 1), "bbbbb"));
-		DATA_LIST.add(new MyEntity("cccddd", 6, new Date(2021 - 1900 - 6, 1 - 1, 1), "ccccc"));
-		DATA_LIST.add(new MyEntity("dddeee", 7, new Date(2021 - 1900 - 7, 1 - 1, 1), "ddddd"));
-		DATA_LIST.add(new MyEntity("eeefff", 8, new Date(2021 - 1900 - 8, 1 - 1, 1), "eeeee"));
-		DATA_LIST.add(new MyEntity("fffggg", 9, new Date(2021 - 1900 - 9, 1 - 1, 1), "fffff"));
+		try {
+			DATA_LIST = new ArrayList<>();
+			DATA_LIST.add(new MyEntity("aaabbb", 4, DateUtils.parseDate("2017-01-01"), "aaaaa"));
+			DATA_LIST.add(new MyEntity("bbbccc", 5, DateUtils.parseDate("2016-01-01"), "bbbbb"));
+			DATA_LIST.add(new MyEntity("cccddd", 6, DateUtils.parseDate("2015-01-01"), "ccccc"));
+			DATA_LIST.add(new MyEntity("dddeee", 7, DateUtils.parseDate("2014-01-01"), "ddddd"));
+			DATA_LIST.add(new MyEntity("eeefff", 8, DateUtils.parseDate("2013-01-01"), "eeeee"));
+			DATA_LIST.add(new MyEntity("fffggg", 9, DateUtils.parseDate("2012-01-01"), "fffff"));
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static List<MyEntity> findList(QueryParam queryParam) {
