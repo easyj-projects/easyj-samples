@@ -57,7 +57,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 		// 环境不为空
 		assertNotNull(environment);
 		// 校验环境中的配置源数量
-		assertEquals(26, environment.getPropertySources().size());
+		assertEquals(27, environment.getPropertySources().size());
 	}
 
 	/**
@@ -79,12 +79,12 @@ class EnvironmentEnhancedSampleApplicationTest {
 	void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
 		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
-				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, configs=null)";
+				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
 		assertEquals(expected, StringUtils.toString(globalProperties));
 
 		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
 		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
-				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, configs={})";
+				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 
