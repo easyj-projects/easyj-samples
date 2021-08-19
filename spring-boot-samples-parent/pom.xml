@@ -30,6 +30,11 @@
 		<module>spring-boot-sample-poi-excel-afterturn</module>
 		-->
 
+		<module>spring-boot-samples-sdk-parent</module>
+		<!--
+		<module>spring-boot-sample-sdk-ocr</module>
+		-->
+
 		<module>spring-boot-samples-web-parent</module>
 		<!--
 		<module>spring-boot-sample-web-cache304</module>

@@ -1,5 +1,6 @@
 package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 
+import javax.annotation.Resource;
 import javax.servlet.Filter;
 
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
@@ -12,7 +13,6 @@ import icu.easyj.web.param.crypto.exception.ParamDecryptException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
@@ -27,11 +27,11 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
 @SpringBootTest
 class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
-	@Autowired
+	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
-	@Autowired
+	@Resource
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
-	@Autowired
+	@Resource
 	IParamCryptoHandler cryptoHandler;
 
 	@Override

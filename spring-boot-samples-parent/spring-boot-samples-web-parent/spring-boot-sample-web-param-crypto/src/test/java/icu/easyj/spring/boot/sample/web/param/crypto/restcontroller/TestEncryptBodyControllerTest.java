@@ -1,5 +1,6 @@
 package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 
+import javax.annotation.Resource;
 import javax.servlet.Filter;
 
 import com.alibaba.fastjson.JSON;
@@ -13,7 +14,6 @@ import icu.easyj.web.param.crypto.exception.ParamDecryptException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.NestedServletException;
@@ -28,11 +28,11 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
 @SpringBootTest
 class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
-	@Autowired
+	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
-	@Autowired
+	@Resource
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
-	@Autowired
+	@Resource
 	IParamCryptoHandler cryptoHandler;
 
 	@Override

@@ -1,5 +1,7 @@
 package icu.easyj.spring.boot.sample.poi.excel;
 
+import javax.annotation.Resource;
+
 import icu.easyj.poi.excel.converter.ExcelConverterUtils;
 import icu.easyj.poi.excel.converter.IExcelConverter;
 import icu.easyj.poi.excel.converter.impls.AfterTurnExcelConverter;
@@ -8,7 +10,6 @@ import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelExpor
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelImportController;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -19,9 +20,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class AfterTurnPoiExcelSampleApplicationTest {
 
-	@Autowired
+	@Resource
 	AfterTurnExcelExportController afterTurnExcelExportController;
-	@Autowired
+	@Resource
 	AfterTurnExcelImportController afterTurnExcelImportController;
 
 	/**

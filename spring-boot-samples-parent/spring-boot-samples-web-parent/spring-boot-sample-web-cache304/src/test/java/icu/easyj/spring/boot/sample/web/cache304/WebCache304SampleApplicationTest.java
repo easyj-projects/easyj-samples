@@ -1,9 +1,10 @@
 package icu.easyj.spring.boot.sample.web.cache304;
 
+import javax.annotation.Resource;
+
 import icu.easyj.spring.boot.sample.web.cache304.restcontroller.TestCache304Controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 /**
@@ -14,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class WebCache304SampleApplicationTest {
 
-	@Autowired
+	@Resource
 	TestCache304Controller testCache304Controller;
 
 	/**

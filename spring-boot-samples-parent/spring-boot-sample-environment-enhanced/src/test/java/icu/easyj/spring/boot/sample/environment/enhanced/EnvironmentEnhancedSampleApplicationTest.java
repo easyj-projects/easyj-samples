@@ -1,6 +1,7 @@
 package icu.easyj.spring.boot.sample.environment.enhanced;
 
 import java.lang.reflect.InvocationTargetException;
+import javax.annotation.Resource;
 
 import cn.hutool.core.lang.PatternPool;
 import icu.easyj.config.GlobalConfigs;
@@ -15,7 +16,6 @@ import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourcePr
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 
@@ -31,17 +31,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class EnvironmentEnhancedSampleApplicationTest {
 
-	@Autowired
+	@Resource
 	DataSourceProperties dataSourceProperties;
-	@Autowired
+	@Resource
 	RabbitMQProperties rabbitMQProperties;
-	@Autowired
+	@Resource
 	TestEasyjFunctionPropertySourceProperties testProperties;
 
-	@Autowired
+	@Resource
 	GlobalProperties globalProperties;
 
-	@Autowired
+	@Resource
 	ConfigurableEnvironment environment;
 
 	/**

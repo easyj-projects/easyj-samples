@@ -1,11 +1,11 @@
 package icu.easyj.spring.boot.sample.web.param.crypto;
 
 import java.nio.charset.StandardCharsets;
+import javax.annotation.Resource;
 
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.ALGORITHM;
@@ -25,10 +25,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class WebParamCryptoSampleApplicationTest {
 
-	@Autowired
+	@Resource
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
 
-	@Autowired
+	@Resource
 	IParamCryptoHandler cryptoHandler;
 
 	/**

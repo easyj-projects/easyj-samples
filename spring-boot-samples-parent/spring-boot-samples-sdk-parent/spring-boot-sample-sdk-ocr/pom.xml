@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>icu.easyj.boot.sample</groupId>
-		<artifactId>spring-boot-samples-poi-parent</artifactId>
+		<artifactId>spring-boot-samples-sdk-parent</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-sample-poi-excel-afterturn</artifactId>
+	<artifactId>easyj-spring-boot-sample-sdk-ocr</artifactId>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
 
@@ -20,10 +20,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- poi-excel -->
+		<!-- OCR -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
-			<artifactId>easyj-spring-boot-starter-poi-excel-afterturn</artifactId>
+			<artifactId>easyj-spring-boot-starter-sdk-ocr-tencent</artifactId>
 		</dependency>
 
 		<!-- EasyJ Spring Boot Samples Common -->
