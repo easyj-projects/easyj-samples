@@ -21,13 +21,13 @@ import org.springframework.web.multipart.MultipartFile;
  * @author wangliang181230
  */
 @RestController
-public class TestIdCardOcrTemplateController {
+public class IdCardOcrTemplateController {
 
 	@Resource
 	private IOcrTemplate ocrTemplate;
 
 	/**
-	 * 单面身份证测试
+	 * 单面身份证识别
 	 *
 	 * @param image    单面身份证图片文件
 	 * @param cardSide 身份证正反面枚举，可选值：FRONT/BACK

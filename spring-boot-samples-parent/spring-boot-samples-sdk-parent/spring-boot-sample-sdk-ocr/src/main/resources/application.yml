@@ -1,20 +1,23 @@
 server:
   port: 8005
 
-
-easyj:
-  sdk:
-    ocr:
-      idcard-ocr:
-        type: tencent
-    tencent:
-      secret-id: AKIDRtxlKhSGCxbpqL6ooX8YEooa7cw38C2d
-      secret-key: Rggmrjz3wbCNHWWGkMtAuDVw71U1Zt7r
-      ocr:
-        idcard-ocr:
-          region: ap-shanghai
-
 spring:
   servlet:
     multipart:
       max-file-size: 5MB
+
+easyj:
+  sdk:
+    tencent-cloud:
+      #通用配置
+      common:
+        secret-id: AKIDRtxlKhSGCxbpqL6ooX8YEooa7cw38C2d
+        secret-key: Rggmrjz3wbCNHWWGkMtAuDVw71U1Zt7r
+        region: ap-shanghai
+      #身份证识别配置，如果未配置，则自动加载通用配置
+#      ocr.idcard-ocr:
+#        secret-id: AKIDRtxlKhSGCxbpqL6ooX8YEooa7cw38C2d
+#        secret-key: Rggmrjz3wbCNHWWGkMtAuDVw71U1Zt7r
+#        region: ap-shanghai
+
+
