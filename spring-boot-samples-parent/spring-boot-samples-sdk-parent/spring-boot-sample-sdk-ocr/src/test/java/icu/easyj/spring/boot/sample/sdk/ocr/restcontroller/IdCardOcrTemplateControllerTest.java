@@ -8,6 +8,7 @@ import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvancedGroup;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrResponse;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -18,18 +19,17 @@ import org.springframework.http.MediaType;
  * @author wangliang181230
  */
 @SpringBootTest
+@Disabled("由于该测试用例会大量消耗测试用的腾讯云账号的免费额度，所以禁用掉，需要时手动执行一遍。")
 class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
-	 * 测试：单面身份证识别
+	 * 测试：正面身份证识别
 	 *
 	 * @throws Exception 异常
 	 */
 	@Test
-	void testOneCardSideIdCardOcr() throws Exception {
+	void testFrontCardSideIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/one-card-side";
-
-		//region case1: 正面
 
 		super.mockPost(path)
 				.file("image", "IDCardOCR1_FRONT.jpg")
@@ -54,11 +54,16 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 					Assertions.assertNull(resp.getBackIdCardBase64());
 					//Assertions.assertEquals(2, resp.getWarns().size()); // 告警信息不稳定，不校验它
 				});
+	}
 
-		//endregion
-
-
-		//region case2: 反面
+	/**
+	 * 测试：反面身份证识别
+	 *
+	 * @throws Exception 异常
+	 */
+	@Test
+	void testBackCardSideIdCardOcr() throws Exception {
+		String path = "/test/ocr/idcardocr/one-card-side";
 
 		super.mockPost(path)
 				.file("image", "IDCardOCR1_BACK.jpg")
@@ -83,18 +88,14 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 					Assertions.assertNull(resp.getBackIdCardBase64());
 					//Assertions.assertEquals(2, resp.getWarns().size()); // 告警信息不稳定，不校验它
 				});
-
-		//endregion
 	}
 
 	/**
-	 * 测试：同时上传正反两面的图片进行身份证识别
+	 * 测试3：同时上传正反两面的图片进行身份证识别
 	 */
 	@Test
 	void testDoubleIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/double-card-side";
-
-		//region case3: 双页
 
 		super.mockPost(path)
 				.file("image1", "IDCardOCR1_FRONT.jpg")
@@ -119,6 +120,5 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 					Assertions.assertNull(resp.getBackIdCardBase64());
 					//Assertions.assertEquals(2, resp.getWarns().size()); // 告警信息不稳定，不校验它
 				});
-		//endregion
 	}
 }
