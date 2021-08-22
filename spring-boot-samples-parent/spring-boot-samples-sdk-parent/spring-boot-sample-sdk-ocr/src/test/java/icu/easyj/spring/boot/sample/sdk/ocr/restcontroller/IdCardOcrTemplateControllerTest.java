@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 测试 {@link IdCardOcrTemplateController} 测试类
@@ -26,6 +27,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * 测试：正面身份证识别
 	 *
 	 * @throws Exception 异常
+	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
 	void testFrontCardSideIdCardOcr() throws Exception {
@@ -60,6 +62,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * 测试：反面身份证识别
 	 *
 	 * @throws Exception 异常
+	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
 	void testBackCardSideIdCardOcr() throws Exception {
@@ -92,6 +95,8 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试3：同时上传正反两面的图片进行身份证识别
+	 *
+	 * @see IdCardOcrTemplateController#doubleIdCardOcr(MultipartFile, MultipartFile, IdCardOcrAdvancedGroup)
 	 */
 	@Test
 	void testDoubleIdCardOcr() throws Exception {
