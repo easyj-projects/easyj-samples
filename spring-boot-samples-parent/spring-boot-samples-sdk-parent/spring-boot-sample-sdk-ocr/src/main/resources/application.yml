@@ -15,9 +15,11 @@ easyj:
         secret-key: FEyRe05uSjjSv60dz3qMbaIkwrUqwmKb
         region: ap-shanghai
       #身份证识别配置，如果未配置，则自动加载通用配置
-#      ocr.idcard-ocr:
-#        secret-id: AKIDb1B6mCMFrDJ8hz0kDQN3SgeKjriJdgSx
-#        secret-key: FEyRe05uSjjSv60dz3qMbaIkwrUqwmKb
-#        region: ap-shanghai
+      ocr:
+        idcard-ocr:
+          min-quality: 50 #最小图片质量分数，小于该分值，将出现“图片不清晰”告警
+          #secret-id: AKIDb1B6mCMFrDJ8hz0kDQN3SgeKjriJdgSx #不配置时，读取通用配置
+          #secret-key: FEyRe05uSjjSv60dz3qMbaIkwrUqwmKb #不配置时，读取通用配置
+          #region: ap-shanghai #不配置时，读取通用配置；要注意通用配置不一定支持当前接口
 
 
