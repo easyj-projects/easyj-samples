@@ -19,8 +19,7 @@ public class MyEntity {
 	private Integer age;
 
 	@ExcelCell(headName = "出生日期", cellNum = 2)
-	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
-	@JsonFormat(shape = JsonFormat.Shape.NUMBER_INT)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss.SSS", timezone = "GMT+8")
 	private Date birthday;
 
 	// 测试无注解的情况
