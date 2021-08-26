@@ -26,7 +26,8 @@ class AfterTurnExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 				.contentType().is(MediaType.APPLICATION_JSON)
 				.header().notContains(HttpHeaders.CONTENT_DISPOSITION).end()
 				.content().is(1)
-				.is("[{\"name\":\"aaabbb\",\"age\":4,\"birthday\":\"2017-01-01 00:00:00.000\",\"desc\":\"aaaaa\"}]");
+//				.is("[{\"name\":\"aaabbb\",\"age\":4,\"birthday\":\"2017-01-01 00:00:00.000\",\"desc\":\"aaaaa\"}]");
+				.is("[{\"name\":\"aaabbb\",\"age\":4,\"birthday\":1483200000000,\"desc\":\"aaaaa\"}]");
 	}
 
 	@Test
