@@ -1,14 +1,16 @@
-package icu.easyj.spring.boot.sample.sdk.dwz.restcontroller;
+package icu.easyj.spring.boot.sample.sdk.dwz.s3.restcontroller;
 
 import java.nio.charset.StandardCharsets;
 
 import icu.easyj.sdk.dwz.DwzRequest;
 import icu.easyj.sdk.dwz.DwzResponse;
+import icu.easyj.spring.boot.sample.sdk.dwz.restcontroller.DwzTemplateController;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 
 /**
  * 测试 {@link DwzTemplateController} 测试类
@@ -16,7 +18,8 @@ import org.springframework.http.MediaType;
  * @author wangliang181230
  */
 @SpringBootTest
-class DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
+@ActiveProfiles("s3")
+class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
@@ -37,6 +40,7 @@ class DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
 					Assertions.assertTrue(resp.getShortUrl().startsWith("https://s-3.cn/"));
+					Assertions.assertEquals(0L, resp.getExpireIn());
 				});
 	}
 }

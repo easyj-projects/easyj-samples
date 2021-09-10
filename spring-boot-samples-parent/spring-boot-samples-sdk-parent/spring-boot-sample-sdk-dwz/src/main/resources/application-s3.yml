@@ -1,0 +1,8 @@
+easyj:
+  sdk:
+    dwz:
+      type: s3
+      s3:
+        client-id: 108104
+        client-secret: d49ca510520b0f02004e03ddc2de7c49
+

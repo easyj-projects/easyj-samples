@@ -15,9 +15,15 @@
 
 	<dependencies>
 		<!-- DWZ -->
+		<!-- S-3 DWZ -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
 			<artifactId>easyj-spring-boot-starter-sdk-dwz-s3</artifactId>
+		</dependency>
+		<!-- 百度云 DWZ -->
+		<dependency>
+			<groupId>icu.easyj.boot</groupId>
+			<artifactId>easyj-spring-boot-starter-sdk-dwz-baidu</artifactId>
 		</dependency>
 
 		<!-- EasyJ Spring Boot Samples Common -->
