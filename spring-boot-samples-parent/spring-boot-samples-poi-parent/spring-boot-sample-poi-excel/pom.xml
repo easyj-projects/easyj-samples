@@ -14,12 +14,6 @@
 	<name>${project.groupId} :: ${project.artifactId}</name>
 
 	<dependencies>
-		<!-- web -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
 		<!-- poi-excel -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>

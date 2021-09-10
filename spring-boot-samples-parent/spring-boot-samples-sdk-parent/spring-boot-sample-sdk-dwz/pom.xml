@@ -5,25 +5,19 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>icu.easyj.boot.sample</groupId>
-		<artifactId>spring-boot-samples-web-parent</artifactId>
+		<artifactId>spring-boot-samples-sdk-parent</artifactId>
 		<version>${revision}</version>
 	</parent>
 
-	<artifactId>easyj-spring-boot-sample-web-param-crypto</artifactId>
+	<artifactId>easyj-spring-boot-sample-sdk-dwz</artifactId>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
 
 	<dependencies>
-		<!-- web-param-crypto -->
+		<!-- DWZ -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
-			<artifactId>easyj-spring-boot-starter-web-param-crypto</artifactId>
-		</dependency>
-
-		<!-- Fastjson -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
+			<artifactId>easyj-spring-boot-starter-sdk-dwz-s3</artifactId>
 		</dependency>
 
 		<!-- EasyJ Spring Boot Samples Common -->
