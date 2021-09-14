@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author wangliang181230
  *
  * <p>
- * // 功能1：约定default、global、area、project、env配置位置的功能。核心类，如下：
+ * // 功能1：约定`global、area、project、default、env`配置文件存放目录的功能。核心类，如下：
  * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor
  * <p>
  * // 功能2：自动加载EasyJ定义的全局配置信息。核心类，如下：

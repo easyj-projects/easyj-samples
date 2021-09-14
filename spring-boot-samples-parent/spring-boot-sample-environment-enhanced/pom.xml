@@ -12,6 +12,7 @@
 	<artifactId>easyj-spring-boot-sample-environment-enhanced</artifactId>
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
+	<description>EasyJ环境增强功能使用示例。</description>
 
 	<dependencies>
 		<!-- EasyJ Spring Boot Starter -->
