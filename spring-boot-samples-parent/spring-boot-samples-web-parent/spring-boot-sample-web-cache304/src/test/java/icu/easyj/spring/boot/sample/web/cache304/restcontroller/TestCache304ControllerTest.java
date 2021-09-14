@@ -5,10 +5,12 @@ import java.util.Date;
 import icu.easyj.core.enums.DateFormatType;
 import icu.easyj.core.util.DateUtils;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.util.NestedServletException;
 
 import static icu.easyj.spring.boot.sample.web.cache304.restcontroller.TestCache304Controller.CACHE_SECONDS1;
 import static icu.easyj.spring.boot.sample.web.cache304.restcontroller.TestCache304Controller.CACHE_SECONDS2;
@@ -21,15 +23,19 @@ import static icu.easyj.spring.boot.sample.web.cache304.restcontroller.TestCache
 @SpringBootTest
 class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 
+	/**
+	 * @throws Exception 异常
+	 * @see TestCache304Controller#useCache304AndUseMaxAgeAndUseCacheIfException(Boolean)
+	 */
 	@Test
-	void testUseCache304AndUseMaxAge() throws Exception {
+	void testUseCache304AndUseMaxAgeAndUseCacheIfException() throws Exception {
 		String path = "/test/cache-304/true";
 
 		// 无缓存时，发送请求
 		super.mockGet(path)
 				.send()
 				.status().isOk()
-				.content().is("useCache304AndUseMaxAge").end()
+				.content().is("useCache304AndUseMaxAgeAndUseCacheIfException").end()
 				.header()
 				.contains(HttpHeaders.LAST_MODIFIED, HttpHeaders.EXPIRES, HttpHeaders.CACHE_CONTROL)
 				.is(HttpHeaders.CACHE_CONTROL, "max-age=4"); // 多缓存一秒
@@ -41,18 +47,30 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 				.send()
 				.status().is(HttpStatus.NOT_MODIFIED); // 304
 
+		// 有缓存，但已过期时，发送请求，故意抛出异常
+		now = new Date(now.getTime() - CACHE_SECONDS1 * 1000);
+		super.mockGet(path)
+				.queryParam("needThrow", "true") // 故意抛出异常用于测试`useCacheIfException = true`时的功能
+				.header(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.format(DateFormatType.SS, now))
+				.send()
+				.status().is(HttpStatus.NOT_MODIFIED); // 304：因为开启了出现异常允许客户端继续使用缓存的功能，所以该请求响应了304
+
 		// 有缓存，但已过期时，发送请求
 		now = new Date(now.getTime() - CACHE_SECONDS1 * 1000);
 		super.mockGet(path)
 				.header(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.format(DateFormatType.SS, now))
 				.send()
 				.status().isOk()
-				.content().is("useCache304AndUseMaxAge").end()
+				.content().is("useCache304AndUseMaxAgeAndUseCacheIfException").end()
 				.header()
 				.contains(HttpHeaders.LAST_MODIFIED, HttpHeaders.EXPIRES, HttpHeaders.CACHE_CONTROL)
 				.is(HttpHeaders.CACHE_CONTROL, "max-age=4"); // 多缓存一秒
 	}
 
+	/**
+	 * @throws Exception 异常
+	 * @see TestCache304Controller#useCache304NoMaxAge(Boolean)
+	 */
 	@Test
 	void testUseCache304NoMaxAge() throws Exception {
 		String path = "/test/cache-304/false";
@@ -73,6 +91,15 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 				.send()
 				.status().is(HttpStatus.NOT_MODIFIED); // 304
 
+		// 有缓存，但已过期时，发送请求，故意抛出异常，看看异常是否正常抛出
+		final Date nowFinal = new Date(now.getTime() - CACHE_SECONDS2 * 1000);
+		Assertions.assertThrows(NestedServletException.class, () -> {
+			super.mockGet(path)
+					.queryParam("needThrow", "true") // 故意抛出异常，用于测试`useCacheIfException = false`时，异常能否正常抛出
+					.header(HttpHeaders.IF_MODIFIED_SINCE, DateUtils.format(DateFormatType.SS, nowFinal))
+					.send();
+		});
+
 		// 有缓存，但已过期时，发送请求
 		now = new Date(now.getTime() - CACHE_SECONDS2 * 1000);
 		super.mockGet(path)
@@ -85,6 +112,10 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 				.notContains(HttpHeaders.EXPIRES, HttpHeaders.CACHE_CONTROL);
 	}
 
+	/**
+	 * @throws Exception 异常
+	 * @see TestCache304Controller#noCache304()
+	 */
 	@Test
 	void testNoCache304() throws Exception {
 		String path = "/test/no-cache-304";
