@@ -39,7 +39,7 @@ public class IdCardOcrTemplateController {
 												  @RequestParam(required = false) CardSide cardSide,
 												  @RequestParam(required = false) IdCardOcrAdvancedGroup advancedGroup) throws IOException {
 		String imageBase64 = Base64.encode(image.getInputStream());
-		IdCardOcrAdvanced[] advancedArr = advancedGroup != null ? advancedGroup.getAdvancedArr() : IdCardOcrAdvanced.EMPTY;
+		IdCardOcrAdvanced[] advancedArr = advancedGroup != null ? advancedGroup.getAdvancedArr() : IdCardOcrAdvanced.EMPTY_ARRAY;
 		return ocrTemplate.idCardOcr(imageBase64, cardSide, advancedArr);
 	}
 
@@ -57,7 +57,7 @@ public class IdCardOcrTemplateController {
 											 @RequestParam(required = false) IdCardOcrAdvancedGroup advancedGroup) throws IOException {
 		String image1Base64 = Base64.encode(image1.getInputStream());
 		String image2Base64 = Base64.encode(image2.getInputStream());
-		IdCardOcrAdvanced[] advancedArr = advancedGroup != null ? advancedGroup.getAdvancedArr() : IdCardOcrAdvanced.EMPTY;
+		IdCardOcrAdvanced[] advancedArr = advancedGroup != null ? advancedGroup.getAdvancedArr() : IdCardOcrAdvanced.EMPTY_ARRAY;
 		return ocrTemplate.idCardOcr(image1Base64, image2Base64, advancedArr);
 	}
 }
