@@ -4,4 +4,4 @@ easyj:
       type: baidu
       baidu:
         token: 14b303c38c494cb0bfe36fd80c8b8a69
-        default-term-of-validity: long-term
+        term-of-validity: long-term

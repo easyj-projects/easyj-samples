@@ -38,7 +38,7 @@ class BaiduDwzTemplateSampleApplicationTest {
 		// 校验是否复制了通用配置
 		Assertions.assertEquals("https://dwz.cn/api/v3/short-urls", config.getServiceUrl());
 		Assertions.assertEquals("14b303c38c494cb0bfe36fd80c8b8a69", config.getToken());
-		Assertions.assertEquals("long-term", config.getDefaultTermOfValidity());
+		Assertions.assertEquals("long-term", config.getTermOfValidity());
 		Assertions.assertEquals("zh", config.getResponseLanguage());
 	}
 }
