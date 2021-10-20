@@ -38,6 +38,9 @@
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.5.5</spring-boot.version>
 
+		<!-- 数据库相关 -->
+		<oracle.version>11.2.0.3</oracle.version>
+
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
 	</properties>
@@ -69,6 +72,13 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<!-- 依赖定义：Oracle数据库驱动 -->
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc6</artifactId>
+				<version>${oracle.version}</version>
 			</dependency>
 
 			<!-- 依赖定义：Swagger -->

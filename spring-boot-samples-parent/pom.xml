@@ -22,6 +22,7 @@
 	<modules>
 		<module>spring-boot-samples-common</module>
 
+		<module>spring-boot-sample-db</module>
 		<module>spring-boot-sample-environment-enhanced</module>
 
 		<module>spring-boot-samples-poi-parent</module>

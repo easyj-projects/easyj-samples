@@ -19,7 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("s3")
-class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
+class S3DwzTemplateControllerTestForS3 extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接

@@ -21,7 +21,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("baidu")
 @Disabled("百度云测试账号免费额度有限，请手动执行该测试用例")
-class BaiduDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
+class BaiduDwzTemplateControllerTestForBaidu extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
