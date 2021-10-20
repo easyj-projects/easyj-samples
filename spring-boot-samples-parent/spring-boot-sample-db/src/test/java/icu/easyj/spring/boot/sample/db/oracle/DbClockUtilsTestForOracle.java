@@ -34,7 +34,7 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("mysql")
+@ActiveProfiles("oracle")
 @Disabled("请手动运行该测试")
 class DbClockUtilsTestForOracle {
 
