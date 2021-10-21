@@ -17,7 +17,7 @@ package icu.easyj.spring.boot.sample.db.mssql;
 
 import javax.sql.DataSource;
 
-import icu.easyj.core.util.VersionUtils;
+import icu.easyj.core.util.version.VersionUtils;
 import icu.easyj.db.constant.DbTypeConstants;
 import icu.easyj.db.util.DbUtils;
 import icu.easyj.db.util.PrimaryDataSourceHolder;
