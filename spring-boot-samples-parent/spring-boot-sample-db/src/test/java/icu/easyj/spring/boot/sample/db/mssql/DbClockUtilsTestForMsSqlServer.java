@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.mysql;
+package icu.easyj.spring.boot.sample.db.mssql;
 
+import java.util.Date;
 import javax.sql.DataSource;
 
-import icu.easyj.core.util.VersionUtils;
-import icu.easyj.db.constant.DbTypeConstants;
-import icu.easyj.db.util.DbUtils;
-import icu.easyj.db.util.PrimaryDataSourceHolder;
+import icu.easyj.core.util.DateUtils;
+import icu.easyj.db.util.DbClockUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -29,32 +28,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 /**
- * {@link DbUtils} 测试类
+ * {@link DbClockUtils} 测试类
  *
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("mysql")
+@ActiveProfiles("mssqlserver")
 @Disabled("请手动运行该测试")
-class DbUtilsTestForMySQL {
+class DbClockUtilsTestForMsSqlServer {
 
 	@Autowired
 	private DataSource dataSource;
 
 	@Test
-	void testGetDbType() {
-		Assertions.assertEquals(dataSource, PrimaryDataSourceHolder.get());
+	void test() {
+		long time = DbClockUtils.currentTimeMillis(dataSource);
+		System.out.println(time);
+		System.out.println(DateUtils.toMilliseconds(new Date(time)));
+		Assertions.assertTrue(time > 0);
 
-		String dbType = DbUtils.getDbType(dataSource);
-		System.out.println(dbType);
-		Assertions.assertEquals(DbTypeConstants.MYSQL, dbType.toLowerCase());
-	}
-
-	@Test
-	void testGetVersion() {
-		String version = DbUtils.getDbVersion(dataSource);
-		System.out.println(version);
-		System.out.println(VersionUtils.toLong(version));
-		Assertions.assertTrue(VersionUtils.toLong(version) > VersionUtils.toLong("5.0.0"));
+		Date now = DbClockUtils.now(dataSource);
+		System.out.println(now.getTime());
+		System.out.println(DateUtils.toMilliseconds(now));
+		Assertions.assertTrue(now.getTime() > new Date().getTime() - 60 * 1000);
 	}
 }

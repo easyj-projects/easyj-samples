@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.mysql;
+package icu.easyj.spring.boot.sample.db.mssql;
 
 import javax.sql.DataSource;
 
@@ -34,9 +34,9 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("mysql")
+@ActiveProfiles("mssqlserver")
 @Disabled("请手动运行该测试")
-class DbUtilsTestForMySQL {
+class DbUtilsTestForMsSqlServer {
 
 	@Autowired
 	private DataSource dataSource;
@@ -47,7 +47,7 @@ class DbUtilsTestForMySQL {
 
 		String dbType = DbUtils.getDbType(dataSource);
 		System.out.println(dbType);
-		Assertions.assertEquals(DbTypeConstants.MYSQL, dbType.toLowerCase());
+		Assertions.assertEquals(DbTypeConstants.MS_SQL_SERVER, dbType.toLowerCase());
 	}
 
 	@Test

@@ -18,7 +18,9 @@ package icu.easyj.spring.boot.sample.db.oracle;
 import javax.sql.DataSource;
 
 import icu.easyj.core.util.VersionUtils;
+import icu.easyj.db.constant.DbTypeConstants;
 import icu.easyj.db.util.DbUtils;
+import icu.easyj.db.util.PrimaryDataSourceHolder;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -41,9 +43,11 @@ class DbUtilsTestForOracle {
 
 	@Test
 	void testGetDbType() {
+		Assertions.assertEquals(dataSource, PrimaryDataSourceHolder.get());
+
 		String dbType = DbUtils.getDbType(dataSource);
 		System.out.println(dbType);
-		Assertions.assertEquals("oracle", dbType.toLowerCase());
+		Assertions.assertEquals(DbTypeConstants.ORACLE, dbType.toLowerCase());
 	}
 
 	@Test
