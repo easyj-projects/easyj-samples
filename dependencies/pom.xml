@@ -40,7 +40,7 @@
 
 		<!-- 数据库相关 -->
 		<oracle.version>11.2.0.4</oracle.version>
-		<mssql.version>9.4.0.jre8</mssql.version>
+		<mssql-jdbc.version>9.4.0.jre8</mssql-jdbc.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
@@ -85,7 +85,7 @@
 			<dependency>
 				<groupId>com.microsoft.sqlserver</groupId>
 				<artifactId>mssql-jdbc</artifactId>
-				<version>${mssql.version}</version>
+				<version>${mssql-jdbc.version}</version>
 			</dependency>
 
 			<!-- 依赖定义：Swagger -->
