@@ -11,7 +11,7 @@ import icu.easyj.core.util.StringUtils;
 import icu.easyj.crypto.GlobalCrypto;
 import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
 import icu.easyj.crypto.symmetric.ISymmetricCrypto;
-import icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties;
+import icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;

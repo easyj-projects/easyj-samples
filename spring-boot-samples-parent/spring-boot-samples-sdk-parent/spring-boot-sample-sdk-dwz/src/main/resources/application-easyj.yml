@@ -1,0 +1,7 @@
+easyj:
+  sdk:
+    dwz:
+      type: easyj-middleware
+      easyj-middleware:
+        send-type: http
+        service-url: http://localhost:3001/api/v1/create-short-url

@@ -36,11 +36,7 @@
 		<easyj-spring-boot.version>${easyj.version}</easyj-spring-boot.version>
 
 		<!-- Spring相关依赖 -->
-		<spring-boot.version>2.5.5</spring-boot.version>
-
-		<!-- 数据库相关 -->
-		<oracle.version>11.2.0.4</oracle.version>
-		<mssql-jdbc.version>9.4.0.jre8</mssql-jdbc.version>
+		<spring-boot.version>2.5.6</spring-boot.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
@@ -73,19 +69,6 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-
-			<!-- 依赖定义：Oracle数据库驱动 -->
-			<dependency>
-				<groupId>com.oracle.database.jdbc</groupId>
-				<artifactId>ojdbc6</artifactId>
-				<version>${oracle.version}</version>
-			</dependency>
-			<!-- 依赖定义：MS SQL Server数据库驱动 -->
-			<dependency>
-				<groupId>com.microsoft.sqlserver</groupId>
-				<artifactId>mssql-jdbc</artifactId>
-				<version>${mssql-jdbc.version}</version>
 			</dependency>
 
 			<!-- 依赖定义：Swagger -->

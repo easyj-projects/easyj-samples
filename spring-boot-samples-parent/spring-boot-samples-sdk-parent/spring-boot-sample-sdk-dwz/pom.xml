@@ -15,6 +15,11 @@
 
 	<dependencies>
 		<!-- DWZ -->
+		<!-- EasyJ MiddleWare DWZ -->
+		<dependency>
+			<groupId>icu.easyj.boot</groupId>
+			<artifactId>easyj-spring-boot-starter-sdk-dwz-easyj-middleware</artifactId>
+		</dependency>
 		<!-- S-3 DWZ -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
