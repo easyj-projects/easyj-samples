@@ -1,4 +1,4 @@
-package icu.easyj.spring.boot.sample.sdk.dwz.s3.restcontroller;
+package icu.easyj.spring.boot.sample.sdk.dwz.baidu.restcontroller;
 
 import java.nio.charset.StandardCharsets;
 
@@ -7,6 +7,7 @@ import icu.easyj.sdk.dwz.DwzResponse;
 import icu.easyj.spring.boot.sample.sdk.dwz.restcontroller.DwzTemplateController;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -18,8 +19,9 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("s3")
-class S3DwzTemplateControllerTestForS3 extends BaseSpringBootMockMvcTest {
+@ActiveProfiles("baidu")
+@Disabled("百度云测试账号免费额度有限，请手动执行该测试用例")
+class BaiduDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
@@ -33,13 +35,13 @@ class S3DwzTemplateControllerTestForS3 extends BaseSpringBootMockMvcTest {
 		String path = "/test/dwz/create";
 
 		super.mockGet(path)
-				.queryParam("longUrl", "https://www.nbgzjk.cn/register")
+				.queryParam("longUrl", "https://www.baidu.com")
 				.send()
 				.status().isOk()
 				.contentType().is(MediaType.APPLICATION_JSON)
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
-					Assertions.assertTrue(resp.getShortUrl().startsWith("https://s-3.cn/"));
+					Assertions.assertTrue(resp.getShortUrl().startsWith("https://dwz.cn/"));
 					Assertions.assertEquals(0L, resp.getExpireIn());
 				});
 	}

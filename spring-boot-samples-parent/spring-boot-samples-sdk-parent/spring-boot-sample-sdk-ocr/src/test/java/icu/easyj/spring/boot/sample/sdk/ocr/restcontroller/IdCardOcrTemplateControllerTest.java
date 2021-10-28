@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
  * @author wangliang181230
  */
 @SpringBootTest
-@Disabled("由于该测试用例会大量消耗测试用的腾讯云账号的免费额度，所以禁用掉，需要时手动执行一遍。")
+@Disabled("腾讯云测试账号免费额度有限，请手动执行该测试用例")
 class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**

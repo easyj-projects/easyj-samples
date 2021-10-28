@@ -1,4 +1,4 @@
-package icu.easyj.spring.boot.sample.sdk.dwz.baidu.restcontroller;
+package icu.easyj.spring.boot.sample.sdk.dwz.easyj.restcontroller;
 
 import java.nio.charset.StandardCharsets;
 
@@ -19,9 +19,9 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("baidu")
-@Disabled("百度云测试账号免费额度有限，请手动执行该测试用例")
-class BaiduDwzTemplateControllerTestForBaidu extends BaseSpringBootMockMvcTest {
+@ActiveProfiles("easyj")
+@Disabled("需要先手动开启 http://github.com/easyj-projects/easyj 中的dwz-server-application")
+class EasyjMiddleWareDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
@@ -41,7 +41,7 @@ class BaiduDwzTemplateControllerTestForBaidu extends BaseSpringBootMockMvcTest {
 				.contentType().is(MediaType.APPLICATION_JSON)
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
-					Assertions.assertTrue(resp.getShortUrl().startsWith("https://dwz.cn/"));
+					Assertions.assertTrue(resp.getShortUrl().startsWith("http://localhost:3001/"));
 					Assertions.assertEquals(0L, resp.getExpireIn());
 				});
 	}

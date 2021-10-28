@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("easyj")
-class EasyjMiddleWareDwzTemplateSampleApplicationTestForBaidu {
+class EasyjMiddleWareDwzTemplateSampleApplicationTest {
 
 	@Resource
 	IDwzTemplate template;

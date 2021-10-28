@@ -13,17 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.oracle;
+package icu.easyj.spring.boot.sample.db.mssql;
 
-import java.util.Date;
 import javax.sql.DataSource;
 
-import icu.easyj.core.util.DateUtils;
-import icu.easyj.db.util.DbClockUtils;
+import icu.easyj.db.constant.DbTypeConstants;
 import icu.easyj.db.util.DbUtils;
-import org.junit.jupiter.api.Assertions;
+import icu.easyj.spring.boot.sample.db.AbstractDbUtilsTest;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -34,23 +31,21 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("oracle")
-@Disabled("请手动运行该测试")
-class DbClockUtilsTestForOracle {
+@ActiveProfiles("mssqlserver")
+@Disabled("需要连接对应类型的数据库")
+class MsSqlServerDbUtilsTest extends AbstractDbUtilsTest {
 
-	@Autowired
-	private DataSource dataSource;
+	public MsSqlServerDbUtilsTest(@Autowired DataSource dataSource) {
+		super(dataSource);
+	}
 
-	@Test
-	void test() {
-		Date now = DbClockUtils.now(dataSource);
-		System.out.println(now.getTime());
-		System.out.println(DateUtils.toMilliseconds(now));
-		Assertions.assertTrue(now.getTime() > new Date().getTime() - 60 * 1000);
+	@Override
+	protected String getDbType() {
+		return DbTypeConstants.MS_SQL_SERVER;
+	}
 
-		long time = DbClockUtils.currentTimeMillis(dataSource);
-		System.out.println(time);
-		System.out.println(DateUtils.toMilliseconds(new Date(time)));
-		Assertions.assertTrue(time > 0);
+	@Override
+	protected String getMinVersion() {
+		return "5.0.0";
 	}
 }

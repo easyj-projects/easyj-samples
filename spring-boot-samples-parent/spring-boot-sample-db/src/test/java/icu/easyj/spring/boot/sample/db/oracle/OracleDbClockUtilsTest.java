@@ -13,17 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.mssql;
+package icu.easyj.spring.boot.sample.db.oracle;
 
 import javax.sql.DataSource;
 
-import icu.easyj.core.util.version.VersionUtils;
-import icu.easyj.db.constant.DbTypeConstants;
 import icu.easyj.db.util.DbUtils;
-import icu.easyj.db.util.PrimaryDataSourceHolder;
-import org.junit.jupiter.api.Assertions;
+import icu.easyj.spring.boot.sample.db.AbstractDbClockUtilsTest;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -34,27 +30,11 @@ import org.springframework.test.context.ActiveProfiles;
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("mssqlserver")
-@Disabled("请手动运行该测试")
-class DbUtilsTestForMsSqlServer {
+@ActiveProfiles("oracle")
+@Disabled("需要连接对应类型的数据库")
+class OracleDbClockUtilsTest extends AbstractDbClockUtilsTest {
 
-	@Autowired
-	private DataSource dataSource;
-
-	@Test
-	void testGetDbType() {
-		Assertions.assertEquals(dataSource, PrimaryDataSourceHolder.get());
-
-		String dbType = DbUtils.getDbType(dataSource);
-		System.out.println(dbType);
-		Assertions.assertEquals(DbTypeConstants.MS_SQL_SERVER, dbType.toLowerCase());
-	}
-
-	@Test
-	void testGetVersion() {
-		String version = DbUtils.getDbVersion(dataSource);
-		System.out.println(version);
-		System.out.println(VersionUtils.toLong(version));
-		Assertions.assertTrue(VersionUtils.toLong(version) > VersionUtils.toLong("5.0.0"));
+	public OracleDbClockUtilsTest(@Autowired DataSource dataSource) {
+		super(dataSource);
 	}
 }

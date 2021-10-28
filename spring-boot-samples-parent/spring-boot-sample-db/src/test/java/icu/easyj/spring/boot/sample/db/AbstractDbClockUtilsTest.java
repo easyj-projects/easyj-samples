@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.mssql;
+package icu.easyj.spring.boot.sample.db;
 
 import java.util.Date;
 import javax.sql.DataSource;
@@ -21,24 +21,22 @@ import javax.sql.DataSource;
 import icu.easyj.core.util.DateUtils;
 import icu.easyj.db.util.DbClockUtils;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
 /**
  * {@link DbClockUtils} 测试类
  *
  * @author wangliang181230
  */
-@SpringBootTest
-@ActiveProfiles("mssqlserver")
-@Disabled("请手动运行该测试")
-class DbClockUtilsTestForMsSqlServer {
+public abstract class AbstractDbClockUtilsTest {
 
-	@Autowired
-	private DataSource dataSource;
+	protected final DataSource dataSource;
+
+
+	protected AbstractDbClockUtilsTest(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
+
 
 	@Test
 	void test() {

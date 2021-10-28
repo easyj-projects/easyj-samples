@@ -15,14 +15,11 @@
  */
 package icu.easyj.spring.boot.sample.db.mysql;
 
-import java.util.Date;
 import javax.sql.DataSource;
 
-import icu.easyj.core.util.DateUtils;
 import icu.easyj.db.util.DbClockUtils;
-import org.junit.jupiter.api.Assertions;
+import icu.easyj.spring.boot.sample.db.AbstractDbClockUtilsTest;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -34,22 +31,10 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("mysql")
-@Disabled("请手动运行该测试")
-class DbClockUtilsTestForMySQL {
+@Disabled("需要连接对应类型的数据库")
+class MySqlDbClockUtilsTest extends AbstractDbClockUtilsTest {
 
-	@Autowired
-	private DataSource dataSource;
-
-	@Test
-	void test() {
-		long time = DbClockUtils.currentTimeMillis(dataSource);
-		System.out.println(time);
-		System.out.println(DateUtils.toMilliseconds(new Date(time)));
-		Assertions.assertTrue(time > 0);
-
-		Date now = DbClockUtils.now(dataSource);
-		System.out.println(now.getTime());
-		System.out.println(DateUtils.toMilliseconds(now));
-		Assertions.assertTrue(now.getTime() > new Date().getTime() - 60 * 1000);
+	public MySqlDbClockUtilsTest(@Autowired DataSource dataSource) {
+		super(dataSource);
 	}
 }
