@@ -5,3 +5,5 @@ spring:
     url: jdbc:oracle:thin:@10.1.51.226:1521/orcl
     username: KTMEDICALCENTER_NEW
     password: ${easyj.crypto.decrypt('DFs3XeXGDNBp6OzrKItyV3O/OfxelHtzghgk4IMdrjF6uNLDb3pGbS9wGCf00klEjr9fnjKVQYEuZbvD70O6OQZG3SeoAV99UrE/8elCTbwJBYVKagtkTWWTAH9fXOYyWJNyVqDmSpQzoPm1oJNzvAzfjidzi1Z+59sgP72FKF8=')}
+    hikari:
+      maximum-pool-size: 9
