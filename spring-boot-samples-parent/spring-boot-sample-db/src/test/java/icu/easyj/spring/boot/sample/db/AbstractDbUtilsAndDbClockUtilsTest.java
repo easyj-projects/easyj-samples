@@ -33,11 +33,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * {@link DbUtils} 测试类
+ * {@link DbUtils} 和 {@link DbClockUtils} 测试类
  *
  * @author wangliang181230
  */
-public abstract class AbstractDbUtilsTest {
+public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 
 	private static final String SEQ_NAME = "test_seq";
 
@@ -45,7 +45,7 @@ public abstract class AbstractDbUtilsTest {
 	protected final DataSource dataSource;
 
 
-	protected AbstractDbUtilsTest(DataSource dataSource) {
+	protected AbstractDbUtilsAndDbClockUtilsTest(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
@@ -116,6 +116,19 @@ public abstract class AbstractDbUtilsTest {
 
 		System.out.println();
 		System.out.println(System.currentTimeMillis() - time0);
+	}
+
+	@Test
+	void testClock() {
+		long time = DbClockUtils.currentTimeMillis(dataSource);
+		System.out.println(time);
+		System.out.println(DateUtils.toMilliseconds(new Date(time)));
+		Assertions.assertTrue(time > 0);
+
+		Date now = DbClockUtils.now(dataSource);
+		System.out.println(now.getTime());
+		System.out.println(DateUtils.toMilliseconds(now));
+		Assertions.assertTrue(now.getTime() > new Date().getTime() - 60 * 1000);
 	}
 
 	/**

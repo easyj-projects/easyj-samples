@@ -13,39 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package icu.easyj.spring.boot.sample.db.oracle;
+package icu.easyj.spring.boot.sample.db.mssql;
 
 import javax.sql.DataSource;
 
 import icu.easyj.db.constant.DbTypeConstants;
+import icu.easyj.db.util.DbClockUtils;
 import icu.easyj.db.util.DbUtils;
-import icu.easyj.spring.boot.sample.db.AbstractDbUtilsTest;
+import icu.easyj.spring.boot.sample.db.AbstractDbUtilsAndDbClockUtilsTest;
 import org.junit.jupiter.api.Disabled;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 /**
- * {@link DbUtils} 测试类
+ * SQL Server的 {@link DbUtils} 和 {@link DbClockUtils} 测试类
  *
  * @author wangliang181230
  */
 @SpringBootTest
-@ActiveProfiles("oracle")
+@ActiveProfiles("mssqlserver")
 @Disabled("需要连接对应类型的数据库")
-class OracleDbUtilsTest extends AbstractDbUtilsTest {
+class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
 
-	public OracleDbUtilsTest(@Autowired DataSource dataSource) {
+	public MsSqlServerDbUtilsAndDbClockUtilsTest(@Autowired DataSource dataSource) {
 		super(dataSource);
 	}
 
 	@Override
 	protected String getDbType() {
-		return DbTypeConstants.ORACLE;
+		return DbTypeConstants.MS_SQL_SERVER;
 	}
 
 	@Override
 	protected String getMinVersion() {
-		return "8.0.0";
+		return "5.0.0";
 	}
 }
