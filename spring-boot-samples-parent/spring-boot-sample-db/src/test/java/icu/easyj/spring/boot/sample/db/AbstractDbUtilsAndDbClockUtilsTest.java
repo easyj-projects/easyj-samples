@@ -31,6 +31,7 @@ import icu.easyj.db.util.PrimaryDataSourceHolder;
 import icu.easyj.test.util.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * {@link DbUtils} 和 {@link DbClockUtils} 测试类
@@ -43,6 +44,9 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 
 
 	protected final DataSource dataSource;
+
+	@Value("${spring.datasource.hikari.maximum-pool-size:10}")
+	private int maxDataSourcePooSize;
 
 
 	protected AbstractDbUtilsAndDbClockUtilsTest(DataSource dataSource) {
@@ -137,29 +141,33 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	@Test
 	void testDbSequence() {
 		// setval
+		long val = 2;
 		try {
-			long seqval = DbUtils.seqSetVal(dataSource, SEQ_NAME, 2);
+			long seqval = DbUtils.seqSetVal(dataSource, SEQ_NAME, val);
 			Assertions.assertEquals(1, seqval);
+		} catch (NotSupportedException e) {
+			e.printStackTrace();
+			val = DbUtils.seqNextVal(dataSource, SEQ_NAME);
+		}
+
+		// nextval
+		try {
+			long seqval = DbUtils.seqNextVal(dataSource, SEQ_NAME);
+			Assertions.assertEquals(val + 1, seqval);
+			seqval = DbUtils.seqNextVal(dataSource, SEQ_NAME);
+			Assertions.assertEquals(val + 2, seqval);
 		} catch (NotSupportedException e) {
 			e.printStackTrace();
 		}
 
 		// currval
 		try {
+			// 测第1遍
 			long seqval = DbUtils.seqCurrVal(dataSource, SEQ_NAME);
-			Assertions.assertEquals(2, seqval);
+			Assertions.assertEquals(val + 2, seqval);
+			// 测第2遍
 			seqval = DbUtils.seqCurrVal(dataSource, SEQ_NAME);
-			Assertions.assertEquals(2, seqval);
-		} catch (NotSupportedException e) {
-			e.printStackTrace();
-		}
-
-		// nextval
-		try {
-			long seqval = DbUtils.seqNextVal(dataSource, SEQ_NAME);
-			Assertions.assertEquals(3, seqval);
-			seqval = DbUtils.seqNextVal(dataSource, SEQ_NAME);
-			Assertions.assertEquals(4, seqval);
+			Assertions.assertEquals(val + 2, seqval);
 		} catch (NotSupportedException e) {
 			e.printStackTrace();
 		}
@@ -211,18 +219,37 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	private void testDbSequenceThreadSafe(int threadCount, int times) {
 		final Set<Long> valSet = Collections.synchronizedSet(new HashSet<>());
 
-		// currval
 
+		// nextval
+		valSet.clear();
 		try {
-			TestUtils.performanceTest(threadCount, times, () -> {
+			TestUtils.performanceTest(threadCount, times, t -> {
+				long nextVal = DbUtils.seqNextVal(dataSource, SEQ_NAME);
+				if (!t.isWarmUp()) {
+					valSet.add(nextVal);
+				}
+				return "func_nextval";
+			});
+			Assertions.assertEquals(threadCount * times, valSet.size(), "数量不一致，nextval方法线程安全无法保证，请检查问题");
+		} catch (NotSupportedException e) {
+			e.printStackTrace();
+		}
+
+
+		// currval
+		valSet.clear();
+		try {
+			TestUtils.performanceTest(threadCount, times, t -> {
 				long currVal = DbUtils.seqCurrVal(dataSource, SEQ_NAME);
-				valSet.add(currVal);
+				if (!t.isWarmUp()) {
+					valSet.add(currVal);
+				}
 				return "func_currval";
 			});
 			if (DbTypeConstants.ORACLE.equals(getDbType()) && threadCount > 1) {
-				// Oracle每个连接，都必须先调用一次nextval，才能成功调用currval。hikari默认连接池最大数量是10，我测试时故意设置成了9，用来测试。
+				// Oracle每个连接，都必须先调用一次nextval，才能成功调用currval
 				// 并发会导致最终拿到的值大于连接池的数量
-				Assertions.assertTrue(valSet.size() >= Math.min(threadCount, 9));
+				Assertions.assertTrue(valSet.size() >= Math.min(threadCount, maxDataSourcePooSize));
 			} else {
 				Assertions.assertEquals(1, valSet.size());
 			}
@@ -230,24 +257,18 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 			e.printStackTrace();
 		}
 
-		// nextval
-		valSet.clear();
-		try {
-			TestUtils.performanceTest(threadCount, times, () -> {
-				valSet.add(DbUtils.seqNextVal(dataSource, SEQ_NAME));
-				return "func_nextval";
-			});
-			Assertions.assertEquals((threadCount + 1) * times + 1, valSet.size(), "数量不一致，nextval方法线程安全无法保证，请检查问题");
-		} catch (NotSupportedException e) {
-			e.printStackTrace();
-		}
 
 		// setval
+		valSet.clear();
 		try {
-			TestUtils.performanceTest(threadCount, times, () -> {
-				valSet.add(DbUtils.seqSetVal(dataSource, SEQ_NAME, 2));
+			TestUtils.performanceTest(threadCount, times, t -> {
+				long previousVal = DbUtils.seqSetVal(dataSource, SEQ_NAME, 1);
+				if (!t.isWarmUp()) {
+					valSet.add(previousVal);
+				}
 				return "func_setval";
 			});
+			Assertions.assertEquals(1, valSet.size());
 		} catch (NotSupportedException e) {
 			e.printStackTrace();
 		}
