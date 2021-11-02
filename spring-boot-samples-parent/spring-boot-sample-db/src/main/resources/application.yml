@@ -4,3 +4,5 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 20
+  redis:
+    host: 10.1.50.112

@@ -47,6 +47,6 @@ class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUti
 
 	@Override
 	protected String getMinVersion() {
-		return "5.0.0";
+		return "14.0.0";
 	}
 }

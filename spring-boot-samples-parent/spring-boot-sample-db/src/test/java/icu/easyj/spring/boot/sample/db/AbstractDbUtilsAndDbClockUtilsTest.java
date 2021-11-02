@@ -31,7 +31,10 @@ import icu.easyj.db.util.PrimaryDataSourceHolder;
 import icu.easyj.test.util.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 
 /**
  * {@link DbUtils} 和 {@link DbClockUtils} 测试类
@@ -47,6 +50,15 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 
 	@Value("${spring.datasource.hikari.maximum-pool-size:10}")
 	private int maxDataSourcePooSize;
+
+	private RedisTemplate redisTemplate;
+	private RedisAtomicLong entityIdCounter;
+
+	@Autowired
+	private void setRedisTemplate(RedisTemplate redisTemplate) {
+		this.redisTemplate = redisTemplate;
+		this.entityIdCounter = new RedisAtomicLong("SEQ__" + SEQ_NAME, redisTemplate.getConnectionFactory());
+	}
 
 
 	protected AbstractDbUtilsAndDbClockUtilsTest(DataSource dataSource) {
@@ -180,28 +192,13 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	void testDbSequenceThreadSafe() {
 		int totalTimes = 1000, threadCount, times;
 
-		// 1个线程
-		threadCount = 1;
+		// 200个线程：预热，使连接池中的连接都连上先
+		threadCount = 200;
 		times = totalTimes / threadCount;
 		this.testDbSequenceThreadSafe(threadCount, times);
 
-		// 2个线程
-		threadCount = 2;
-		times = totalTimes / threadCount;
-		this.testDbSequenceThreadSafe(threadCount, times);
-
-		// 8个线程
-		threadCount = 8;
-		times = totalTimes / threadCount;
-		this.testDbSequenceThreadSafe(threadCount, times);
-
-		// 10个线程
-		threadCount = 10;
-		times = totalTimes / threadCount;
-		this.testDbSequenceThreadSafe(threadCount, times);
-
-		// 20个线程
-		threadCount = 20;
+		// 100个线程
+		threadCount = 100;
 		times = totalTimes / threadCount;
 		this.testDbSequenceThreadSafe(threadCount, times);
 
@@ -210,8 +207,28 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 		times = totalTimes / threadCount;
 		this.testDbSequenceThreadSafe(threadCount, times);
 
-		// 100个线程
-		threadCount = 100;
+		// 20个线程
+		threadCount = 20;
+		times = totalTimes / threadCount;
+		this.testDbSequenceThreadSafe(threadCount, times);
+
+		// 10个线程
+		threadCount = 10;
+		times = totalTimes / threadCount;
+		this.testDbSequenceThreadSafe(threadCount, times);
+
+		// 5个线程
+		threadCount = 5;
+		times = totalTimes / threadCount;
+		this.testDbSequenceThreadSafe(threadCount, times);
+
+		// 2个线程
+		threadCount = 2;
+		times = totalTimes / threadCount;
+		this.testDbSequenceThreadSafe(threadCount, times);
+
+		// 1个线程
+		threadCount = 1;
 		times = totalTimes / threadCount;
 		this.testDbSequenceThreadSafe(threadCount, times);
 	}
@@ -219,6 +236,21 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	private void testDbSequenceThreadSafe(int threadCount, int times) {
 		final Set<Long> valSet = Collections.synchronizedSet(new HashSet<>());
 
+
+		// nextval by redis：基于redis实现的自增序号
+		valSet.clear();
+		try {
+			TestUtils.performanceTest(threadCount, times, t -> {
+				long nextVal = this.redisNextVal();
+				if (!t.isWarmUp()) {
+					valSet.add(nextVal);
+				}
+				return "redis_nextval";
+			});
+			Assertions.assertEquals(threadCount * times, valSet.size(), "数量不一致，nextval方法线程安全无法保证，请检查问题");
+		} catch (NotSupportedException e) {
+			e.printStackTrace();
+		}
 
 		// nextval
 		valSet.clear();
@@ -272,5 +304,13 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 		} catch (NotSupportedException e) {
 			e.printStackTrace();
 		}
+
+		System.out.println();
+		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.println();
+	}
+
+	private long redisNextVal() {
+		return entityIdCounter.incrementAndGet();
 	}
 }
