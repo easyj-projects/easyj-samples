@@ -33,7 +33,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 
 /**
@@ -51,13 +51,11 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	@Value("${spring.datasource.hikari.maximum-pool-size:10}")
 	private int maxDataSourcePooSize;
 
-	private RedisTemplate redisTemplate;
-	private RedisAtomicLong entityIdCounter;
+	private RedisAtomicLong redisAtomicLongCounter;
 
 	@Autowired
-	private void setRedisTemplate(RedisTemplate redisTemplate) {
-		this.redisTemplate = redisTemplate;
-		this.entityIdCounter = new RedisAtomicLong("SEQ__" + SEQ_NAME, redisTemplate.getConnectionFactory());
+	private void setRedisTemplate(RedisConnectionFactory factory) {
+		this.redisAtomicLongCounter = new RedisAtomicLong(SEQ_NAME, factory);
 	}
 
 
@@ -311,6 +309,6 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	}
 
 	private long redisNextVal() {
-		return entityIdCounter.incrementAndGet();
+		return redisAtomicLongCounter.incrementAndGet();
 	}
 }
