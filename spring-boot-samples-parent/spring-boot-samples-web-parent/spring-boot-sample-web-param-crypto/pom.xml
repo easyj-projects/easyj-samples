@@ -17,7 +17,7 @@
 		<!-- web-param-crypto -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
-			<artifactId>easyj-spring-boot-starter-web-param-crypto</artifactId>
+			<artifactId>easyj-spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<!-- Fastjson -->

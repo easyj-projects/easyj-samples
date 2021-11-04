@@ -17,7 +17,7 @@
 		<!-- web-cache304 -->
 		<dependency>
 			<groupId>icu.easyj.boot</groupId>
-			<artifactId>easyj-spring-boot-starter-web-cache304</artifactId>
+			<artifactId>easyj-spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<!-- EasyJ Spring Boot Samples Common -->

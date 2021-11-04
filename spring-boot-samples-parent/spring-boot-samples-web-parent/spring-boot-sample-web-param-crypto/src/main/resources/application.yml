@@ -10,6 +10,7 @@ easyj:
   web:
     param-crypto:
       filter:
+        enabled: true #默认：false（@since 0.2.2-SNAPSHOT）
         query-string-name: data
       handler:
         algorithm: AES/CBC/PKCS7Padding

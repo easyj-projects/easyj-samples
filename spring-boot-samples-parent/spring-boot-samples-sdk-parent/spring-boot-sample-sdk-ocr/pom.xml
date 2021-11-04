@@ -16,7 +16,7 @@
 	<dependencies>
 		<!-- OCR -->
 		<dependency>
-			<groupId>icu.easyj.boot</groupId>
+			<groupId>icu.easyj.boot.sdk</groupId>
 			<artifactId>easyj-spring-boot-starter-sdk-ocr-tencent</artifactId>
 		</dependency>
 
