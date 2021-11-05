@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestEncryptBodyController {
 
 	@PostMapping("/test/body")
-	public TestResult testQueryStringParamCrypto(@RequestBody TestBodyParam param) {
+	public TestResult testBodyParamCrypto(@RequestBody TestBodyParam param) {
 		return new TestResult(param.getAaa() + param.getBbb());
 	}
 }

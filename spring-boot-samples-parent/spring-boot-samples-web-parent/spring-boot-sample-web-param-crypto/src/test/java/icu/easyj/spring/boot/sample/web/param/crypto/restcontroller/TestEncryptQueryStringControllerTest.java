@@ -46,6 +46,8 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * case: 入参正常加密的情况
+	 *
+	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
 	void testEncryptQueryStringSuccess() throws Exception {
@@ -71,6 +73,8 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * case: 入参未加密的情况
+	 *
+	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
 	void testEncryptQueryStringFail1() {

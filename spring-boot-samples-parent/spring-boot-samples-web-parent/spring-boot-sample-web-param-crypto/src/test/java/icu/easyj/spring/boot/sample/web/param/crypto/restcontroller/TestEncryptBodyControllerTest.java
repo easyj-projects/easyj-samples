@@ -47,6 +47,8 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 正常case: 测试入参正常加密的情况
+	 *
+	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
 	void testEncryptBodySuccess() throws Exception {
@@ -68,6 +70,8 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 异常case: 测试入参未加密的情况
+	 *
+	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
 	void testEncryptBodyFail() {
