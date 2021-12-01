@@ -8,7 +8,6 @@ import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyPageResult;
 import icu.easyj.spring.boot.sample.poi.excel.mockquery.QueryParam;
 import icu.easyj.web.poi.excel.ExcelExport;
 import icu.easyj.web.util.HttpUtils;
-import io.swagger.annotations.ApiImplicitParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AfterTurnExcelExportController {
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（list）", dataType = MyEntity.class)
-	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
+	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/list")
 	public List<MyEntity> testExcelExportByListResult(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
@@ -34,7 +33,7 @@ public class AfterTurnExcelExportController {
 	}
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（paging）", dataType = MyEntity.class/*, listFieldName = "list"*/) // listFieldName已全局配置
-	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
+	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/paging")
 	public MyPageResult<MyEntity> testExcelExportByPageResult(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
@@ -47,7 +46,7 @@ public class AfterTurnExcelExportController {
 	}
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（one）", dataType = MyEntity.class)
-	@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
+	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
 	@GetMapping("/test/excel-export/one")
 	public MyEntity testExcelExportByOne(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）

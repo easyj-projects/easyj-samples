@@ -98,14 +98,14 @@
 		</dependency>
 
 		<!-- 引用依赖：Swagger（注：样例项目，使用API窗体化工具，方便测试） -->
-		<dependency>
+		<!--<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger-ui</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<!-- 引用依赖：Tests -->
 		<dependency>
