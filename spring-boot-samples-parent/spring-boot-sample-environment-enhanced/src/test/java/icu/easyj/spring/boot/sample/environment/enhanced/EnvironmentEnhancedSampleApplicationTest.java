@@ -57,7 +57,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 		// 环境不为空
 		assertNotNull(environment);
 		// 校验环境中的配置源数量
-		assertEquals(28, environment.getPropertySources().size());
+		assertEquals(30, environment.getPropertySources().size());
 	}
 
 	/**
