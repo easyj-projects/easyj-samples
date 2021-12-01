@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>icu.easyj</groupId>
 		<artifactId>easyj-build</artifactId>
-		<version>1.0.18</version>
+		<version>1.0.20</version>
 		<relativePath/>
 	</parent>
 
@@ -225,4 +225,109 @@
 			</snapshots>
 		</repository>
 	</repositories>
+
+	<profiles>
+		<profile>
+			<id>cicd2</id>
+
+			<properties>
+				<spring-framework.version>4.3.30.RELEASE</spring-framework.version>
+				<spring.version>${spring-framework.version}</spring.version>
+			</properties>
+
+			<dependencyManagement>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-aop</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-beans</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-context-support</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-core</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-expression</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-jdbc</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-oxm</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-test</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-tx</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-web</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring-webmvc</artifactId>
+						<version>${spring.version}</version>
+					</dependency>
+				</dependencies>
+			</dependencyManagement>
+			<build>
+				<plugins>
+					<!-- 使用插件：Checkstyle -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-checkstyle-plugin</artifactId>
+						<executions>
+							<execution>
+								<configuration>
+									<failsOnError>true</failsOnError>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<!-- 使用插件：Javadoc -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<configuration>
+							<failOnError>true</failOnError>
+						</configuration>
+					</plugin>
+					<!-- 使用插件：JaCoCo -->
+					<plugin>
+						<groupId>org.jacoco</groupId>
+						<artifactId>jacoco-maven-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
