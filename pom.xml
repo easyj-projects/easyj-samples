@@ -49,8 +49,6 @@
 	</developers>
 
 	<modules>
-		<module>dependencies</module>
-
 		<module>spring-boot-samples-parent</module>
 	</modules>
 
@@ -75,16 +73,67 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<!-- EasyJ -->
+		<easyj.version>${project.version}</easyj.version>
+		<easyj-spring-boot.version>${easyj.version}</easyj-spring-boot.version>
+
+		<!-- 为了缩短build.yml的 matrix.properties 的变量 -->
+		<sb>2.4.0</sb>
+		<r>data-redis</r>
+		<!-- Spring相关依赖 -->
+		<spring-boot.version>${sb}</spring-boot.version>
+		<spring-redis.artifactId>${r}</spring-redis.artifactId>
+
+		<!-- Swagger -->
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- 依赖定义：Spring Boot Dependencies -->
 			<dependency>
-				<groupId>icu.easyj.sample</groupId>
-				<artifactId>easyj-samples-dependencies</artifactId>
-				<version>${project.version}</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<!-- 依赖定义：EasyJ Spring Boot Dependencies -->
+			<dependency>
+				<groupId>icu.easyj.boot</groupId>
+				<artifactId>easyj-spring-boot-dependencies</artifactId>
+				<version>${easyj-spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-dependencies</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- 依赖定义：Easyj Spring Boot BOM -->
+			<dependency>
+				<groupId>icu.easyj.boot</groupId>
+				<artifactId>easyj-spring-boot-bom</artifactId>
+				<version>${easyj-spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- 依赖定义：Swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

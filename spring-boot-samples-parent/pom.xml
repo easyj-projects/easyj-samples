@@ -15,12 +15,6 @@
 
 	<name>${project.groupId} :: ${project.artifactId}</name>
 
-	<properties>
-		<spring-boot.version>2.6.1</spring-boot.version>
-		<spring-framework.version>5.3.13</spring-framework.version>
-		<spring.version>${spring-framework.version}</spring.version>
-	</properties>
-
 	<modules>
 		<module>spring-boot-samples-common</module>
 
