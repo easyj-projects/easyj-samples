@@ -17,14 +17,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <p>
  * // 功能2：自动加载EasyJ定义的全局配置信息。核心类，如下：
  * @see icu.easyj.config.GlobalConfigs
- * @see icu.easyj.spring.boot.autoconfigure.global.configs.GlobalProperties
- * @see icu.easyj.spring.boot.autoconfigure.global.configs.EasyjGlobalConfigsAutoConfiguration
+ * @see icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties
+ * @see icu.easyj.spring.boot.autoconfigure.configs.EasyjConfigsAutoConfiguration
  * <p>
  * // 功能3：函数式配置，目前提供了三种函数。核心类，如下：
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource 函数式配置源
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySourceEnvironmentPostProcessor 加载函数式配置源的环境处理器
  * @see icu.easyj.spring.boot.env.enhanced.util.CryptoPropertyUtils // ${easyj.crypto.xxx} 函数的工具类
- * @see icu.easyj.spring.boot.env.enhanced.util.LocalIpPropertyUtils // ${easyj.localIp.xxx} 函数的工具类
+ * @see icu.easyj.spring.boot.env.enhanced.util.NetPropertyUtils // ${easyj.net.xxx} 函数的工具类
  * @see icu.easyj.spring.boot.env.enhanced.util.RandomPropertyUtils // ${easyj.random.xxx} 函数的工具类
  * <p>
  * // 功能4：全局加密算法（含对称和非对称加密）

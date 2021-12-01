@@ -15,7 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @see icu.easyj.web.filter.IFilterProperties
  * @see icu.easyj.web.param.crypto.IParamCryptoHandlerProperties
  * @see icu.easyj.web.param.crypto.IParamCryptoHandler
- * @see icu.easyj.spring.boot.autoconfigure.web.param.crypto.EasyjParamCryptoAutoConfiguration
+ * @see icu.easyj.spring.boot.autoconfigure.web.param.crypto.EasyjWebParamCryptoAutoConfiguration
  */
 @SpringBootApplication
 public class WebParamCryptoSampleApplication {

@@ -17,8 +17,8 @@ test:
   #easyj.crypto.decrypt
   crypto-decrypt: ${easyj.crypto.decrypt('myA0TgsSy48UGmHNBei3YdBVG3+XwzDh1D7xSALHWNE/Zwf2XPWQi1/j1JytgBBiRDZRsf5oPNUrTZqyaxE2GLiD4vSD2oQD1EE/Odo1DY2ITLqavftsHt5qSjbmpBj/D2HwRRo+v+CXEBoThBJ2OM/ZBG8mClSYDowgEODN7ZA=')}
 
-  #easyj.localIp.pattern
-  local-ip-pattern: ${easyj.localIp.pattern('10.10.10.*', '192.168.10.*', '192.168.1.*')}
+  #easyj.net.matchIp
+  local-ip-pattern: ${easyj.net.matchIp('10.10.10.*', '192.168.10.*', '192.168.1.*')}
 
   #easyj.random.xxxx
   random: ${easyj.random} #同${easyj.random.uuid32}

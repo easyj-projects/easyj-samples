@@ -20,7 +20,7 @@ public class TestEasyjFunctionPropertySourceProperties {
 	private String cryptoDecrypt;
 
 	/**
-	 * @see icu.easyj.spring.boot.env.enhanced.util.LocalIpPropertyUtils
+	 * @see icu.easyj.spring.boot.env.enhanced.util.NetPropertyUtils
 	 */
 	private String localIpPattern;
 
