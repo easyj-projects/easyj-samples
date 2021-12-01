@@ -37,6 +37,8 @@
 
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>2.6.1</spring-boot.version>
+		<spring-framework.version>5.3.13</spring-framework.version>
+		<spring.version>${spring-framework.version}</spring.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
