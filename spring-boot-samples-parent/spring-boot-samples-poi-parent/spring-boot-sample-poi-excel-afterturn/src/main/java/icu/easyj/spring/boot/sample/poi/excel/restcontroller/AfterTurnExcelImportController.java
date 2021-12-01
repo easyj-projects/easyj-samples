@@ -7,6 +7,8 @@ import cn.afterturn.easypoi.excel.entity.ImportParams;
 import icu.easyj.core.util.StringUtils;
 import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 public class AfterTurnExcelImportController {
 
-	@PostMapping("/test/excel-import")
+	@RequestMapping(value = "/test/excel-import", method = RequestMethod.POST)
 	public List<MyEntity> testExcelImport(@RequestPart("file") MultipartFile file) throws Exception {
 		// excel文件转为列表数据
 		List<MyEntity> list = ExcelImportUtil.importExcel(file.getInputStream(), MyEntity.class, new ImportParams());

@@ -9,6 +9,9 @@ import icu.easyj.spring.boot.sample.poi.excel.mockquery.QueryParam;
 import icu.easyj.web.poi.excel.ExcelExport;
 import icu.easyj.web.util.HttpUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.Mapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,7 +24,7 @@ public class AfterTurnExcelExportController {
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（list）", dataType = MyEntity.class)
 	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
-	@GetMapping("/test/excel-export/list")
+	@RequestMapping(value = "/test/excel-export/list", method = RequestMethod.GET)
 	public List<MyEntity> testExcelExportByListResult(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {
@@ -34,7 +37,7 @@ public class AfterTurnExcelExportController {
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（paging）", dataType = MyEntity.class/*, listFieldName = "list"*/) // listFieldName已全局配置
 	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
-	@GetMapping("/test/excel-export/paging")
+	@RequestMapping(value = "/test/excel-export/paging", method = RequestMethod.GET)
 	public MyPageResult<MyEntity> testExcelExportByPageResult(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {
@@ -47,7 +50,7 @@ public class AfterTurnExcelExportController {
 
 	@ExcelExport(fileNamePre = "AfterTurn的Excel功能导出的文件（one）", dataType = MyEntity.class)
 	//@ApiImplicitParam(name = "doExport", dataType = "Boolean", dataTypeClass = Boolean.class, defaultValue = "false", paramType = "query")
-	@GetMapping("/test/excel-export/one")
+	@RequestMapping(value = "/test/excel-export/one", method = RequestMethod.GET)
 	public MyEntity testExcelExportByOne(QueryParam param) {
 		//region 重要：当此次请求为excel导出请求时，将分页参数清除（这段代码是此功能唯一的代码入侵）
 		if (HttpUtils.isDoExportRequest()) {

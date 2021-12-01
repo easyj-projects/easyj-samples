@@ -9,7 +9,10 @@ import icu.easyj.sdk.ocr.IOcrTemplate;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvanced;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvancedGroup;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrResponse;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +37,7 @@ public class IdCardOcrTemplateController {
 	 * @return response 身份证识别结果
 	 * @throws IOException IO异常
 	 */
-	@PostMapping("/test/ocr/idcardocr/one-card-side")
+	@RequestMapping(value = "/test/ocr/idcardocr/one-card-side", method = RequestMethod.POST)
 	public IdCardOcrResponse oneCardSideIdCardOcr(@RequestPart("image") MultipartFile image,
 												  @RequestParam(required = false) CardSide cardSide,
 												  @RequestParam(required = false) IdCardOcrAdvancedGroup advancedGroup) throws IOException {
@@ -51,7 +54,7 @@ public class IdCardOcrTemplateController {
 	 * @return response 身份证识别结果
 	 * @throws IOException IO异常
 	 */
-	@PostMapping("/test/ocr/idcardocr/double-card-side")
+	@RequestMapping(value = "/test/ocr/idcardocr/double-card-side", method = RequestMethod.POST)
 	public IdCardOcrResponse doubleIdCardOcr(@RequestPart("image1") MultipartFile image1,
 											 @RequestPart("image2") MultipartFile image2,
 											 @RequestParam(required = false) IdCardOcrAdvancedGroup advancedGroup) throws IOException {
