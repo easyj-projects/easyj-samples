@@ -79,7 +79,7 @@
 		<easyj-spring-boot.version>${easyj.version}</easyj-spring-boot.version>
 
 		<!-- 为了缩短build.yml的 matrix.properties 的变量 -->
-		<sb>2.4.0</sb>
+		<sb>2.6.1</sb>
 		<r>data-redis</r>
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>${sb}</spring-boot.version>
