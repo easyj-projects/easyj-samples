@@ -8,17 +8,20 @@ import icu.easyj.poi.excel.converter.impls.AfterTurnExcelConverter;
 import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyEntity;
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelExportController;
 import icu.easyj.spring.boot.sample.poi.excel.restcontroller.AfterTurnExcelImportController;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link AfterTurnPoiExcelSampleApplication} 测试类
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class AfterTurnPoiExcelSampleApplicationTest {
+public class AfterTurnPoiExcelSampleApplicationTest {
 
 	@Resource
 	AfterTurnExcelExportController afterTurnExcelExportController;
@@ -29,7 +32,7 @@ class AfterTurnPoiExcelSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(afterTurnExcelExportController);
 		Assertions.assertNotNull(afterTurnExcelImportController);
 

@@ -3,21 +3,24 @@ package icu.easyj.spring.boot.sample.poi.excel.restcontroller;
 import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyEntity;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
 import icu.easyj.web.constant.HttpHeaderConstants;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link AfterTurnExcelExportController} 测试用例
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class AfterTurnExcelExportControllerTest extends BaseSpringBootMockMvcTest {
+public class AfterTurnExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
-	void testExcelExport_NotDoExport() throws Exception {
+	public void testExcelExport_NotDoExport() throws Exception {
 		super.mockGet("/test/excel-export/list")
 				.queryParam("nameLike", "bbb")
 				.queryParam("pageSize", "1")
@@ -30,7 +33,7 @@ class AfterTurnExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 	}
 
 	@Test
-	void testExcelExport_DoExport() throws Exception {
+	public void testExcelExport_DoExport() throws Exception {
 		super.mockGet("/test/excel-export/list")
 				.queryParam("doExport", "true")
 				.queryParam("nameLike", "bbb")

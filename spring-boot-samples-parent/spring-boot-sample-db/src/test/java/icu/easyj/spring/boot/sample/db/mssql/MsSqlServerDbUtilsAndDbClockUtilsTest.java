@@ -15,30 +15,26 @@
  */
 package icu.easyj.spring.boot.sample.db.mssql;
 
-import javax.sql.DataSource;
-
 import icu.easyj.db.constant.DbTypeConstants;
 import icu.easyj.db.util.DbClockUtils;
 import icu.easyj.db.util.DbUtils;
 import icu.easyj.spring.boot.sample.db.AbstractDbUtilsAndDbClockUtilsTest;
-import org.junit.jupiter.api.Disabled;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.Ignore;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * SQL Server的 {@link DbUtils} 和 {@link DbClockUtils} 测试类
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("mssqlserver")
-@Disabled("需要连接对应类型的数据库")
-class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
-
-	public MsSqlServerDbUtilsAndDbClockUtilsTest(@Autowired DataSource dataSource) {
-		super(dataSource);
-	}
+@Ignore("需要连接对应类型的数据库")
+public class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
 
 	@Override
 	protected String getDbType() {

@@ -5,8 +5,10 @@ import javax.annotation.Resource;
 
 import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.ALGORITHM;
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.CHARSET;
@@ -22,8 +24,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class WebParamCryptoSampleApplicationTest {
+public class WebParamCryptoSampleApplicationTest {
 
 	@Resource
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
@@ -35,7 +38,7 @@ class WebParamCryptoSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		assertNotNull(cryptoHandlerProperties);
 		assertNotNull(cryptoHandler);
 	}
@@ -44,7 +47,7 @@ class WebParamCryptoSampleApplicationTest {
 	 * 测试读取的配置信息是否正确
 	 */
 	@Test
-	void testParamCryptoHandlerProperties() {
+	public void testParamCryptoHandlerProperties() {
 		assertEquals(ALGORITHM, cryptoHandlerProperties.getAlgorithm());
 		assertEquals(KEY, cryptoHandlerProperties.getKey());
 		assertEquals(IV, cryptoHandlerProperties.getIv());
@@ -55,7 +58,7 @@ class WebParamCryptoSampleApplicationTest {
 	}
 
 	@Test
-	void testParamCryptoHandler() {
+	public void testParamCryptoHandler() {
 		String data = "112233";
 
 		String encryptedData1 = cryptoHandler.encrypt(data);

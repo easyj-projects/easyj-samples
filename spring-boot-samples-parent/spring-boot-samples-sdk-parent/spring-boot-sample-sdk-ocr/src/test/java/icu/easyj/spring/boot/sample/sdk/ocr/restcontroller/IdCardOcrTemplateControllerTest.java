@@ -7,11 +7,13 @@ import icu.easyj.sdk.ocr.CardSide;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvancedGroup;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrResponse;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
+import org.junit.Ignore;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -19,9 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-@Disabled("腾讯云测试账号免费额度有限，请手动执行该测试用例")
-class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
+@Ignore("腾讯云测试账号免费额度有限，请手动执行该测试用例")
+public class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：正面身份证识别
@@ -30,7 +33,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testFrontCardSideIdCardOcr() throws Exception {
+	public void testFrontCardSideIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/one-card-side";
 
 		super.mockPost(path)
@@ -65,7 +68,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testBackCardSideIdCardOcr() throws Exception {
+	public void testBackCardSideIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/one-card-side";
 
 		super.mockPost(path)
@@ -99,7 +102,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#doubleIdCardOcr(MultipartFile, MultipartFile, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testDoubleIdCardOcr() throws Exception {
+	public void testDoubleIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/double-card-side";
 
 		super.mockPost(path)

@@ -15,10 +15,12 @@ import icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -29,8 +31,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class EnvironmentEnhancedSampleApplicationTest {
+public class EnvironmentEnhancedSampleApplicationTest {
 
 	@Resource
 	DataSourceProperties dataSourceProperties;
@@ -50,7 +53,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		// 配置的bean不为空
 		assertNotNull(dataSourceProperties);
 		assertNotNull(rabbitMQProperties);
@@ -73,7 +76,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 * 功能1：测试约定配置文件的功能
 	 */
 	@Test
-	void testEasyjAppointedEnvironmentPostProcessor() {
+	public void testEasyjAppointedEnvironmentPostProcessor() {
 		// 校验约定的配置文件中的配置内容是否正常读取到
 		assertEquals("DataSourceProperties(url=\"jdbc:mysql://192.168.1.1:3306\", username=\"root\", password=\"testpassword1\")",
 				StringUtils.toString(dataSourceProperties));
@@ -85,7 +88,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 * 功能2：测试EasyJ定义的全局配置
 	 */
 	@Test
-	void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
+	public void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
 		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
 				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
@@ -101,7 +104,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 * 功能3：测试函数式配置
 	 */
 	@Test
-	void testEasyjFunctionPropertySource() {
+	public void testEasyjFunctionPropertySource() {
 		String cryptoDecrypt = testProperties.getCryptoDecrypt();
 
 		String localIpPattern = testProperties.getLocalIpPattern();
@@ -138,7 +141,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	 * 功能4：全局加密算法（含对称和非对称加密）
 	 */
 	@Test
-	void testGlobalCrypto() {
+	public void testGlobalCrypto() {
 		//region 全局非加密算法
 
 		IAsymmetricCrypto asymmetricCrypto = GlobalCrypto.getAsymmetricCrypto();

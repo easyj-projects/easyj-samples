@@ -5,17 +5,20 @@ import javax.annotation.Resource;
 import icu.easyj.sdk.ocr.IOcrTemplate;
 import icu.easyj.sdk.tencent.cloud.ocr.idcardocr.TencentCloudIdCardOcrConfig;
 import icu.easyj.spring.boot.autoconfigure.sdk.tencent.cloud.TencentCloudCommonProperties;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link OcrTemplateSampleApplication} 测试类
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class OcrTemplateSampleApplicationTest {
+public class OcrTemplateSampleApplicationTest {
 
 	@Resource
 	IOcrTemplate template;
@@ -30,7 +33,7 @@ class OcrTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(template);
 
 		// 校验是否复制了通用配置

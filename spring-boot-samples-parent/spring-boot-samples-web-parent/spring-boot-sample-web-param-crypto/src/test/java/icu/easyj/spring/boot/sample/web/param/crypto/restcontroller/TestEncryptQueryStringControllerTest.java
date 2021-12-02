@@ -10,11 +10,13 @@ import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
 import icu.easyj.web.param.crypto.ParamCryptoFilter;
 import icu.easyj.web.param.crypto.exception.ParamDecryptException;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
@@ -24,8 +26,9 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
+public class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -35,7 +38,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	IParamCryptoHandler cryptoHandler;
 
 	@Override
-	@BeforeEach
+	@Before
 	public void initMockMvcBeforeEachTestMethod() {
 		// 创建需执行的过滤器
 		Filter filter = new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler);
@@ -50,7 +53,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
-	void testEncryptQueryStringSuccess() throws Exception {
+	public void testEncryptQueryStringSuccess() throws Exception {
 		String path = "/test/querystring";
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 		String encryptedQueryString = SYMMETRIC_CRYPTO.encryptBase64(queryString);
@@ -77,7 +80,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
-	void testEncryptQueryStringFail1() {
+	public void testEncryptQueryStringFail1() {
 		String path = "/test/querystring";
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 

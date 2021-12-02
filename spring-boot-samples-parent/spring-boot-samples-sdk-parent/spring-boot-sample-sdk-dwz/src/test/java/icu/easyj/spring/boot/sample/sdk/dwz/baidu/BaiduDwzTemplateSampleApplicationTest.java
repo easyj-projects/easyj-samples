@@ -6,19 +6,22 @@ import icu.easyj.sdk.baidu.cloud.dwz.BaiduDwzConfig;
 import icu.easyj.sdk.baidu.cloud.dwz.BaiduDwzTemplateImpl;
 import icu.easyj.sdk.dwz.IDwzTemplate;
 import icu.easyj.spring.boot.sample.sdk.dwz.DwzTemplateSampleApplication;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link DwzTemplateSampleApplication} 测试类
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("baidu")
-class BaiduDwzTemplateSampleApplicationTest {
+public class BaiduDwzTemplateSampleApplicationTest {
 
 	@Resource
 	IDwzTemplate template;
@@ -30,7 +33,7 @@ class BaiduDwzTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(template);
 		Assertions.assertNotNull(config);
 		Assertions.assertEquals(BaiduDwzTemplateImpl.class, template.getClass());

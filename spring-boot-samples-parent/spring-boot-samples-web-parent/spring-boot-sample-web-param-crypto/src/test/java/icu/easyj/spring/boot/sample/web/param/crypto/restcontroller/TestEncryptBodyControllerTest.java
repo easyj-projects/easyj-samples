@@ -11,11 +11,13 @@ import icu.easyj.web.param.crypto.IParamCryptoHandler;
 import icu.easyj.web.param.crypto.IParamCryptoHandlerProperties;
 import icu.easyj.web.param.crypto.ParamCryptoFilter;
 import icu.easyj.web.param.crypto.exception.ParamDecryptException;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.util.NestedServletException;
 
 import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMETRIC_CRYPTO;
@@ -25,8 +27,9 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
+public class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -36,7 +39,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	IParamCryptoHandler cryptoHandler;
 
 	@Override
-	@BeforeEach
+	@Before
 	public void initMockMvcBeforeEachTestMethod() {
 		// 创建需执行的过滤器
 		Filter filter = new ParamCryptoFilter(cryptoFilterProperties, cryptoHandlerProperties, cryptoHandler);
@@ -51,7 +54,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
-	void testEncryptBodySuccess() throws Exception {
+	public void testEncryptBodySuccess() throws Exception {
 		String path = "/test/body";
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
 		String encryptedBody = SYMMETRIC_CRYPTO.encryptBase64(JSON.toJSONString(bodyParam));
@@ -74,7 +77,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
-	void testEncryptBodyFail() {
+	public void testEncryptBodyFail() {
 		String path = "/test/body";
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
 

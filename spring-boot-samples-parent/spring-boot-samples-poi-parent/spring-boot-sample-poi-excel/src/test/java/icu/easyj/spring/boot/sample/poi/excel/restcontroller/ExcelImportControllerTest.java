@@ -1,20 +1,23 @@
 package icu.easyj.spring.boot.sample.poi.excel.restcontroller;
 
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * {@link ExcelImportController} 测试用例
  *
  * @author wangliang181230
  */
+@RunWith(SpringRunner.class)
 @SpringBootTest
-class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
+public class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
-	void testExcelImport() throws Exception {
+	public void testExcelImport() throws Exception {
 		super.mockPostMultipart("/test/excel-import")
 				.file("file", "testExcelImport.xlsx")
 				.send()
