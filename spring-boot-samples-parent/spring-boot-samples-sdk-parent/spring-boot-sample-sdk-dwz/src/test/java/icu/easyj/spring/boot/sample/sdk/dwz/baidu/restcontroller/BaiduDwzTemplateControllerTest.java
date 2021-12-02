@@ -42,7 +42,7 @@ class BaiduDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
 					Assertions.assertTrue(resp.getShortUrl().startsWith("https://dwz.cn/"));
-					Assertions.assertEquals(0L, resp.getExpireIn());
+					Assertions.assertEquals(0L, resp.getExpireIn().longValue());
 				});
 	}
 }

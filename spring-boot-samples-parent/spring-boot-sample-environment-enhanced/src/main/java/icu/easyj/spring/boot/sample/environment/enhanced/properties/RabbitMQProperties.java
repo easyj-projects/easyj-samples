@@ -4,13 +4,14 @@ import icu.easyj.core.util.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * 测试用的配置类
  *
  * @author wangliang181230
  */
-@Configuration(proxyBeanMethods = false)
+@Component
 @ConfigurationProperties("rabbitmq")
 public class RabbitMQProperties implements InitializingBean {
 
@@ -19,7 +20,7 @@ public class RabbitMQProperties implements InitializingBean {
 	private String password = "guest";
 
 	@Override
-	public void afterPropertiesSet() throws Exception {
+	public void afterPropertiesSet() {
 		System.out.println("从约定的配置文件中读取到：\r\n\t" + StringUtils.toString(this));
 	}
 

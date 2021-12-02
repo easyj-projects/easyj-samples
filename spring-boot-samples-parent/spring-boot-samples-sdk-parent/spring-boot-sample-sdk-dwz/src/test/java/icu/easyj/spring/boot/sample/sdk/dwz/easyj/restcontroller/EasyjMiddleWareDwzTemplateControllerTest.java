@@ -42,7 +42,7 @@ class EasyjMiddleWareDwzTemplateControllerTest extends BaseSpringBootMockMvcTest
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
 					Assertions.assertTrue(resp.getShortUrl().startsWith("http://localhost:3001/"));
-					Assertions.assertEquals(0L, resp.getExpireIn());
+					Assertions.assertEquals(0L, resp.getExpireIn().longValue());
 				});
 	}
 }

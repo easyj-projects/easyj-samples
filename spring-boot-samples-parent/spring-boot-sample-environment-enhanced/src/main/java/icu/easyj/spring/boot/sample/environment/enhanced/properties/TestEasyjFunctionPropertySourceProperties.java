@@ -2,6 +2,7 @@ package icu.easyj.spring.boot.sample.environment.enhanced.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * 测试各种”函数式配置“的配置类
@@ -10,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource 函数式配置源
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySourceEnvironmentPostProcessor 加载函数式配置源的环境处理器
  */
-@Configuration(proxyBeanMethods = false)
+@Component
 @ConfigurationProperties("test")
 public class TestEasyjFunctionPropertySourceProperties {
 

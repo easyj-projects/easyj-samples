@@ -18,6 +18,7 @@ import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFun
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.PropertySource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -44,6 +45,7 @@ class EnvironmentEnhancedSampleApplicationTest {
 	@Resource
 	ConfigurableEnvironment environment;
 
+
 	/**
 	 * 测试是否能够启动
 	 */
@@ -57,7 +59,14 @@ class EnvironmentEnhancedSampleApplicationTest {
 		// 环境不为空
 		assertNotNull(environment);
 		// 校验环境中的配置源数量
-		assertEquals(30, environment.getPropertySources().size());
+
+		int size = 0;
+		for (PropertySource propertySource : environment.getPropertySources()) {
+			if (propertySource.getName().contains("[EasyJ]")) {
+				size++;
+			}
+		}
+		assertEquals(19, size);
 	}
 
 	/**

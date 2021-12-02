@@ -40,7 +40,7 @@ class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 				.characterEncoding().is(StandardCharsets.UTF_8)
 				.content(DwzResponse.class).is(resp -> {
 					Assertions.assertTrue(resp.getShortUrl().startsWith("https://s-3.cn/"));
-					Assertions.assertEquals(0L, resp.getExpireIn());
+					Assertions.assertEquals(0L, resp.getExpireIn().longValue());
 				});
 	}
 }
