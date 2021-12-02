@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("easyj")
-class EasyjMiddleWareDwzTemplateSampleApplicationTest {
+public class EasyjMiddleWareDwzTemplateSampleApplicationTest {
 
 	@Resource
 	IDwzTemplate template;
@@ -30,7 +30,7 @@ class EasyjMiddleWareDwzTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertEquals(HttpEasyjMiddleWareDwzTemplateImpl.class, template.getClass());
 
 		Assertions.assertEquals("http://localhost:3001/api/v1/create-short-url", httpEasyjMiddleWareDwzTemplateConfig.getServiceUrl());

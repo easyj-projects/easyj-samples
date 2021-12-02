@@ -68,7 +68,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 * 测试获取数据库类型
 	 */
 	@Test
-	void testGetDbType() {
+	public void testGetDbType() {
 		Assertions.assertEquals(dataSource, PrimaryDataSourceHolder.get());
 
 		String dbType = DbUtils.getDbType(dataSource);
@@ -80,7 +80,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 * 测试获取数据库版本
 	 */
 	@Test
-	void testGetDbVersion() {
+	public void testGetDbVersion() {
 		String version = DbUtils.getDbVersion(dataSource);
 		System.out.println(version);
 		System.out.println(VersionUtils.toLong(version));
@@ -91,7 +91,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 * 测试获取数据库时间
 	 */
 	@Test
-	void testDbTime() {
+	public void testDbTime() {
 		// 预热一下
 		DbClockUtils.currentTimeMillis(dataSource);
 
@@ -128,7 +128,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	}
 
 	@Test
-	void testClock() {
+	public void testClock() {
 		long time = DbClockUtils.currentTimeMillis(dataSource);
 		System.out.println(time);
 		System.out.println(DateUtils.toMilliseconds(new Date(time)));
@@ -144,7 +144,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 * 测试数据库序列
 	 */
 	@Test
-	void testDbSequence() {
+	public void testDbSequence() {
 		// setval
 		long val = 2;
 		try {
@@ -182,7 +182,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 * 测试数据库序列的线程安全问题
 	 */
 	@Test
-	void testDbSequenceThreadSafe() {
+	public void testDbSequenceThreadSafe() {
 		int totalTimes = 250, threadCount, times;
 
 		// 200个线程：预热，使连接池中的连接都连上先

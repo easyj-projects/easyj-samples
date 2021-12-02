@@ -15,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author wangliang181230
  */
 @SpringBootTest
-class OcrTemplateSampleApplicationTest {
+public class OcrTemplateSampleApplicationTest {
 
 	@Resource
 	IOcrTemplate template;
@@ -30,7 +30,7 @@ class OcrTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(template);
 
 		// 校验是否复制了通用配置

@@ -31,7 +31,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("oracle")
 @Disabled("需要连接对应类型的数据库")
-class OracleDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
+public class OracleDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
 
 	@Override
 	protected String getDbType() {

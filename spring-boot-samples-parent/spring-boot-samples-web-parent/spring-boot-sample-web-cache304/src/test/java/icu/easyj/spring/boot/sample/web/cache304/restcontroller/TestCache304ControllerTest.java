@@ -21,14 +21,14 @@ import static icu.easyj.spring.boot.sample.web.cache304.restcontroller.TestCache
  * @author wangliang181230
  */
 @SpringBootTest
-class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
+public class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * @throws Exception 异常
 	 * @see TestCache304Controller#useCache304AndUseMaxAgeAndUseCacheIfException(Boolean)
 	 */
 	@Test
-	void testUseCache304AndUseMaxAgeAndUseCacheIfException() throws Exception {
+	public void testUseCache304AndUseMaxAgeAndUseCacheIfException() throws Exception {
 		String path = "/test/cache-304/true";
 
 		// 无缓存时，发送请求
@@ -72,7 +72,7 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestCache304Controller#useCache304NoMaxAge(Boolean)
 	 */
 	@Test
-	void testUseCache304NoMaxAge() throws Exception {
+	public void testUseCache304NoMaxAge() throws Exception {
 		String path = "/test/cache-304/false";
 
 		// 无缓存时，发送请求
@@ -117,7 +117,7 @@ class TestCache304ControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestCache304Controller#noCache304()
 	 */
 	@Test
-	void testNoCache304() throws Exception {
+	public void testNoCache304() throws Exception {
 		String path = "/test/no-cache-304";
 
 		// 无缓存时，发送请求

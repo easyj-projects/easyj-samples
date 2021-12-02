@@ -11,10 +11,10 @@ import org.springframework.http.MediaType;
  * @author wangliang181230
  */
 @SpringBootTest
-class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
+public class ExcelImportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
-	void testExcelImport() throws Exception {
+	public void testExcelImport() throws Exception {
 		super.mockPostMultipart("/test/excel-import")
 				.file("file", "testExcelImport.xlsx")
 				.send()

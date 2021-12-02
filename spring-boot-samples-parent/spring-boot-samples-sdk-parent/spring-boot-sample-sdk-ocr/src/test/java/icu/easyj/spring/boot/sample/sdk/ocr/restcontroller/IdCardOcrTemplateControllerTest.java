@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @SpringBootTest
 @Disabled("腾讯云测试账号免费额度有限，请手动执行该测试用例")
-class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
+public class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：正面身份证识别
@@ -30,7 +30,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testFrontCardSideIdCardOcr() throws Exception {
+	public void testFrontCardSideIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/one-card-side";
 
 		super.mockPost(path)
@@ -65,7 +65,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#oneCardSideIdCardOcr(MultipartFile, CardSide, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testBackCardSideIdCardOcr() throws Exception {
+	public void testBackCardSideIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/one-card-side";
 
 		super.mockPost(path)
@@ -99,7 +99,7 @@ class IdCardOcrTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see IdCardOcrTemplateController#doubleIdCardOcr(MultipartFile, MultipartFile, IdCardOcrAdvancedGroup)
 	 */
 	@Test
-	void testDoubleIdCardOcr() throws Exception {
+	public void testDoubleIdCardOcr() throws Exception {
 		String path = "/test/ocr/idcardocr/double-card-side";
 
 		super.mockPost(path)

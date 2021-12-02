@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author wangliang181230
  */
 @SpringBootTest
-class WebCache304SampleApplicationTest {
+public class WebCache304SampleApplicationTest {
 
 	@Resource
 	TestCache304Controller testCache304Controller;
@@ -22,7 +22,7 @@ class WebCache304SampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(testCache304Controller);
 	}
 }

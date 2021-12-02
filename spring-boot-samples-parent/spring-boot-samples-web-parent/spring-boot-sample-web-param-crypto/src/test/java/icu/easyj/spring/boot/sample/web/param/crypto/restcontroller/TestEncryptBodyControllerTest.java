@@ -26,7 +26,7 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
  * @author wangliang181230
  */
 @SpringBootTest
-class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
+public class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -51,7 +51,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
-	void testEncryptBodySuccess() throws Exception {
+	public void testEncryptBodySuccess() throws Exception {
 		String path = "/test/body";
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
 		String encryptedBody = SYMMETRIC_CRYPTO.encryptBase64(JSON.toJSONString(bodyParam));
@@ -74,7 +74,7 @@ class TestEncryptBodyControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptBodyController#testBodyParamCrypto(TestBodyParam)
 	 */
 	@Test
-	void testEncryptBodyFail() {
+	public void testEncryptBodyFail() {
 		String path = "/test/body";
 		TestBodyParam bodyParam = new TestBodyParam("111", "222");
 

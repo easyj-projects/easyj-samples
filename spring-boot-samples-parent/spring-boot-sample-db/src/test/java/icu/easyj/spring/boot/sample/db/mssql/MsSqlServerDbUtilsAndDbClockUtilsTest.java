@@ -31,7 +31,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("mssqlserver")
 @Disabled("需要连接对应类型的数据库")
-class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
+public class MsSqlServerDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
 
 	@Override
 	protected String getDbType() {

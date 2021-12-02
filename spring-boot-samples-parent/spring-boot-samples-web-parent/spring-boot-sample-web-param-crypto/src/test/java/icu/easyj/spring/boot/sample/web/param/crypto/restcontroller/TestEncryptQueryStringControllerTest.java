@@ -25,7 +25,7 @@ import static icu.easyj.spring.boot.sample.web.param.crypto.BeforeAllTest.SYMMET
  * @author wangliang181230
  */
 @SpringBootTest
-class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
+public class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Resource
 	IParamCryptoFilterProperties cryptoFilterProperties;
@@ -50,7 +50,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
-	void testEncryptQueryStringSuccess() throws Exception {
+	public void testEncryptQueryStringSuccess() throws Exception {
 		String path = "/test/querystring";
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 		String encryptedQueryString = SYMMETRIC_CRYPTO.encryptBase64(queryString);
@@ -77,7 +77,7 @@ class TestEncryptQueryStringControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see TestEncryptQueryStringController#testQueryStringParamCrypto(String, String)
 	 */
 	@Test
-	void testEncryptQueryStringFail1() {
+	public void testEncryptQueryStringFail1() {
 		String path = "/test/querystring";
 		String queryString = "s1=111啊啊啊&s2=222呀呀呀&s2=哇哇哇";
 

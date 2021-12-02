@@ -21,7 +21,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("easyj")
 @Disabled("需要先手动开启 http://github.com/easyj-projects/easyj 中的dwz-server-application")
-class EasyjMiddleWareDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
+public class EasyjMiddleWareDwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
@@ -31,7 +31,7 @@ class EasyjMiddleWareDwzTemplateControllerTest extends BaseSpringBootMockMvcTest
 	 * @see icu.easyj.sdk.dwz.IDwzTemplate#createShortUrl(DwzRequest)
 	 */
 	@Test
-	void testCreateShortUrl() throws Exception {
+	public void testCreateShortUrl() throws Exception {
 		String path = "/test/dwz/create";
 
 		super.mockGet(path)

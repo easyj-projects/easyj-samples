@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("s3")
-class S3DwzTemplateSampleApplicationTest {
+public class S3DwzTemplateSampleApplicationTest {
 
 	@Resource
 	IDwzTemplate template;
@@ -30,7 +30,7 @@ class S3DwzTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(template);
 		Assertions.assertNotNull(config);
 		Assertions.assertEquals(S3DwzTemplateImpl.class, template.getClass());

@@ -31,7 +31,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("mysql")
 @Disabled("需要连接对应类型的数据库")
-class MySqlDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
+public class MySqlDbUtilsAndDbClockUtilsTest extends AbstractDbUtilsAndDbClockUtilsTest {
 
 	@Override
 	protected String getDbType() {

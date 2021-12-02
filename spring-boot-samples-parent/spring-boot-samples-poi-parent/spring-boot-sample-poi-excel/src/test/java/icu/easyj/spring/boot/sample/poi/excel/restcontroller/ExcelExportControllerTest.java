@@ -14,10 +14,10 @@ import org.springframework.http.MediaType;
  * @author wangliang181230
  */
 @SpringBootTest
-class ExcelExportControllerTest extends BaseSpringBootMockMvcTest {
+public class ExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 
 	@Test
-	void testExcelExport_NotDoExport() throws Exception {
+	public void testExcelExport_NotDoExport() throws Exception {
 		super.mockGet("/test/excel-export/list")
 				.queryParam("nameLike", "bbb")
 				.queryParam("pageSize", "1")
@@ -30,7 +30,7 @@ class ExcelExportControllerTest extends BaseSpringBootMockMvcTest {
 	}
 
 	@Test
-	void testExcelExport_DoExport() throws Exception {
+	public void testExcelExport_DoExport() throws Exception {
 		super.mockGet("/test/excel-export/list")
 				.queryParam("doExport", "true")
 				.queryParam("nameLike", "bbb")

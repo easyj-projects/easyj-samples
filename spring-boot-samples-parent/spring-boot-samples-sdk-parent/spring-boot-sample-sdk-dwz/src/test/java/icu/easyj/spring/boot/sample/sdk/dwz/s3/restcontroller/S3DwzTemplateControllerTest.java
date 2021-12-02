@@ -21,7 +21,7 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("s3")
 @Disabled("经常报错，暂时禁用")
-class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
+public class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
 	 * 测试：长链接转换为短链接
@@ -31,7 +31,7 @@ class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 	 * @see icu.easyj.sdk.dwz.IDwzTemplate#createShortUrl(DwzRequest)
 	 */
 	@Test
-	void testCreateShortUrl() throws Exception {
+	public void testCreateShortUrl() throws Exception {
 		String path = "/test/dwz/create";
 
 		super.mockGet(path)

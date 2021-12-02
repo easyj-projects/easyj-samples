@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author wangliang181230
  */
 @SpringBootTest
-class AfterTurnPoiExcelSampleApplicationTest {
+public class AfterTurnPoiExcelSampleApplicationTest {
 
 	@Resource
 	AfterTurnExcelExportController afterTurnExcelExportController;
@@ -29,7 +29,7 @@ class AfterTurnPoiExcelSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(afterTurnExcelExportController);
 		Assertions.assertNotNull(afterTurnExcelImportController);
 

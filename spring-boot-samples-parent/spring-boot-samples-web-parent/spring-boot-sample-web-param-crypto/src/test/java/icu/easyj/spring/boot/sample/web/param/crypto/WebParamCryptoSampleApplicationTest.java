@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * @author wangliang181230
  */
 @SpringBootTest
-class WebParamCryptoSampleApplicationTest {
+public class WebParamCryptoSampleApplicationTest {
 
 	@Resource
 	IParamCryptoHandlerProperties cryptoHandlerProperties;
@@ -35,7 +35,7 @@ class WebParamCryptoSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		assertNotNull(cryptoHandlerProperties);
 		assertNotNull(cryptoHandler);
 	}
@@ -44,7 +44,7 @@ class WebParamCryptoSampleApplicationTest {
 	 * 测试读取的配置信息是否正确
 	 */
 	@Test
-	void testParamCryptoHandlerProperties() {
+	public void testParamCryptoHandlerProperties() {
 		assertEquals(ALGORITHM, cryptoHandlerProperties.getAlgorithm());
 		assertEquals(KEY, cryptoHandlerProperties.getKey());
 		assertEquals(IV, cryptoHandlerProperties.getIv());
@@ -55,7 +55,7 @@ class WebParamCryptoSampleApplicationTest {
 	}
 
 	@Test
-	void testParamCryptoHandler() {
+	public void testParamCryptoHandler() {
 		String data = "112233";
 
 		String encryptedData1 = cryptoHandler.encrypt(data);

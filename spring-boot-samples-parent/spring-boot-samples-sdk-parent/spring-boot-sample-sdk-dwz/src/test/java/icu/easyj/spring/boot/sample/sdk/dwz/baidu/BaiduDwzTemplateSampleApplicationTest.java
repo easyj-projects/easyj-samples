@@ -18,7 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
  */
 @SpringBootTest
 @ActiveProfiles("baidu")
-class BaiduDwzTemplateSampleApplicationTest {
+public class BaiduDwzTemplateSampleApplicationTest {
 
 	@Resource
 	IDwzTemplate template;
@@ -30,7 +30,7 @@ class BaiduDwzTemplateSampleApplicationTest {
 	 * 测试是否能够启动
 	 */
 	@Test
-	void testStartup() {
+	public void testStartup() {
 		Assertions.assertNotNull(template);
 		Assertions.assertNotNull(config);
 		Assertions.assertEquals(BaiduDwzTemplateImpl.class, template.getClass());
