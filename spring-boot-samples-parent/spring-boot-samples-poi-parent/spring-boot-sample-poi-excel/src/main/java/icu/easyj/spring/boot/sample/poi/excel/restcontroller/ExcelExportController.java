@@ -8,7 +8,6 @@ import icu.easyj.spring.boot.sample.poi.excel.mockquery.MyPageResult;
 import icu.easyj.spring.boot.sample.poi.excel.mockquery.QueryParam;
 import icu.easyj.web.poi.excel.ExcelExport;
 import icu.easyj.web.util.HttpUtils;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

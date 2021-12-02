@@ -9,8 +9,6 @@ import icu.easyj.sdk.ocr.IOcrTemplate;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvanced;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrAdvancedGroup;
 import icu.easyj.sdk.ocr.idcardocr.IdCardOcrResponse;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

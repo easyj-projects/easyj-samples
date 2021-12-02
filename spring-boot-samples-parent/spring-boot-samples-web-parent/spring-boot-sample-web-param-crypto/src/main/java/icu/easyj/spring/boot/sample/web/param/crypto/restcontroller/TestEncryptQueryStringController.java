@@ -1,7 +1,6 @@
 package icu.easyj.spring.boot.sample.web.param.crypto.restcontroller;
 
 import icu.easyj.spring.boot.sample.web.param.crypto.model.TestResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

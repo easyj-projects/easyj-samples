@@ -1,7 +1,6 @@
 package icu.easyj.spring.boot.sample.web.cache304.restcontroller;
 
 import icu.easyj.web.cache304.annotation.Cache304;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
