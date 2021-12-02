@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import icu.easyj.core.exception.NotSupportedException;
@@ -31,7 +32,6 @@ import icu.easyj.db.util.PrimaryDataSourceHolder;
 import icu.easyj.test.util.TestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
@@ -45,22 +45,17 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 
 	private static final String SEQ_NAME = "test_seq";
 
-
-	protected final DataSource dataSource;
+	@Resource
+	protected DataSource dataSource;
 
 	@Value("${spring.datasource.hikari.maximum-pool-size:10}")
 	private int maxDataSourcePooSize;
 
 	private RedisAtomicLong redisAtomicLongCounter;
 
-	@Autowired
+	@Resource
 	private void setRedisTemplate(RedisConnectionFactory factory) {
 		this.redisAtomicLongCounter = new RedisAtomicLong(SEQ_NAME, factory);
-	}
-
-
-	protected AbstractDbUtilsAndDbClockUtilsTest(DataSource dataSource) {
-		this.dataSource = dataSource;
 	}
 
 
@@ -188,7 +183,7 @@ public abstract class AbstractDbUtilsAndDbClockUtilsTest {
 	 */
 	@Test
 	void testDbSequenceThreadSafe() {
-		int totalTimes = 1000, threadCount, times;
+		int totalTimes = 250, threadCount, times;
 
 		// 200个线程：预热，使连接池中的连接都连上先
 		threadCount = 200;
