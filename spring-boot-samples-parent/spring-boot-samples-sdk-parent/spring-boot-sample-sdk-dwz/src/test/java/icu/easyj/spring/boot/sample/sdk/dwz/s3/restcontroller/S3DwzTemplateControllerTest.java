@@ -6,7 +6,6 @@ import icu.easyj.sdk.dwz.DwzRequest;
 import icu.easyj.sdk.dwz.DwzResponse;
 import icu.easyj.spring.boot.sample.sdk.dwz.restcontroller.DwzTemplateController;
 import icu.easyj.spring.boot.test.BaseSpringBootMockMvcTest;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -23,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("s3")
-@Ignore("经常报错，暂时禁用")
 public class S3DwzTemplateControllerTest extends BaseSpringBootMockMvcTest {
 
 	/**
