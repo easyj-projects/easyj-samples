@@ -100,6 +100,21 @@
 				<scope>import</scope>
 			</dependency>
 
+			<!-- 依赖定义：EasyJ Spring Boot Dependencies -->
+			<dependency>
+				<groupId>icu.easyj.boot</groupId>
+				<artifactId>easyj-spring-boot-dependencies</artifactId>
+				<version>${easyj-spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-dependencies</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
 			<!-- 依赖定义：Easyj Spring Boot BOM -->
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
