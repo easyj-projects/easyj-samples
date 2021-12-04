@@ -1,7 +1,7 @@
 spring:
   datasource:
     ### MsSql
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver #MsSql驱动类
+    driver-class-name: ${easyj.datasource.mssql.driver-class-name} #引用MsSql驱动类
     url: jdbc:sqlserver://192.168.101.145:1433;DatabaseName=test
     username: sa
     password: ${easyj.crypto.decrypt('gavc/uV4Qm0slZ3BiPBK1wcnXqAvxGz3c/IeKhAPGI3oLMiwTc9bLKcq3n1gN15UEiHNbRb78ijPEMISnQCjty912r7CHicR6VFHU8efcunuWGB+QllgEOnbFWrjf0BPmwq2ngBUxGZC/51gXYQVeo/9rgy6486QXMp4LWPDKkI=')}
