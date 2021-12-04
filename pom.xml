@@ -100,10 +100,10 @@
 				<scope>import</scope>
 			</dependency>
 
-			<!-- 依赖定义：EasyJ Spring Boot Dependencies -->
+			<!-- 依赖定义：Easyj Spring Boot BOM -->
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
-				<artifactId>easyj-spring-boot-dependencies</artifactId>
+				<artifactId>easyj-spring-boot-bom</artifactId>
 				<version>${easyj-spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -113,15 +113,6 @@
 						<artifactId>spring-boot-dependencies</artifactId>
 					</exclusion>
 				</exclusions>
-			</dependency>
-
-			<!-- 依赖定义：Easyj Spring Boot BOM -->
-			<dependency>
-				<groupId>icu.easyj.boot</groupId>
-				<artifactId>easyj-spring-boot-bom</artifactId>
-				<version>${easyj-spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
 			</dependency>
 
 			<!-- 依赖定义：Swagger -->
@@ -161,6 +152,19 @@
 			<groupId>icu.easyj</groupId>
 			<artifactId>easyj-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+
+		<!-- javax -->
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 	</dependencies>
 
