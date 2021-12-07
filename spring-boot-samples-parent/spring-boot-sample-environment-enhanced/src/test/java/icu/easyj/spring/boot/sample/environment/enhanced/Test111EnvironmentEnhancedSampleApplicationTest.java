@@ -10,11 +10,13 @@ import icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,6 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author wangliang181230
  */
 @ActiveProfiles("test111")
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class Test111EnvironmentEnhancedSampleApplicationTest {
 
