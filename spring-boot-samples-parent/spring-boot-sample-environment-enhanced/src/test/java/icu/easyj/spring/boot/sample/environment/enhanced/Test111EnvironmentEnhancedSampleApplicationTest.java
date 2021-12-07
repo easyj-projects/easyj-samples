@@ -3,14 +3,9 @@ package icu.easyj.spring.boot.sample.environment.enhanced;
 import java.lang.reflect.InvocationTargetException;
 import javax.annotation.Resource;
 
-import cn.hutool.core.lang.PatternPool;
 import icu.easyj.config.GlobalConfigs;
-import icu.easyj.core.util.PatternUtils;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
-import icu.easyj.crypto.GlobalCrypto;
-import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
-import icu.easyj.crypto.symmetric.ISymmetricCrypto;
 import icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
@@ -19,18 +14,19 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * {@link EnvironmentEnhancedSampleApplication} 测试类
  *
  * @author wangliang181230
  */
+@ActiveProfiles("test111")
 @SpringBootTest
-public class EnvironmentEnhancedSampleApplicationTest {
+public class Test111EnvironmentEnhancedSampleApplicationTest {
 
 	@Resource
 	DataSourceProperties dataSourceProperties;
@@ -66,7 +62,7 @@ public class EnvironmentEnhancedSampleApplicationTest {
 				size++;
 			}
 		}
-		assertEquals(19, size);
+		assertEquals(17, size);
 	}
 
 	/**
@@ -88,78 +84,12 @@ public class EnvironmentEnhancedSampleApplicationTest {
 	public void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
 		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
-				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
+				" applicationName=\"环境增强功能示例\", env=\"test111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
 		assertEquals(expected, StringUtils.toString(globalProperties));
 
 		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
 		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
-				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
+				", applicationName=\"环境增强功能示例\", env=\"test111\", envName=\"开发环境\", envType=EnvironmentType.TEST, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
-	}
-
-	/**
-	 * 功能3：测试函数式配置
-	 */
-	@Test
-	public void testEasyjFunctionPropertySource() {
-		String cryptoDecrypt = testProperties.getCryptoDecrypt();
-
-		String localIpPattern = testProperties.getLocalIpPattern();
-
-		String random = testProperties.getRandom();
-		String randomUuid32 = testProperties.getRandomUuid32();
-		String randomUuid = testProperties.getRandomUuid();
-		int randomPort = testProperties.getRandomPort();
-		short randomShort = testProperties.getRandomShort();
-		int randomInt = testProperties.getRandomInt();
-		long randomLong = testProperties.getRandomLong();
-		String randomChoose = testProperties.getRandomChoose();
-
-
-		assertEquals("开发环境", cryptoDecrypt);
-
-		System.out.println("localIpPattern = " + localIpPattern);
-		assertTrue(PatternUtils.validate(PatternPool.IPV4, localIpPattern));
-
-		assertEquals(32, random.length());
-		assertEquals(32, randomUuid32.length());
-		assertEquals(36, randomUuid.length());
-		assertTrue(PatternUtils.validate(PatternPool.UUID_SIMPLE, random));
-		assertTrue(PatternUtils.validate(PatternPool.UUID_SIMPLE, randomUuid32));
-		assertTrue(PatternUtils.validate(PatternPool.UUID, randomUuid));
-		assertTrue(randomPort >= 10000 && randomPort <= 20000);
-		assertTrue(randomShort >= 1001 && randomShort <= 2000);
-		assertTrue(randomInt >= 2001 && randomInt <= 3000);
-		assertTrue(randomLong >= 3001 && randomLong <= 4000);
-		assertTrue("1,2,3,4".contains(randomChoose));
-	}
-
-	/**
-	 * 功能4：全局加密算法（含对称和非对称加密）
-	 */
-	@Test
-	public void testGlobalCrypto() {
-		//region 全局非加密算法
-
-		IAsymmetricCrypto asymmetricCrypto = GlobalCrypto.getAsymmetricCrypto();
-		assertNotNull(asymmetricCrypto);
-
-		String data1 = "@wangliang181230是一名架构师。";
-		String encryptedData1 = asymmetricCrypto.encryptBase64(data1);
-		assertEquals(data1, asymmetricCrypto.decryptBase64(encryptedData1));
-
-		//endregion
-
-
-		//region 全局加密算法
-
-		ISymmetricCrypto symmetricCrypto = GlobalCrypto.getSymmetricCrypto();
-		assertNotNull(symmetricCrypto);
-
-		String data2 = "@wangliang181230是一名打工人。";
-		String encryptedData2 = symmetricCrypto.encryptBase64(data2);
-		assertEquals(data2, symmetricCrypto.decryptBase64(encryptedData2));
-
-		//endregion
 	}
 }
