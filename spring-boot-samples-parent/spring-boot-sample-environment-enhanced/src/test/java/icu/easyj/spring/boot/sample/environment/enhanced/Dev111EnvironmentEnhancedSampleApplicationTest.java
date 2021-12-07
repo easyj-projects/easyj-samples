@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.PropertySource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -31,9 +32,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  * @author wangliang181230
  */
+@ActiveProfiles("dev111")
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class EnvironmentEnhancedSampleApplicationTest {
+public class Dev111EnvironmentEnhancedSampleApplicationTest {
 
 	@Resource
 	DataSourceProperties dataSourceProperties;
@@ -69,7 +71,7 @@ public class EnvironmentEnhancedSampleApplicationTest {
 				size++;
 			}
 		}
-		assertEquals(19, size);
+		assertEquals(20, size);
 	}
 
 	/**
@@ -91,12 +93,12 @@ public class EnvironmentEnhancedSampleApplicationTest {
 	public void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
 		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
-				" applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
+				" applicationName=\"环境增强功能示例\", env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
 		assertEquals(expected, StringUtils.toString(globalProperties));
 
 		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
 		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
-				", applicationName=\"环境增强功能示例\", env=\"dev\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
+				", applicationName=\"环境增强功能示例\", env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 
