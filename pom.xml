@@ -76,10 +76,9 @@
 
 		<!-- EasyJ -->
 		<easyj.version>${project.version}</easyj.version>
-		<easyj-spring-boot.version>${easyj.version}</easyj-spring-boot.version>
 
 		<!-- 为了缩短 `.github/workflows/build.yml` 中的 matrix.properties 的变量值长度，添加了以下两个maven变量 -->
-		<sb>2.6.1</sb>
+		<sb>2.6.2</sb>
 		<r>data-redis</r>
 		<!-- Spring相关依赖 -->
 		<spring-boot.version>${sb}</spring-boot.version>
@@ -104,7 +103,7 @@
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
 				<artifactId>easyj-spring-boot-dependencies</artifactId>
-				<version>${easyj-spring-boot.version}</version>
+				<version>${easyj.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 				<exclusions>
@@ -119,7 +118,7 @@
 			<dependency>
 				<groupId>icu.easyj.boot</groupId>
 				<artifactId>easyj-spring-boot-bom</artifactId>
-				<version>${easyj-spring-boot.version}</version>
+				<version>${easyj.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 				<exclusions>
