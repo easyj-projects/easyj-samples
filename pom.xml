@@ -77,12 +77,8 @@
 		<!-- EasyJ -->
 		<easyj.version>${project.version}</easyj.version>
 
-		<!-- 为了缩短 `.github/workflows/build.yml` 中的 matrix.properties 的变量值长度，添加了以下两个maven变量 -->
-		<sb>1.4.7.RELEASE</sb>
-		<r>data-redis</r>
 		<!-- Spring相关依赖 -->
-		<spring-boot.version>${sb}</spring-boot.version>
-		<spring-redis.artifactId>${r}</spring-redis.artifactId>
+		<spring-boot.version>1.4.7.RELEASE</spring-boot.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
