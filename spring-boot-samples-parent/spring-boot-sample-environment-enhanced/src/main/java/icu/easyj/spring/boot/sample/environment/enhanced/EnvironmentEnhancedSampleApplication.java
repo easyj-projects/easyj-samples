@@ -1,6 +1,7 @@
 package icu.easyj.spring.boot.sample.environment.enhanced;
 
-import icu.easyj.config.GlobalConfigs;
+import icu.easyj.config.AppConfigs;
+import icu.easyj.config.EnvironmentConfigs;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
 import org.springframework.boot.SpringApplication;
@@ -15,9 +16,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * // 功能1：约定`global、area、project、default、env`配置文件存放目录的功能。核心类，如下：
  * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor
  * <p>
- * // 功能2：自动加载EasyJ定义的全局配置信息。核心类，如下：
- * @see icu.easyj.config.GlobalConfigs
- * @see icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties
+ * // 功能2：自动加载EasyJ定义的项目及应用配置信息，以及环境配置信息。核心类，如下：
+ * @see icu.easyj.config.AppConfigs
+ * @see icu.easyj.spring.boot.autoconfigure.configs.AppProperties
+ * @see icu.easyj.config.EnvironmentConfigs
+ * @see icu.easyj.spring.boot.autoconfigure.configs.EnvironmentProperties
  * @see icu.easyj.spring.boot.autoconfigure.configs.EasyjConfigsAutoConfiguration
  * <p>
  * // 功能3：函数式配置，目前提供了三种函数。核心类，如下：
@@ -36,7 +39,8 @@ public class EnvironmentEnhancedSampleApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(EnvironmentEnhancedSampleApplication.class, args);
-		System.out.println("全局配置信息：\r\n\t" + StringUtils.toString(ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance")));
+		System.out.println("项目及应用配置信息：\r\n\t" + StringUtils.toString(ReflectionUtils.invokeStaticMethod(AppConfigs.class, "getInstance")));
+		System.out.println("环境配置信息：\r\n\t" + StringUtils.toString(ReflectionUtils.invokeStaticMethod(EnvironmentConfigs.class, "getInstance")));
 
 		System.out.println();
 		System.out.println();
