@@ -1,4 +1,4 @@
 ﻿easyj:
-  global:
+  app:
     project: my-project
     project-name: 我的项目

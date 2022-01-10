@@ -4,14 +4,16 @@ import java.lang.reflect.InvocationTargetException;
 import javax.annotation.Resource;
 
 import cn.hutool.core.lang.PatternPool;
-import icu.easyj.config.GlobalConfigs;
+import icu.easyj.config.AppConfigs;
+import icu.easyj.config.EnvironmentConfigs;
 import icu.easyj.core.util.PatternUtils;
 import icu.easyj.core.util.ReflectionUtils;
 import icu.easyj.core.util.StringUtils;
 import icu.easyj.crypto.GlobalCrypto;
 import icu.easyj.crypto.asymmetric.IAsymmetricCrypto;
 import icu.easyj.crypto.symmetric.ISymmetricCrypto;
-import icu.easyj.spring.boot.autoconfigure.configs.GlobalProperties;
+import icu.easyj.spring.boot.autoconfigure.configs.AppProperties;
+import icu.easyj.spring.boot.autoconfigure.configs.EnvironmentProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
@@ -45,7 +47,9 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	TestEasyjFunctionPropertySourceProperties testProperties;
 
 	@Resource
-	GlobalProperties globalProperties;
+	AppProperties appProperties;
+	@Resource
+	EnvironmentProperties environmentProperties;
 
 	@Resource
 	ConfigurableEnvironment environment;
@@ -87,18 +91,30 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	}
 
 	/**
-	 * 功能2：测试EasyJ定义的全局配置
+	 * 功能2.1：测试EasyJ定义的项目及应用配置
 	 */
 	@Test
-	public void testGlobalConfigs() throws InvocationTargetException, NoSuchMethodException {
+	public void testAppConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "GlobalProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"," +
-				" applicationName=\"环境增强功能示例\", env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true, configs=null)";
-		assertEquals(expected, StringUtils.toString(globalProperties));
+		String expected = "AppProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
+		assertEquals(expected, StringUtils.toString(appProperties));
 
-		GlobalConfigs globalConfigs = (GlobalConfigs)ReflectionUtils.invokeStaticMethod(GlobalConfigs.class, "getInstance");
-		expected = "GlobalConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\"" +
-				", applicationName=\"环境增强功能示例\", env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true, configs={})";
+		AppConfigs appConfigs = (AppConfigs)ReflectionUtils.invokeStaticMethod(AppConfigs.class, "getInstance");
+		expected = "AppConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
+		assertEquals(expected, StringUtils.toString(appConfigs));
+	}
+
+	/**
+	 * 功能2.2：测试EasyJ定义的环境配置
+	 */
+	@Test
+	public void testEnvConfigs() throws InvocationTargetException, NoSuchMethodException {
+		// 判断全局配置是否已正常设置，并且内容正确
+		String expected = "EnvironmentProperties(env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true)";
+		assertEquals(expected, StringUtils.toString(environmentProperties));
+
+		EnvironmentConfigs globalConfigs = (EnvironmentConfigs)ReflectionUtils.invokeStaticMethod(EnvironmentConfigs.class, "getInstance");
+		expected = "EnvironmentConfigs(env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true)";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 
