@@ -79,7 +79,7 @@
 		<easyj.version>${project.version}</easyj.version>
 
 		<!-- Spring相关依赖 -->
-		<spring-boot.version>2.6.2</spring-boot.version>
+		<spring-boot.version>2.6.3</spring-boot.version>
 
 		<!-- Swagger -->
 		<swagger.version>2.9.2</swagger.version>
