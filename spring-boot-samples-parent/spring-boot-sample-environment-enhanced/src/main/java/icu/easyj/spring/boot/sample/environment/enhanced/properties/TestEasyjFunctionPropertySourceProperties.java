@@ -1,7 +1,6 @@
 package icu.easyj.spring.boot.sample.environment.enhanced.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 /**
@@ -36,6 +35,12 @@ public class TestEasyjFunctionPropertySourceProperties {
 	private int randomInt;
 	private long randomLong;
 	private String randomChoose;
+
+	/**
+	 * @see icu.easyj.spring.boot.env.enhanced.util.TimePropertyUtils
+	 */
+	private String timeNow1;
+	private String timeNow2;
 
 
 	//region Getter、Setter
@@ -118,6 +123,24 @@ public class TestEasyjFunctionPropertySourceProperties {
 
 	public void setRandomChoose(String randomChoose) {
 		this.randomChoose = randomChoose;
+	}
+
+	public String getTimeNow1() {
+		return timeNow1;
+	}
+
+	public TestEasyjFunctionPropertySourceProperties setTimeNow1(String timeNow1) {
+		this.timeNow1 = timeNow1;
+		return this;
+	}
+
+	public String getTimeNow2() {
+		return timeNow2;
+	}
+
+	public TestEasyjFunctionPropertySourceProperties setTimeNow2(String timeNow2) {
+		this.timeNow2 = timeNow2;
+		return this;
 	}
 
 	//endregion

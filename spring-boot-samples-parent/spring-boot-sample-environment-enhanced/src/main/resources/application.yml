@@ -30,3 +30,7 @@ test:
   random-int: ${easyj.random.int(2001, 3000)}
   random-long: ${easyj.random.long(3001L, 4000l)} #随机long，配置中的值末尾必须添加'L'，否则会报Integer转换Long失败的异常。
   random-choose: ${easyj.random.choose(1, 2, 3, 4)}
+
+  #easyj.time.now
+  time-now1: ${easyj.time.now()}
+  time-now2: ${easyj.time.now('yyyy-MM-dd')}
