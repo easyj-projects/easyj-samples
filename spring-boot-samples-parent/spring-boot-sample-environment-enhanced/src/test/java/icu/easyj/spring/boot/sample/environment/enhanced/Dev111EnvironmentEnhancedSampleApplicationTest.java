@@ -1,7 +1,6 @@
 package icu.easyj.spring.boot.sample.environment.enhanced;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Date;
 import javax.annotation.Resource;
 
 import cn.hutool.core.lang.PatternPool;
