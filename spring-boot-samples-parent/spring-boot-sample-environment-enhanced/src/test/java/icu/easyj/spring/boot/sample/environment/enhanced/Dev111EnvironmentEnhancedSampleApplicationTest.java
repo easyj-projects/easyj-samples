@@ -136,6 +136,9 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 		long randomLong = testProperties.getRandomLong();
 		String randomChoose = testProperties.getRandomChoose();
 
+		String timeNow1 = testProperties.getTimeNow1();
+		String timeNow2 = testProperties.getTimeNow2();
+
 
 		assertEquals("开发环境", cryptoDecrypt);
 
@@ -153,6 +156,8 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 		assertTrue(randomInt >= 2001 && randomInt <= 3000);
 		assertTrue(randomLong >= 3001 && randomLong <= 4000);
 		assertTrue("1,2,3,4".contains(randomChoose));
+		assertTrue(PatternUtils.validate("^\\d{4}-\\d{2}-\\d{2}\\s\\d{2}\\:\\d{2}\\:\\d{2}\\.\\d{3}$", timeNow1));
+		assertTrue(PatternUtils.validate("^\\d{4}-\\d{2}-\\d{2}$", timeNow2));
 	}
 
 	/**
