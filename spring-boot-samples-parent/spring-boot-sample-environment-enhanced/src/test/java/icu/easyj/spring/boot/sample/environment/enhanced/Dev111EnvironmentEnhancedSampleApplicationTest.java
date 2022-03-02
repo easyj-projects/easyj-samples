@@ -106,15 +106,17 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 
 	/**
 	 * 功能2.2：测试EasyJ定义的环境配置
+	 * <p>
+	 * inUnitTest 在 application-dev111.yml 中配置成了false，为了校验自定义配置优先级是否比默认配置优先级要高
 	 */
 	@Test
 	public void testEnvConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "EnvironmentProperties(env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true)";
+		String expected = "EnvironmentProperties(env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=false)";
 		assertEquals(expected, StringUtils.toString(environmentProperties));
 
 		EnvironmentConfigs globalConfigs = (EnvironmentConfigs)ReflectionUtils.invokeStaticMethod(EnvironmentConfigs.class, "getInstance");
-		expected = "EnvironmentConfigs(env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true)";
+		expected = "EnvironmentConfigs(env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=false)";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 

@@ -1,3 +1,6 @@
 my.dev: aaaa
 
-easyj.env.env: dev111
+easyj:
+  env:
+    env: dev111
+    in-unit-test: false
