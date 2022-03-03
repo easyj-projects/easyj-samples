@@ -2,5 +2,4 @@ my.dev: aaaa
 
 easyj:
   env:
-    env: dev111
-    in-unit-test: false
+    in-unit-test: false #用来校验 自定义配置比默认配置的优先级要高

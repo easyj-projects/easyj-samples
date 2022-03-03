@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: dev111
+    include:
+      - xxx # 用于测试 EnvironmentUtils.getEnv 方法的正确性
   application:
     name: env-enhanced-sample
 
