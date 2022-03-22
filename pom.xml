@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>icu.easyj</groupId>
 		<artifactId>easyj-build</artifactId>
-		<version>1.0.39</version>
+		<version>1.0.43</version>
 		<relativePath/>
 	</parent>
 
@@ -66,7 +66,7 @@
 
 	<properties>
 		<!-- 当前样例项目的版本 -->
-		<revision>0.3.5-SNAPSHOT</revision>
+		<revision>0.3.7-SNAPSHOT</revision>
 
 		<!-- 编译配置 -->
 		<java.version>1.8</java.version>
