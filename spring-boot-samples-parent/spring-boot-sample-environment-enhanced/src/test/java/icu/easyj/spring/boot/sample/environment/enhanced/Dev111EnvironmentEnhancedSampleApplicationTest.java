@@ -64,10 +64,13 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 
 		// 环境不为空
 		assertNotNull(environment);
-		// 校验环境中的配置源数量
 
+		// 判断：EnvironmentConfigs.isInUnitTest() == true
+		assertTrue(EnvironmentConfigs.isInUnitTest());
+
+		// 校验环境中的配置源数量
 		int size = 0;
-		for (PropertySource propertySource : environment.getPropertySources()) {
+		for (PropertySource<?> propertySource : environment.getPropertySources()) {
 			if (propertySource.getName().contains("[EasyJ]")) {
 				size++;
 			}
@@ -109,11 +112,11 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	@Test
 	public void testEnvConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "EnvironmentProperties(env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=false)";
+		String expected = "EnvironmentProperties(env=\"dev111\", envName=\"开发环境\", envType=null, runMode=null)";
 		assertEquals(expected, StringUtils.toString(environmentProperties));
 
 		EnvironmentConfigs globalConfigs = (EnvironmentConfigs)ReflectionUtils.invokeStaticMethod(EnvironmentConfigs.class, "getInstance");
-		expected = "EnvironmentConfigs(env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=false)";
+		expected = "EnvironmentConfigs(env=\"dev111\", envName=\"开发环境\", envType=EnvironmentType.DEV, runMode=RunMode.RELEASE, inUnitTest=true)";
 		assertEquals(expected, StringUtils.toString(globalConfigs));
 	}
 
