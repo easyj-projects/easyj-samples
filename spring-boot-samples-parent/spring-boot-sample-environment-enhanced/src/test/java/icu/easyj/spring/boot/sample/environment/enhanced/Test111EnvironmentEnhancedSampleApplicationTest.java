@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * {@link EnvironmentEnhancedSampleApplication} 测试类
@@ -61,8 +62,11 @@ public class Test111EnvironmentEnhancedSampleApplicationTest {
 
 		// 环境不为空
 		assertNotNull(environment);
-		// 校验环境中的配置源数量
 
+		// 判断：EnvironmentConfigs.isInUnitTest() == true
+		assertTrue(EnvironmentConfigs.isInUnitTest());
+
+		// 校验环境中的配置源数量
 		int size = 0;
 		for (PropertySource propertySource : environment.getPropertySources()) {
 			if (propertySource.getName().contains("[EasyJ]")) {
@@ -104,7 +108,7 @@ public class Test111EnvironmentEnhancedSampleApplicationTest {
 	@Test
 	public void testEnvConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "EnvironmentProperties(env=\"test111\", envName=\"开发环境\", envType=null, runMode=null, inUnitTest=true)";
+		String expected = "EnvironmentProperties(env=\"test111\", envName=\"开发环境\", envType=null, runMode=null)";
 		assertEquals(expected, StringUtils.toString(environmentProperties));
 
 		EnvironmentConfigs globalConfigs = (EnvironmentConfigs)ReflectionUtils.invokeStaticMethod(EnvironmentConfigs.class, "getInstance");
