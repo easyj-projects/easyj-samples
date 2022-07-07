@@ -16,7 +16,7 @@ import icu.easyj.spring.boot.autoconfigure.configs.AppProperties;
 import icu.easyj.spring.boot.autoconfigure.configs.EnvironmentProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
-import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
+import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,7 +44,7 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	@Resource
 	RabbitMQProperties rabbitMQProperties;
 	@Resource
-	TestEasyjFunctionPropertySourceProperties testProperties;
+	TestEasyjProperties testProperties;
 
 	@Resource
 	AppProperties appProperties;
@@ -78,7 +78,7 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 				size++;
 			}
 		}
-		assertEquals(20, size);
+		assertEquals(21, size);
 	}
 
 	/**
@@ -99,11 +99,11 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	@Test
 	public void testAppConfigs() throws InvocationTargetException, NoSuchMethodException {
 		// 判断全局配置是否已正常设置，并且内容正确
-		String expected = "AppProperties(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
+		String expected = "AppProperties(product=\"my-product\", productName=\"我的产品\", area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
 		assertEquals(expected, StringUtils.toString(appProperties));
 
 		AppConfigs appConfigs = (AppConfigs)ReflectionUtils.invokeStaticMethod(AppConfigs.class, "getInstance");
-		expected = "AppConfigs(area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
+		expected = "AppConfigs(product=\"my-product\", productName=\"我的产品\", area=\"my-area\", areaName=\"我的区域\", project=\"my-project\", projectName=\"我的项目\", application=\"env-enhanced-sample\", applicationName=\"环境增强功能示例\")";
 		assertEquals(expected, StringUtils.toString(appConfigs));
 	}
 
@@ -144,6 +144,7 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 		String timeNow1 = testProperties.getTimeNow1();
 		String timeNow2 = testProperties.getTimeNow2();
 
+		assertEquals("dev111", testProperties.getAaa());
 
 		assertEquals("开发环境", cryptoDecrypt);
 

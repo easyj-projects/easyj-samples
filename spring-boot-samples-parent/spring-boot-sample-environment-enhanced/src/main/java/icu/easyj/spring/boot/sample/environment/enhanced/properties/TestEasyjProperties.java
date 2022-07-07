@@ -4,15 +4,18 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 测试各种”函数式配置“的配置类
+ * 测试各种 ”函数式配置“ 和 ”约定配置“ 的配置类
  *
  * @author wangliang181230
+ * @see icu.easyj.spring.boot.env.enhanced.EasyjAppointedEnvironmentPostProcessor 约定配置
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySource 函数式配置源
  * @see icu.easyj.spring.boot.env.enhanced.EasyjFunctionPropertySourceEnvironmentPostProcessor 加载函数式配置源的环境处理器
  */
 @Component
 @ConfigurationProperties("test")
-public class TestEasyjFunctionPropertySourceProperties {
+public class TestEasyjProperties {
+
+	private String aaa;
 
 	/**
 	 * @see icu.easyj.spring.boot.env.enhanced.util.CryptoPropertyUtils
@@ -44,6 +47,14 @@ public class TestEasyjFunctionPropertySourceProperties {
 
 
 	//region Getter、Setter
+
+	public String getAaa() {
+		return aaa;
+	}
+
+	public void setAaa(String aaa) {
+		this.aaa = aaa;
+	}
 
 	public String getCryptoDecrypt() {
 		return cryptoDecrypt;
@@ -129,7 +140,7 @@ public class TestEasyjFunctionPropertySourceProperties {
 		return timeNow1;
 	}
 
-	public TestEasyjFunctionPropertySourceProperties setTimeNow1(String timeNow1) {
+	public TestEasyjProperties setTimeNow1(String timeNow1) {
 		this.timeNow1 = timeNow1;
 		return this;
 	}
@@ -138,7 +149,7 @@ public class TestEasyjFunctionPropertySourceProperties {
 		return timeNow2;
 	}
 
-	public TestEasyjFunctionPropertySourceProperties setTimeNow2(String timeNow2) {
+	public TestEasyjProperties setTimeNow2(String timeNow2) {
 		this.timeNow2 = timeNow2;
 		return this;
 	}
