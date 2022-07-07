@@ -3,3 +3,4 @@ my.test: bbbb
 easyj:
   env:
     env: test111
+    env-name: 测试环境
