@@ -78,7 +78,7 @@ public class Test111EnvironmentEnhancedSampleApplicationTest {
 				size++;
 			}
 		}
-		assertEquals(20, size);
+		assertEquals(28, size);
 	}
 
 	/**
