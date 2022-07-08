@@ -16,7 +16,8 @@ import icu.easyj.spring.boot.autoconfigure.configs.AppProperties;
 import icu.easyj.spring.boot.autoconfigure.configs.EnvironmentProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
-import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjProperties;
+import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestConfigPriorityProperties;
+import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -41,7 +42,7 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 	@Resource
 	RabbitMQProperties rabbitMQProperties;
 	@Resource
-	TestEasyjProperties testProperties;
+	TestEasyjFunctionPropertySourceProperties testProperties;
 
 	@Resource
 	AppProperties appProperties;
@@ -75,7 +76,7 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 				size++;
 			}
 		}
-		assertEquals(21, size);
+		assertEquals(32, size);
 	}
 
 	/**
@@ -141,8 +142,6 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 		String timeNow1 = testProperties.getTimeNow1();
 		String timeNow2 = testProperties.getTimeNow2();
 
-		assertEquals("dev111", testProperties.getAaa());
-
 		assertEquals("开发环境", cryptoDecrypt);
 
 		System.out.println("localIpPattern = " + localIpPattern);
@@ -190,5 +189,44 @@ public class Dev111EnvironmentEnhancedSampleApplicationTest {
 		assertEquals(data2, symmetricCrypto.decryptBase64(encryptedData2));
 
 		//endregion
+	}
+
+
+	@Resource
+	TestConfigPriorityProperties testConfigPriorityProperties;
+
+	@Test
+	public void testConfigPriorityProperties() {
+		assertEquals(1, testConfigPriorityProperties.getA());
+		assertEquals(2, testConfigPriorityProperties.getB());
+		assertEquals(3, testConfigPriorityProperties.getC());
+		assertEquals(4, testConfigPriorityProperties.getD());
+		assertEquals(5, testConfigPriorityProperties.getE());
+
+		assertEquals(6, testConfigPriorityProperties.getF());
+		assertEquals(7, testConfigPriorityProperties.getG());
+		assertEquals(8, testConfigPriorityProperties.getH());
+		assertEquals(9, testConfigPriorityProperties.getI());
+		assertEquals(10, testConfigPriorityProperties.getJ());
+
+		assertEquals(11, testConfigPriorityProperties.getK());
+		assertEquals(12, testConfigPriorityProperties.getL());
+		assertEquals(13, testConfigPriorityProperties.getM());
+		assertEquals(14, testConfigPriorityProperties.getN());
+		assertEquals(15, testConfigPriorityProperties.getO());
+
+		assertEquals(16, testConfigPriorityProperties.getP());
+		assertEquals(17, testConfigPriorityProperties.getQ());
+		assertEquals(18, testConfigPriorityProperties.getR());
+		assertEquals(19, testConfigPriorityProperties.getS());
+		assertEquals(20, testConfigPriorityProperties.getT());
+
+		assertEquals(21, testConfigPriorityProperties.getU());
+		assertEquals(22, testConfigPriorityProperties.getV());
+		assertEquals(23, testConfigPriorityProperties.getW());
+		assertEquals(24, testConfigPriorityProperties.getX());
+		assertEquals(25, testConfigPriorityProperties.getY());
+
+		assertEquals(26, testConfigPriorityProperties.getZ());
 	}
 }

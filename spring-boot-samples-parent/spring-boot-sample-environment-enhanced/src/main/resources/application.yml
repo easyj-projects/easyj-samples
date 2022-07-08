@@ -34,3 +34,9 @@ test:
   #easyj.time.now
   time-now1: ${easyj.time.now()}
   time-now2: ${easyj.time.now('yyyy-MM-dd')}
+
+
+test2:
+  y: 25
+
+  z: 25
