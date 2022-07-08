@@ -1,8 +1,3 @@
-﻿easyj:
-  app:
-    product: my-product
-    product-name: 我的产品
-
 test2:
   a: 1
   b: 1

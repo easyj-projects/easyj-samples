@@ -16,7 +16,7 @@ import icu.easyj.spring.boot.autoconfigure.configs.AppProperties;
 import icu.easyj.spring.boot.autoconfigure.configs.EnvironmentProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.DataSourceProperties;
 import icu.easyj.spring.boot.sample.environment.enhanced.properties.RabbitMQProperties;
-import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjProperties;
+import icu.easyj.spring.boot.sample.environment.enhanced.properties.TestEasyjFunctionPropertySourceProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,7 +44,7 @@ public class Test111EnvironmentEnhancedSampleApplicationTest {
 	@Resource
 	RabbitMQProperties rabbitMQProperties;
 	@Resource
-	TestEasyjProperties testProperties;
+	TestEasyjFunctionPropertySourceProperties testProperties;
 
 	@Resource
 	AppProperties appProperties;
@@ -141,8 +141,6 @@ public class Test111EnvironmentEnhancedSampleApplicationTest {
 
 		String timeNow1 = testProperties.getTimeNow1();
 		String timeNow2 = testProperties.getTimeNow2();
-
-		assertEquals("test111", testProperties.getAaa());
 
 		assertEquals("开发环境", cryptoDecrypt);
 
