@@ -13,246 +13,246 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("test2")
 public class TestConfigPriorityProperties {
 
-	private Integer a;
-	private Integer b;
-	private Integer c;
-	private Integer d;
-	private Integer e;
+	private int a;
+	private int b;
+	private int c;
+	private int d;
+	private int e;
 
-	private Integer f;
-	private Integer g;
-	private Integer h;
-	private Integer i;
-	private Integer j;
+	private int f;
+	private int g;
+	private int h;
+	private int i;
+	private int j;
 
-	private Integer k;
-	private Integer l;
-	private Integer m;
-	private Integer n;
-	private Integer o;
+	private int k;
+	private int l;
+	private int m;
+	private int n;
+	private int o;
 
-	private Integer p;
-	private Integer q;
-	private Integer r;
-	private Integer s;
-	private Integer t;
+	private int p;
+	private int q;
+	private int r;
+	private int s;
+	private int t;
 
-	private Integer u;
-	private Integer v;
-	private Integer w;
-	private Integer x;
-	private Integer y;
+	private int u;
+	private int v;
+	private int w;
+	private int x;
+	private int y;
 
-	private Integer z;
+	private int z;
 
 
 	//region Getter、Setter
 
-	public Integer getA() {
+	public int getA() {
 		return a;
 	}
 
-	public void setA(Integer a) {
+	public void setA(int a) {
 		this.a = a;
 	}
 
-	public Integer getB() {
+	public int getB() {
 		return b;
 	}
 
-	public void setB(Integer b) {
+	public void setB(int b) {
 		this.b = b;
 	}
 
-	public Integer getC() {
+	public int getC() {
 		return c;
 	}
 
-	public void setC(Integer c) {
+	public void setC(int c) {
 		this.c = c;
 	}
 
-	public Integer getD() {
+	public int getD() {
 		return d;
 	}
 
-	public void setD(Integer d) {
+	public void setD(int d) {
 		this.d = d;
 	}
 
-	public Integer getE() {
+	public int getE() {
 		return e;
 	}
 
-	public void setE(Integer e) {
+	public void setE(int e) {
 		this.e = e;
 	}
 
-	public Integer getF() {
+	public int getF() {
 		return f;
 	}
 
-	public void setF(Integer f) {
+	public void setF(int f) {
 		this.f = f;
 	}
 
-	public Integer getG() {
+	public int getG() {
 		return g;
 	}
 
-	public void setG(Integer g) {
+	public void setG(int g) {
 		this.g = g;
 	}
 
-	public Integer getH() {
+	public int getH() {
 		return h;
 	}
 
-	public void setH(Integer h) {
+	public void setH(int h) {
 		this.h = h;
 	}
 
-	public Integer getI() {
+	public int getI() {
 		return i;
 	}
 
-	public void setI(Integer i) {
+	public void setI(int i) {
 		this.i = i;
 	}
 
-	public Integer getJ() {
+	public int getJ() {
 		return j;
 	}
 
-	public void setJ(Integer j) {
+	public void setJ(int j) {
 		this.j = j;
 	}
 
-	public Integer getK() {
+	public int getK() {
 		return k;
 	}
 
-	public void setK(Integer k) {
+	public void setK(int k) {
 		this.k = k;
 	}
 
-	public Integer getL() {
+	public int getL() {
 		return l;
 	}
 
-	public void setL(Integer l) {
+	public void setL(int l) {
 		this.l = l;
 	}
 
-	public Integer getM() {
+	public int getM() {
 		return m;
 	}
 
-	public void setM(Integer m) {
+	public void setM(int m) {
 		this.m = m;
 	}
 
-	public Integer getN() {
+	public int getN() {
 		return n;
 	}
 
-	public void setN(Integer n) {
+	public void setN(int n) {
 		this.n = n;
 	}
 
-	public Integer getO() {
+	public int getO() {
 		return o;
 	}
 
-	public void setO(Integer o) {
+	public void setO(int o) {
 		this.o = o;
 	}
 
-	public Integer getP() {
+	public int getP() {
 		return p;
 	}
 
-	public void setP(Integer p) {
+	public void setP(int p) {
 		this.p = p;
 	}
 
-	public Integer getQ() {
+	public int getQ() {
 		return q;
 	}
 
-	public void setQ(Integer q) {
+	public void setQ(int q) {
 		this.q = q;
 	}
 
-	public Integer getR() {
+	public int getR() {
 		return r;
 	}
 
-	public void setR(Integer r) {
+	public void setR(int r) {
 		this.r = r;
 	}
 
-	public Integer getS() {
+	public int getS() {
 		return s;
 	}
 
-	public void setS(Integer s) {
+	public void setS(int s) {
 		this.s = s;
 	}
 
-	public Integer getT() {
+	public int getT() {
 		return t;
 	}
 
-	public void setT(Integer t) {
+	public void setT(int t) {
 		this.t = t;
 	}
 
-	public Integer getU() {
+	public int getU() {
 		return u;
 	}
 
-	public void setU(Integer u) {
+	public void setU(int u) {
 		this.u = u;
 	}
 
-	public Integer getV() {
+	public int getV() {
 		return v;
 	}
 
-	public void setV(Integer v) {
+	public void setV(int v) {
 		this.v = v;
 	}
 
-	public Integer getW() {
+	public int getW() {
 		return w;
 	}
 
-	public void setW(Integer w) {
+	public void setW(int w) {
 		this.w = w;
 	}
 
-	public Integer getX() {
+	public int getX() {
 		return x;
 	}
 
-	public void setX(Integer x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
-	public Integer getY() {
+	public int getY() {
 		return y;
 	}
 
-	public void setY(Integer y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 
-	public Integer getZ() {
+	public int getZ() {
 		return z;
 	}
 
-	public void setZ(Integer z) {
+	public void setZ(int z) {
 		this.z = z;
 	}
 
