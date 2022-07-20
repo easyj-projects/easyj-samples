@@ -1,4 +1,4 @@
-name: "Test"
+name: "Test for latest-SNAPSHOT"
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: "Test"
+    name: "Test for latest-SNAPSHOT"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
