@@ -5,6 +5,8 @@ on:
     branches: [ master, spring-boot_* ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: '0 1 * * 1'
 
 jobs:
   test:
@@ -45,7 +47,7 @@ jobs:
       # step 3
       - name: "Run Test With Maven"
         # https://docs.github.com/cn/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#github-context
-        run: mvn clean test -e -B -Pcicd -Dspring-boot.version=${{ matrix.springboot }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn;
+        run: mvn clean test -e -B -Pcicd -Deasyj.version=latest-SNAPSHOT -Dspring-boot.version=${{ matrix.springboot }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn;
 
       # step 4
       - name: "Codecov"
