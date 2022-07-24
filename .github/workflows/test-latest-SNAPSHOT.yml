@@ -1,4 +1,4 @@
-name: "Test for latest-SNAPSHOT"
+name: "Test latest-SNAPSHOT"
 
 on:
   push:
@@ -10,15 +10,15 @@ on:
 
 jobs:
   test:
-    name: "Test for latest-SNAPSHOT"
+    name: "Test latest-SNAPSHOT"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         java: [ 8, 11, 17 ]
         springboot: [
-          2.7.1,
-          2.6.9,
+          2.7.2,
+          2.6.10,
           2.5.14,
           2.4.13,
           2.3.12.RELEASE,
@@ -46,10 +46,9 @@ jobs:
 
       # step 3
       - name: "Run Test With Maven"
-        # https://docs.github.com/cn/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#github-context
-        run: mvn clean test -e -B -Pcicd -Deasyj.version=latest-SNAPSHOT -Dspring-boot.version=${{ matrix.springboot }} -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn;
+        run: mvn clean test -Pcicd -Deasyj.version=latest-SNAPSHOT -Dspring-boot.version=${{ matrix.springboot }} -e -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn;
 
       # step 4
       - name: "Codecov"
-        if: matrix.java == '8' && matrix.springboot == '2.7.1' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
+        if: matrix.java == '8' && matrix.springboot == '2.7.2' && (github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/master')
         uses: codecov/codecov-action@v2.1.0
