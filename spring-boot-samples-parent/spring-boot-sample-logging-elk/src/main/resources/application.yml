@@ -11,8 +11,11 @@ logging:
   config: "classpath:easyj/logging/logback/logback-spring.xml"
 
 easyj.logging.logback:
+  console-appender:
+    enabled: true
   logstash-appender:
     enabled: true
     destination: 192.168.145.129:4560
+    #estination: localhost:8081
     queue-size: 8192
 

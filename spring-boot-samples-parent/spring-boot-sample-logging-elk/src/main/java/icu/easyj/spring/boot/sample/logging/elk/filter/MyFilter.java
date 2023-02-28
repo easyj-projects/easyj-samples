@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.MDC;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-@WebFilter
+@Component
+@WebFilter(filterName = "my-filter", urlPatterns = "/*")
 public class MyFilter implements Filter {
 
 	@Override
