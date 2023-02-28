@@ -20,6 +20,8 @@
 		<module>spring-boot-sample-db</module>
 		<module>spring-boot-sample-environment-enhanced</module>
 
+		<module>spring-boot-sample-logging-elk</module>
+
 		<module>spring-boot-samples-poi-parent</module>
 		<!--
 		<module>spring-boot-sample-poi-excel</module>

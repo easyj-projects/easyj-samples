@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: logging-elk-sample
+
+logging:
+  config: "classpath:easyj/logging/logback/logback-spring.xml"
+
+easyj.logging.logback:
+  logstash-appender:
+    enabled: true
+    destination: 192.168.145.129:4560
+    queue-size: 8192
+
