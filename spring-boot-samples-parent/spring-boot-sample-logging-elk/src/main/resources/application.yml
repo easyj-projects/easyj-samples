@@ -14,8 +14,8 @@ easyj.logging.logback:
   console-appender:
     enabled: true
   logstash-appender:
-    enabled: true
+    enabled: true #default: false
     destination: 192.168.145.129:4560
     #estination: localhost:8081
-    queue-size: 8192
+    queue-size: 1024 #default: 8192
 
